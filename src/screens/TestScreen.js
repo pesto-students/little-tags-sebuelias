@@ -1,21 +1,10 @@
-import logo from '../logo.svg';
+import Carousel from '../components/Carousel/Carousel';
+import CarouselImages from '../components/Carousel/CarouselImages';
 
 const TestScreen = () => (
-        <>
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hello Team Axios
-        </a>
-      </header>
-    </div>
-        </>
-    )
+  <div>
+    <Carousel slides={CarouselImages} />
+  </div>
+);
 
 export default TestScreen;
