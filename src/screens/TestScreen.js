@@ -1,10 +1,3 @@
-import Carousel from '../components/Carousel/Carousel';
-import CarouselImages from '../components/Carousel/CarouselImages';
-
-const TestScreen = () => (
-  <div>
-    <Carousel slides={CarouselImages} />
-  </div>
-);
+const TestScreen = () => <div>Test Screen</div>;
 
 export default TestScreen;
