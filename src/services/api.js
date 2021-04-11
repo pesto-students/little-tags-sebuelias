@@ -1,6 +1,5 @@
 import axios from 'axios';
-import {API_ENDPOINT, GET_DATA_API_ENDPOINT } from '../constant'
-
+import { API_ENDPOINT, GET_DATA_API_ENDPOINT } from '../utils/constant';
 
 // configuring axios
 const api = axios.create({
@@ -11,4 +10,4 @@ const apparrelData = axios.create({
   baseURL: GET_DATA_API_ENDPOINT,
 });
 
-export { api, apparrelData }
+export { api, apparrelData };
