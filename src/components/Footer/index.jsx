@@ -9,24 +9,17 @@ import {
   FaCcAmazonPay,
   FaCcPaypal,
 } from 'react-icons/fa';
+
+import Subscribe from "../Subscribe"
 import AppStoreIcon from '../../assets/image/app_store_icon.png';
 import PlayStoreIcon from '../../assets/image/play_store_icon.png';
 
 const Footer = () => (
   <>
-    <div className="general-flex-dir-column footer border-line">
-      <div className="subscribe-parent">
-        <form>
-          <input
-            type="text"
-            placeholder="Your Email ID"
-            className="subscribe-input"
-          />
-          <input type="button" value="SUBSCRIBE" className="subscribe-button" />
-        </form>
-      </div>
-      <div className="general-flex-dir-row general-flex-wrap-with-justify footer-flex-margin border-line">
-        <div className="general-flex-dir-column contact-box">
+    <div className="flex-column footer border-line">
+        <Subscribe />
+      <div className="flex-row flex-wrap-with-justify footer-flex-margin border-line">
+        <div className="flex-column contact-box">
           <h3>Contact Info</h3>
           <ul>
             <li>Phone: (+91) 9876 543 210</li>
@@ -45,10 +38,10 @@ const Footer = () => (
             <li>Jackets (3)</li>
           </ul>
         </div>
-        <div className="general-flex-dir-column">
-          <div className="general-flex-dir-column">
+        <div className="flex-column">
+          <div className="flex-column">
             <h3>Connect</h3>
-            <ul className="general-flex-dir-row general-flex-wrap-with-justify">
+            <ul className="flex-row flex-wrap-with-justify">
               <li>
                 <FaFacebookSquare />
               </li>
@@ -63,9 +56,9 @@ const Footer = () => (
               </li>
             </ul>
           </div>
-          <div className="general-flex-dir-column">
+          <div className="flex-column">
             <h3>We accept:</h3>
-            <ul className="general-flex-dir-row general-flex-wrap-with-justify">
+            <ul className="flex-row flex-wrap-with-justify">
               <li>
                 <FaCcMastercard />
               </li>
@@ -81,7 +74,7 @@ const Footer = () => (
             </ul>
           </div>
         </div>
-        <div className="general-flex-dir-column">
+        <div className="flex-column">
           <h5>Download App</h5>
           <div>
             <img src={AppStoreIcon} className="store-icon" alt="googlePlay" />
@@ -95,7 +88,7 @@ const Footer = () => (
           </div>
         </div>
       </div>
-      <div className="general-flex-dir-row general-flex-wrap-with-justify footer-flex-margin border-line">
+      <div className="flex-row flex-wrap-with-justify footer-flex-margin border-line">
         <p>© 2021, Little Tags Website</p>
         <p>All Rights Reserved.</p>
       </div>

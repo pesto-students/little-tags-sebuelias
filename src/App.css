@@ -41,16 +41,16 @@ ul{
   padding: 0px;
 }
 
-.general-flex-dir-column{
+.flex-column{
     display: flex;
     flex-direction: column;
 }
 
-.general-flex-dir-row{
+.flex-row{
   display: flex;
 }
 
-.general-flex-wrap-with-justify{
+.flex-wrap-with-justify{
   flex:1;
   flex-wrap: wrap;
   justify-content: space-between;
