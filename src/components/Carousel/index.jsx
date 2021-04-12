@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import './index.css';
+import './index.scss';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';

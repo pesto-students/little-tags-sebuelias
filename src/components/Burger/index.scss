@@ -1,0 +1,52 @@
+.burger {
+  position: absolute;
+  // top: 5%;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+
+  &:focus {
+    outline: none;
+  }
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background: var(--black);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+  /* Animation to change Burger to Close */
+  :first-child.open {
+    transform: rotate(45deg);
+  }
+  :first-child.close {
+    transform: rotate(0);
+  }
+
+  :nth-child(2).open {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  :nth-child(2).close {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  :nth-child(3).open {
+    transform: rotate(-45deg);
+  }
+  :nth-child(3).close {
+    transform: rotate(0);
+  }
+}
