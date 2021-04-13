@@ -1,0 +1,60 @@
+$backgroundColor: var(--light);
+$textColor: var(--black);
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 500;
+  background: $backgroundColor;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 10rem;
+  padding-right: 2rem;
+  // padding-left: 15px;
+  // margin-right: auto;
+  // margin-left: auto;
+  //   margin-right: -1.5rem;
+  //   margin-left: -1.5rem;
+
+  &-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // font-size: 3rem;
+  }
+
+  .hamburger-parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 5rem;
+  }
+
+  .search-container {
+    width: 2.5rem;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  .wishlist {
+    // color: #dc3545;
+    cursor: pointer;
+  }
+  .cart {
+    // color: #dc3545;
+    cursor: pointer;
+  }
+  .login {
+    cursor: pointer;
+    text-decoration: none;
+    color: $textColor;
+  }
+}
