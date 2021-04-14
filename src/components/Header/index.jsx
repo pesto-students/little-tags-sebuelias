@@ -4,7 +4,7 @@ import { FiShoppingBag } from 'react-icons/fi';
 import { useOnClickOutside } from '../../utils/hooks/useOnClickOutside';
 import Burger from '../Burger';
 import Menu from '../Menu';
-import Signup from "../../Authentication/SignUp"
+import Signup from "../Authentication/SignUp"
 import Search from '../Search';
 import './index.scss';
 
