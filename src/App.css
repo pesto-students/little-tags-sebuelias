@@ -47,26 +47,25 @@ html {
   font-size: 10px;
 }
 
-ul{
+ul {
   padding: 0px;
 }
 
-.flex-column{
-    display: flex;
-    flex-direction: column;
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
-.flex-row{
+.flex-row {
   display: flex;
 }
 
-.flex-wrap-with-justify{
-  flex:1;
+.flex-wrap-with-justify {
+  flex: 1;
   flex-wrap: wrap;
   justify-content: space-between;
-  
 }
 
-li{
+li {
   list-style: none;
 }

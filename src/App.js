@@ -1,9 +1,10 @@
-import Routes from "./routes"
+import Routes from './routes';
+import './App.css';
 
 function App() {
-  return (
-    <Routes />
-  );
+  console.log('TEST::', process.env.REACT_APP_API_KEY);
+
+  return <Routes />;
 }
 
 export default App;

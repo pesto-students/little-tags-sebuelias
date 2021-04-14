@@ -1,17 +1,24 @@
 import { Route, Switch } from 'react-router-dom';
-import './App.css';
+import * as ROUTES from './utils/constants/routePaths';
+// import { Home, /* ErrorPage, */ Category } from './screens';
 
-import Error from './screens/Error';
-import TestScreen from './screens/TestScreen';
+import ErrorPage from './screens/ErrorPage';
+import Home from './screens/Home';
+import Category from './screens/Category';
 
 function Routes() {
   return (
-    <>
-      <Switch>
-        <Route exact path="/" component={TestScreen} />
-        <Route component={Error} />
-      </Switch>
-    </>
+    <Switch>
+      <Route exact path={ROUTES.HOME}>
+        <Home />
+      </Route>
+      <Route path={ROUTES.CATEGORIES}>
+        <Category />
+      </Route>
+      <Route path={ROUTES.ERROR}>
+        <ErrorPage />
+      </Route>
+    </Switch>
   );
 }
 
