@@ -1,6 +1,6 @@
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebookF } from 'react-icons/fa'
-import Modal from "../components/Modal"
+import Modal from "../Modal"
 import {  } from "./index.sass";
 
 function SignUp() {
