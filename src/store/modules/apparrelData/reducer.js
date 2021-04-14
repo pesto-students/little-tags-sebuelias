@@ -7,9 +7,9 @@ const INITIAL_STATE = {
 // auth reducer
 export default function auth(state = INITIAL_STATE, action) {
   switch (action.type) {
-      case RECEIVE_API_DATA:
-          return {...state, error: action.payload.error };
       case APPARREL_API_ERROR:
+          return {...state, error: action.payload.error };
+      case RECEIVE_API_DATA:
           return {...state, apparrelData: action.payload.apparrelData };
       default:
           return state;
