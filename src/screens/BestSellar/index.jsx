@@ -24,6 +24,7 @@ function BestSellar(props) {
 
   return (
     <>
+       <h1 className="best-sellar-title">BEST SELLAR</h1>
       <div className="complete-data">
           {visualizeBestSellarBox}
       </div>
