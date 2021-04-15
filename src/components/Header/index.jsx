@@ -1,14 +1,18 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect,useContext } from 'react';
 import { FaRegHeart } from 'react-icons/fa';
 import { FiShoppingBag } from 'react-icons/fi';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { useOnClickOutside } from '../../utils/hooks/useOnClickOutside';
+import FirebaseContext from '../../services/Firebase/context';
 import Burger from '../Burger';
 import Menu from '../Menu';
 import Signup from "../Authentication/SignUp"
 import Search from '../Search';
 import './index.scss';
 
-function Header() {
+function Header(props) {
+  const firebase = useContext(FirebaseContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openModal, setopenModal] = useState(false);
   const menuRef = useRef();
@@ -16,8 +20,17 @@ function Header() {
 
   const handleLoginModal = (event) => {
     event.preventDefault();
-    setopenModal(!openModal);
+    setopenModal(true);
   };
+
+  const handleLogout = (event) => {
+    event.preventDefault();
+    firebase.doSignOut()
+  }
+
+  useEffect(()=>{
+    console.log("check props man", props)
+  })
 
   return (
     <>
@@ -35,7 +48,7 @@ function Header() {
 
         <div className="header-buttons">
           <ul>
-            <li onClick={handleLoginModal} aria-hidden="true">
+            { !props.authUser ? <li onClick={handleLoginModal} aria-hidden="true">
               <a
                 className="login"
                 href="login.html"
@@ -44,9 +57,21 @@ function Header() {
                 data-placement="bottom"
                 title="Login / Register"
               >
-                Login / register
+                Login
               </a>
-            </li>
+            </li> :
+            <li onClick={handleLogout} aria-hidden="true">
+              <a
+                className="login"
+                href="login.html"
+                data-toggle="tooltip"
+                data-selector="true"
+                data-placement="bottom"
+                title="Logout"
+              >
+                Logout
+              </a>
+            </li>}
           </ul>
 
           <ul>
@@ -64,9 +89,21 @@ function Header() {
           </ul>
         </div>
       </nav>
-      {openModal ? <Signup /> : null}
+      {openModal ? <Signup closeModal={() => {setopenModal(false)}}/> : null}
     </>
   );
 }
 
-export default Header;
+Header.propTypes = {
+  authUser: PropTypes.objectOf(PropTypes.object),
+}
+
+Header.defaultProps = {
+  authUser: null
+}
+
+const mapStateToProps = (state) => ({
+  authUser: state.authDetails.auth
+});
+
+export default connect(mapStateToProps)(Header);
