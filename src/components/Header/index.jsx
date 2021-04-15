@@ -95,7 +95,12 @@ function Header(props) {
 }
 
 Header.propTypes = {
-  authUser: PropTypes.objectOf(PropTypes.object),
+  authUser: PropTypes.shape({
+    uid: PropTypes.string,
+    email: PropTypes.string,
+    emailVerified: PropTypes.bool,
+    username: PropTypes.string,
+  }),
 }
 
 Header.defaultProps = {
