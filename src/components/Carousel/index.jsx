@@ -3,10 +3,12 @@ import './index.scss';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
-import CarouselImages from './CarouselImages';
+// import CarouselImages from './CarouselImages';
 
 export default function Carousel({ slides }) {
   const [currentSlideNumber, setCurrentSlideNumber] = useState(0);
+  // eslint-disable-next-line prefer-destructuring
+  console.log(slides);
   // eslint-disable-next-line prefer-destructuring
   const length = slides.length;
 
@@ -32,13 +34,13 @@ export default function Carousel({ slides }) {
 
       <FaArrowAltCircleRight className="right-arrow" onClick={prevSlide} />
 
-      {CarouselImages.map((slide, index) => (
+      {slides.map((slide, index) => (
         <div
           className={index === currentSlideNumber ? 'slide active' : 'slide'}
           key={index}
         >
           {index === currentSlideNumber && (
-            <img src={slide.image} alt="test" className="image" key={index} />
+            <img src={slide} alt="test" className="image" key={index} />
           )}
         </div>
       ))}
@@ -47,5 +49,7 @@ export default function Carousel({ slides }) {
 }
 
 Carousel.propTypes = {
-  slides: PropTypes.isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
+  // eslint-disable-next-line react/forbid-prop-types
+  slides: PropTypes.array.isRequired,
 };

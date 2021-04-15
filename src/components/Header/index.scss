@@ -8,17 +8,23 @@ $textColor: var(--black);
   font-size: 1.6rem;
   line-height: 2.4rem;
   font-weight: 500;
-  background: $backgroundColor;
+  background: transparent;
   flex-wrap: wrap;
   width: 100%;
   height: 10rem;
   padding-right: 2rem;
+  position: fixed;
+  z-index: 100;
   // padding-left: 15px;
   // margin-right: auto;
   // margin-left: auto;
   //   margin-right: -1.5rem;
   //   margin-left: -1.5rem;
 
+  &-scrolled {
+    transition: all 3s;
+    background: $backgroundColor;
+  }
   &-buttons {
     display: flex;
     justify-content: center;

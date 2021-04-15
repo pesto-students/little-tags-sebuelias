@@ -1,0 +1,52 @@
+$backgroundColor: var(--light);
+$fontColor: var(--black);
+
+.contact-box {
+  width: 250px;
+}
+
+.footer {
+  background-color: $backgroundColor;
+  color: $fontColor;
+}
+
+.store-icon {
+  width: 125px;
+  margin: 5px 0px 5px 0px;
+}
+
+.store-icon-google {
+  border-color: darkgrey;
+  border-width: 0.1px;
+  border-style: solid;
+  height: 39px;
+  border-radius: 5px;
+}
+
+.footer-flex-margin {
+  margin: 0 10px 0 10px;
+}
+
+.border-line {
+  border-top: 0.5px solid;
+  border-image-slice: 1;
+  border-width: 0.5px;
+  border-image-source: linear-gradient(
+    to left,
+    $backgroundColor,
+    $backgroundColor,
+    $fontColor,
+    $backgroundColor,
+    $backgroundColor
+  );
+  // border-width: 3px;
+  // border-style: solid;
+  // border-image: linear-gradient(to bottom, red, rgba(0, 0, 0, 0)) 1 100%;
+  // border-top-style: groove
+  // border-color: darkgrey
+  // border-width: 0.5px
+}
+.fix-bottom {
+  bottom: 0;
+  width: 100%;
+}
