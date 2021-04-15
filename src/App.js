@@ -1,10 +1,9 @@
 import Routes from './routes';
+import withAuthentication from './services/Session/withAuthentication';
 import './App.css';
 
 function App() {
-  console.log('TEST::', process.env.REACT_APP_API_KEY);
-
   return <Routes />;
 }
 
-export default App;
+export default withAuthentication(App);
