@@ -1,5 +1,8 @@
 import axios from 'axios';
-import { API_ENDPOINT, GET_DATA_API_ENDPOINT } from '../utils/constant';
+import {
+  API_ENDPOINT,
+  GET_DATA_API_ENDPOINT,
+} from '../utils/constants/apiEndpoints';
 
 // configuring axios
 const api = axios.create({

@@ -16,7 +16,7 @@ import PlayStoreIcon from '../../assets/image/play_store_icon.png';
 
 const Footer = () => (
   <>
-    <div className="flex-column footer border-line fix-bottom">
+    <footer className="flex-column footer border-line fix-bottom">
         <Subscribe />
       <div className="flex-row flex-wrap-with-justify footer-flex-margin border-line">
         <div className="flex-column contact-box">
@@ -92,7 +92,7 @@ const Footer = () => (
         <p>© 2021, Little Tags Website</p>
         <p>All Rights Reserved.</p>
       </div>
-    </div>
+    </footer>
   </>
 );
 

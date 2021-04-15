@@ -1,9 +1,9 @@
-import Routes from "./routes"
+import Routes from './routes';
+import withAuthentication from './services/Session/withAuthentication';
+import './App.css';
 
 function App() {
-  return (
-    <Routes />
-  );
+  return <Routes />;
 }
 
-export default App;
+export default withAuthentication(App);
