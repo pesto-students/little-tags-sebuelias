@@ -10,6 +10,7 @@ import "./index.sass"
 function Category(props) {
   
   const [Products, setProducts] = useState([])
+  const [currCategory, setcurrCategory] = useState(props.location.state.QueryCategory.toUpperCase() || "ALL PRODUCTS")
   const [, setsortedValue] = useState("SORT: NONE")
 
   useEffect(() => {
@@ -26,9 +27,11 @@ function Category(props) {
   const filterBox = (value) => {
     if(value === 'all-products') {
       setProducts(props.apparrelData)
+      setcurrCategory("ALL PRODUCTS")
     } else {
       const filteredCategory = (props.apparrelData || []).filter(({category}) => category === value)
       setProducts(filteredCategory)
+      setcurrCategory(value.toUpperCase())
     }
   }
     
@@ -55,7 +58,8 @@ function Category(props) {
 
   return (
     <>
-     <h1 className="best-sellar-title">{props.location.state.QueryCategory.toUpperCase() || "ALL PRODUCTS"}</h1>
+    <div style={{height:"100px"}}/>
+     <h1 className="best-sellar-title">{currCategory}</h1>
      <div className="flex-row flex-one">
          <FilterBox filterBox={(value) => filterBox(value)}/>
        <div className="flex-column flex-one">
