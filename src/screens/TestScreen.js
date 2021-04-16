@@ -1,16 +1,19 @@
-import Header from '../components/Header';
-import BestSellar from "./BestSellar"
-import Footer from "../components/Footer"
-// import Search from '../components/Search';
+// import BestSeller from './BestSeller';
+import Carousel from '../components/Carousel';
+import CarouselImages from '../assets/sliderImage/CarouselImages';
+import Categories from '../components/Categories';
+
+// console.log(CarouselImages);
+// console.log(typeof CarouselImages);
 
 const TestScreen = () => (
   <>
-  <div>
-    <Header />
-    <div style={{}}>
-    <BestSellar />
-    </div>
-    <Footer />
+    <div>
+      <Carousel slides={CarouselImages} />
+      <Categories />
+      {/* <div style={{}}>
+        <BestSeller />
+      </div> */}
     </div>
     {/* <Search /> */}
   </>

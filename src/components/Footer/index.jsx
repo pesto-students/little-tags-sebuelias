@@ -1,4 +1,4 @@
-import './index.sass';
+import './index.scss';
 import {
   FaFacebookSquare,
   FaLinkedin,
@@ -10,14 +10,14 @@ import {
   FaCcPaypal,
 } from 'react-icons/fa';
 
-import Subscribe from "../Subscribe"
+import Subscribe from '../Subscribe';
 import AppStoreIcon from '../../assets/image/app_store_icon.png';
 import PlayStoreIcon from '../../assets/image/play_store_icon.png';
 
 const Footer = () => (
   <>
     <footer className="flex-column footer border-line fix-bottom">
-        <Subscribe />
+      <Subscribe />
       <div className="flex-row flex-wrap-with-justify footer-flex-margin border-line">
         <div className="flex-column contact-box">
           <h3>Contact Info</h3>
@@ -88,7 +88,7 @@ const Footer = () => (
           </div>
         </div>
       </div>
-      <div className="flex-row flex-wrap-with-justify footer-flex-margin border-line">
+      <div className="flex-row flex-wrap-with-justify footer-flex-margin">
         <p>© 2021, Little Tags Website</p>
         <p>All Rights Reserved.</p>
       </div>
