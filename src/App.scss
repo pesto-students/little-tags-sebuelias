@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&family=Reenie+Beanie&display=swap');
+
+.title {
+  font-family: 'Reenie Beanie', cursive;
+}
+.content {
+  font-family: 'Mulish', sans-serif;
+  /* font-family: 'Reenie Beanie', cursive; */
+}
+
+#root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  // --light: #f8f9fa;
+  --dark: #343a40;
+  // --black: #222222;
+  --coolGrey: #97a5a7;
+  font-family: 'Mulish', sans-serif;
+
+  --light: #f7f1f0;
+  --black: #262220;
+  --brown: #a15c38;
+  --lightBrown: #c3a6a0;
+  color: var(--black);
+}
+
+*,
+*:before,
+*:after,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+ul {
+  padding: 0px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-wrap-with-justify {
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+button {
+  outline: none;
+  &:focus,
+  &:hover {
+    outline: none;
+  }
+}
+
+li {
+  list-style: none;
+}
