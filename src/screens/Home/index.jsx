@@ -6,8 +6,6 @@ import CarouselImages from '../../assets/sliderImage/CarouselImages';
 import Categories from '../../components/Categories';
 import { requestData } from '../../store/modules/apparrelData/actions';
 import './index.scss';
-// console.log(CarouselImages);
-// console.log(typeof CarouselImages);
 
 const Home = (props) => {
 
@@ -19,11 +17,7 @@ const Home = (props) => {
     <div className="home-container">
       <Carousel slides={CarouselImages} {...props}/>
       <Categories {...props}/>
-      {/* <div style={{}}>
-        <BestSeller />
-      </div> */}
     </div>
-    {/* <Search /> */}
   </>)
 };
 

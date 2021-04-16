@@ -24,13 +24,13 @@ const withAuthentication = (Component) => {
       firebase.onAuthChangeListener(next, fallback);
     }, []);
 
+    /* eslint-disable react/jsx-props-no-spreading */
     return <Component {...props} />;
   };
 
   NewComponent.propTypes = {
     hitLogin: PropTypes.func.isRequired,
-  }
-
+  };
 
   return connect(null, { hitLogin })(NewComponent);
 };

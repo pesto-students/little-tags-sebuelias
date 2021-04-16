@@ -3,12 +3,31 @@ import './index.scss';
 
 function Categories(props) {
   return (
-    <div className="categories-container">
-      <div className="item category-1" onClick={() => {props.history.push({pathname: '/categories', state: { QueryCategory: "women clothing"}})}} aria-hidden="true">WOMENS CLOTHING</div>
-      <div className="item category-2" onClick={() => {props.history.push({pathname: '/categories', state: { QueryCategory: "men clothing"}})}} aria-hidden="true">MENS CLOTHING</div>
-      <div className="item category-3" onClick={() => {props.history.push({pathname: '/categories', state: { QueryCategory: "electronics"}})}} aria-hidden="true">ELECTRONICS</div>
-      <div className="item category-4" onClick={() => {props.history.push({pathname: '/categories', state: { QueryCategory: "jewelery"}})}} aria-hidden="true">JWELLERY</div>
-      <div className="item category-5" onClick={() => {props.history.push({pathname: '/categories', state: { QueryCategory: "all-products"}})}} aria-hidden="true">ALL PRODUCTS</div>
+    <div className="categories-container" onClick={() => {props.history.push({pathname: '/categories', state: { QueryCategory: "women clothing"}})}} aria-hidden="true">
+      <div className="item women">
+        <h3 className="title">Women</h3>
+        <p className="body">Lets find you something pretty</p>
+      </div>
+
+      <div className="item men" onClick={() => {props.history.push({pathname: '/categories', state: { QueryCategory: "men clothing"}})}} aria-hidden="true">
+        <h3 className="title">Men</h3>
+        <p className="body">For the handsome</p>
+      </div>
+
+      <div className="item electronics" onClick={() => {props.history.push({pathname: '/categories', state: { QueryCategory: "electronics"}})}} aria-hidden="true">
+        <h3 className="title">Electronics</h3>
+        <p className="body">Gadgets are the new accessories</p>
+      </div>
+
+      <div className="item jewlery" onClick={() => {props.history.push({pathname: '/categories', state: { QueryCategory: "jewelery"}})}} aria-hidden="true">
+        <h3 className="title">Accessories</h3>
+        <p className="body">Lets make you even prettier</p>
+      </div>
+
+      <div className="item all" onClick={() => {props.history.push({pathname: '/categories', state: { QueryCategory: "all-products"}})}} aria-hidden="true">
+        <h3 className="title">All</h3>
+        <p className="body">Go crazy</p>
+      </div>
     </div>
   );
 }

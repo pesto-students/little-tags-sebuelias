@@ -1,4 +1,4 @@
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import { FaRegHeart } from 'react-icons/fa';
 import { FiShoppingBag } from 'react-icons/fi';
 import PropTypes from 'prop-types';
@@ -10,42 +10,34 @@ import Menu from '../Menu';
 import Signup from '../Authentication/SignUp';
 import Search from '../Search';
 import './index.scss';
+import { disableScroll, enableScroll } from '../../utils/scrollControl';
 
 function Header(props) {
   const firebase = useContext(FirebaseContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openModal, setopenModal] = useState(false);
-  // const [scroll, setScroll] = useState('header');
+  const [headerScrolled, setHeaderScroll] = useState('');
 
   const menuRef = useRef();
   useOnClickOutside(menuRef, () => setMenuOpen(false));
 
-  // let headerClassName = 'header';
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 50) {
+        setHeaderScroll('scrolled');
+      } else {
+        setHeaderScroll('');
+      }
+    };
 
-  // useEffect(() => {
-  //   const onScroll = () => {
-  //     // console.log(e);
-  //     console.log(window.scrollY);
-  //     if (window.scrollY > 50) {
-  //       // headerClassName = 'header-scrolled';
-  //       setScroll('header-scrolled');
+    window.addEventListener('scroll', onScroll);
 
-  //       // console.log(headerClassName);
-  //     } else {
-  //       // headerClassName = 'header';
-  //       setScroll('header');
-  //       // console.log(headerClassName);
-  //     }
-  //     // setScroll(window.screenY);
-  //   };
-
-  //   window.addEventListener('scroll', onScroll);
-
-  //   return () => window.removeEventListener('scroll', onScroll);
-  // }, [scroll]);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [headerScrolled]);
 
   const handleLoginModal = (event) => {
     event.preventDefault();
+    disableScroll();
     setopenModal(true);
   };
 
@@ -56,7 +48,7 @@ function Header(props) {
 
   return (
     <>
-      <nav className="header">
+      <nav className={`header ${headerScrolled}`}>
         <div className="hamburger-parent" ref={menuRef}>
           <Burger open={menuOpen} setOpen={setMenuOpen} />
           <Menu open={menuOpen} />
@@ -118,6 +110,7 @@ function Header(props) {
         <Signup
           closeModal={() => {
             setopenModal(false);
+            enableScroll();
           }}
         />
       ) : null}
@@ -132,7 +125,7 @@ Header.propTypes = {
     emailVerified: PropTypes.bool,
     username: PropTypes.string,
   }),
-}
+};
 
 Header.defaultProps = {
   authUser: null,
