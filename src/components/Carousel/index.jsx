@@ -8,7 +8,6 @@ import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 export default function Carousel({ slides }) {
   const [currentSlideNumber, setCurrentSlideNumber] = useState(0);
   // eslint-disable-next-line prefer-destructuring
-  console.log(slides);
   // eslint-disable-next-line prefer-destructuring
   const length = slides.length;
 

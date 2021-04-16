@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useContext } from 'react';
+import { useState, useRef, useContext } from 'react';
 import { FaRegHeart } from 'react-icons/fa';
 import { FiShoppingBag } from 'react-icons/fi';
 import PropTypes from 'prop-types';
@@ -53,10 +53,6 @@ function Header(props) {
     event.preventDefault();
     firebase.doSignOut();
   };
-
-  useEffect(() => {
-    console.log('check props man', props);
-  });
 
   return (
     <>
