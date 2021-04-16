@@ -1,0 +1,8 @@
+$backgroundColor: var(--light);
+.home-container {
+  background-color: $backgroundColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
