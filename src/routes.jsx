@@ -14,18 +14,10 @@ function Routes() {
       <Header />
       <BrowserRouter>
         <Switch>
-          <Route exact path={ROUTES.HOME}>
-            <Home />
-          </Route>
-          <Route path={ROUTES.CATEGORIES}>
-            <Category />
-          </Route>
-          <Route path={ROUTES.SIGN_IN}>
-            <Category />
-          </Route>
-          <Route path={ROUTES.ERROR}>
-            <ErrorPage />
-          </Route>
+          <Route exact path={ROUTES.HOME} component={Home}/>
+          <Route path={ROUTES.CATEGORIES} component={Category}/>
+          <Route path={ROUTES.SIGN_IN} component={Category} />
+          <Route path={ROUTES.ERROR} component={ErrorPage} />
         </Switch>
       </BrowserRouter>
       <Footer />
