@@ -28,12 +28,17 @@
   --info: #17a2b8;
   --warning: #ffc107;
   --danger: #dc3545;
-  --light: #f8f9fa;
+  // --light: #f8f9fa;
   --dark: #343a40;
-  --black: #222222;
+  // --black: #222222;
   --coolGrey: #97a5a7;
   font-family: 'Mulish', sans-serif;
-  color: var(--fontBlack);
+
+  --light: #f7f1f0;
+  --black: #262220;
+  --brown: #a15c38;
+  --lightBrown: #c3a6a0;
+  color: var(--black);
 }
 
 *,
@@ -64,6 +69,14 @@ ul {
   flex: 1;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+button {
+  outline: none;
+  &:focus,
+  &:hover {
+    outline: none;
+  }
 }
 
 li {

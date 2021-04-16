@@ -1,7 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import * as ROUTES from './utils/constants/routePaths';
-import './App.css';
-
 import ErrorPage from './screens/ErrorPage';
 import Header from './components/Header';
 import Footer from './components/Footer';

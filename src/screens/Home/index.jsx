@@ -6,17 +6,11 @@ import './index.scss';
 // console.log(CarouselImages);
 // console.log(typeof CarouselImages);
 
-const TestScreen = () => (
-  <>
-    <div className="home-container">
-      <Carousel slides={CarouselImages} />
-      <Categories />
-      {/* <div style={{}}>
-        <BestSeller />
-      </div> */}
-    </div>
-    {/* <Search /> */}
-  </>
+const Home = () => (
+  <div className="home-container">
+    <Carousel slides={CarouselImages} />
+    <Categories />
+  </div>
 );
 
-export default TestScreen;
+export default Home;

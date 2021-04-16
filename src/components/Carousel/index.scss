@@ -15,26 +15,20 @@ $color: var(--black);
   border-radius: 10px;
 }
 
-.right-arrow {
+.arrow {
   position: absolute;
   top: 50%;
-  right: 32px;
   font-size: 3rem;
   color: $color;
-  z-index: 10;
+  z-index: 3;
   cursor: pointer;
   user-select: none;
 }
-
-.left-arrow {
-  position: absolute;
-  top: 50%;
+.right {
+  right: 32px;
+}
+.left {
   left: 32px;
-  font-size: 3rem;
-  color: $color;
-  z-index: 10;
-  cursor: pointer;
-  user-select: none;
 }
 
 .slide {

@@ -30,9 +30,9 @@ export default function Carousel({ slides }) {
 
   return (
     <section className="carousel">
-      <FaArrowAltCircleLeft className="left-arrow" onClick={nextSlide} />
+      <FaArrowAltCircleLeft className="left arrow" onClick={nextSlide} />
 
-      <FaArrowAltCircleRight className="right-arrow" onClick={prevSlide} />
+      <FaArrowAltCircleRight className="right arrow" onClick={prevSlide} />
 
       {slides.map((slide, index) => (
         <div
