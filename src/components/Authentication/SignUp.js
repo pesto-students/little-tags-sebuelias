@@ -9,6 +9,8 @@ import FirebaseContext from '../../services/Firebase/context';
 function SignUp({ closeModal }) {
   const firebase = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState('');
+  const [onHoverEventGoogle, setonHoverEventGoogle] = useState(false);
+  const [onHoverEventFacebook, setonHoverEventFacebook] = useState(false);
 
   const handleGoogleSignIn = () => {
     firebase
@@ -42,18 +44,24 @@ function SignUp({ closeModal }) {
       <div className="sign-up">
         <h3>Log in / Sign up</h3>
         <button
-          className="sign-button"
+          className="sign-button google-button"
           type="button"
           onClick={handleGoogleSignIn}
+          onMouseOver={() => setonHoverEventGoogle(true)}
+          onFocus = {() => setonHoverEventGoogle(true)}
+          onMouseLeave={() => setonHoverEventGoogle(false)}
         >
-          <FcGoogle /> Using Google
+          {!onHoverEventGoogle ? <FcGoogle className="icon-width"/>: <p>Continue with google</p>}
         </button>
         <button
-          className="sign-button"
+          className="sign-button facebook-button"
           type="button"
           onClick={handleFaceBookSignIn}
+          onMouseOver={() => setonHoverEventFacebook(true)}
+          onFocus = {() => setonHoverEventFacebook(true)}
+          onMouseLeave={() => setonHoverEventFacebook(false)}
         >
-          <FaFacebookF /> Using Facebook
+          {!onHoverEventFacebook ? <FaFacebookF className="icon-width"/>: <p>Continue with facebook</p>}
         </button>
       </div>
     </Modal>

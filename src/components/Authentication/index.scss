@@ -10,4 +10,36 @@
 .sign-button {
   height: 43px;
   width: 200px;
+  height: 43px;
+  width: 200px;
+  font-size: 12px;
+  font-weight: bold;
+  // color: #385898;
+  border-radius: 10px;
+  border-width: 2px;
+  // border-color: #385898;
+}
+
+.google-string {
+  justify-content: center;
+  margin: 0;
+}
+
+.google-button {
+  border-left-color: yellow;
+  border-top-color: red;
+  border-bottom-color: lightgreen;
+  border-right-color: blue;
+  color: green;
+}
+
+.facebook-button {
+  color: #385898;
+  border-color: #385898;
+}
+
+
+.icon-width {
+  height: 20px;
+  width: 20px;
 }
