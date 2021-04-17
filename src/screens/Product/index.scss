@@ -1,0 +1,28 @@
+.display-product{
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.image-crousel-box{
+    width: 400px;
+}
+
+.content-display-box{
+    width: 400px;
+    height: 400px;
+    justify-content: space-around;
+}
+
+.add-to-bag{
+    width: 200px;
+    button{
+        width: 189px;
+        height: 38px;
+    }
+}
+
+
+.add-to-whislist{
+    margin: 6px 0 0 10px;
+}
