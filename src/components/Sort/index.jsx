@@ -17,13 +17,15 @@ function Sort(props) {
     return (
         <>
         <div className="drop-down-div"
-        onMouseEnter={() => setopenDropDown(true)}
+        onMouseLeave={(event) => {event.preventDefault(); setopenDropDown(false)}}
         >
          <input
            id="level"
            name="level"
            type="button"
            onClick={() => setopenDropDown(!openDropDown)}
+           onMouseOver={(event) => {event.preventDefault(); setopenDropDown(true)}}
+           onFocus= {(event) => {event.preventDefault(); setopenDropDown(false)}}
            className="dropdown general-font-design"
            value={sortedValue}
          />
@@ -50,9 +52,6 @@ function Sort(props) {
                value="SORT BY: LOW TO HIGH"
                name={1.5}
                onClick={handleDropDownValue}
-               onMouseEnter={() => setopenDropDown(true)}
-               onBlur = {() => setopenDropDown(false)}
-               onMouseOut={() => setopenDropDown(false)}
              />
            </div>
          ) : null}
