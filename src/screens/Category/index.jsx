@@ -53,7 +53,7 @@ function Category(props) {
   };
 
   const visualizeBestSellarBox = (Products || []).map((value, index) =>(
-    <Card index={index} value={value} key={index.toString()}/>
+    <Card index={index} value={value} key={index.toString()} {...props}/>
   ))
 
   return (
@@ -77,6 +77,7 @@ Category.propTypes = {
   requestData: PropTypes.func.isRequired,
   QueryCategory: PropTypes.string.isRequired,
   location: PropTypes.objectOf(PropTypes.object).isRequired,
+  history: PropTypes.objectOf(PropTypes.object).isRequired,
   apparrelData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

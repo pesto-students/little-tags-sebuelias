@@ -3,8 +3,8 @@ import './index.scss';
 
 function Categories(props) {
   return (
-    <div className="categories-container" onClick={() => {props.history.push({pathname: '/categories', state: { QueryCategory: "women clothing"}})}} aria-hidden="true">
-      <div className="item women">
+    <div className="categories-container">
+      <div className="item women" onClick={() => {props.history.push({pathname: '/categories', state: { QueryCategory: "women clothing"}})}} aria-hidden="true">
         <h3 className="title">Women</h3>
         <p className="body">Lets find you something pretty</p>
       </div>

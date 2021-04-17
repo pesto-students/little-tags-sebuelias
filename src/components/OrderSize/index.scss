@@ -1,0 +1,29 @@
+.size-circle{
+    border-radius: 50%;
+    // border-color: black;
+    border: 3px solid;
+    width: 38px;
+    display: flex;
+    justify-content: center;
+    text-transform: capitalize;
+    cursor: pointer;
+    height: 36px;
+    padding-top: 9px;
+    margin: 0 5px 0px 0px;
+    font-weight: 600;
+    // &:hover{
+    //     border-color:red;
+    // }
+}
+
+.size-unselected{
+    border-color: black;
+    &:hover{
+        border-color:red;
+    }
+}
+
+.size-selected{
+    background-color: red;
+    color: white;
+}
