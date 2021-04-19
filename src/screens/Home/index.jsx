@@ -6,6 +6,8 @@ import CarouselImages from '../../assets/sliderImage/CarouselImages';
 import Categories from '../../components/Categories';
 import { requestData } from '../../store/modules/apparrelData/actions';
 import './index.scss';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 
 const Home = (props) => {
 
@@ -14,10 +16,12 @@ const Home = (props) => {
   }, []);
 
   return (<>
+  <Header />
     <div className="home-container">
       <Carousel slides={CarouselImages} {...props}/>
       <Categories {...props}/>
     </div>
+    <Footer />
   </>)
 };
 
