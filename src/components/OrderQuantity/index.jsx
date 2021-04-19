@@ -1,19 +1,20 @@
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io"
 import "./index.scss"
 
-const OrderQuantity = () => {
-
-    const [orderQuantity, setorderQuantity] = useState(0)
-
-    return (
+const OrderQuantity = ({setquantity, setorderQuantity}) => (
         <>
              <h3>QUANTITY:</h3>
                     <div className="flex-row add-substract-quantity">
-                    <IoIosArrowDropdown onClick={()=>{setorderQuantity((value)=> value+1)}}/><p>{orderQuantity}</p>< IoIosArrowDropup onClick={()=>orderQuantity > 0 && setorderQuantity((value)=> value-1)}/>
+                    <IoIosArrowDropdown onClick={()=>setquantity > 1 && setorderQuantity(setquantity-1)}/><p>{setquantity}</p>< IoIosArrowDropup onClick={()=>{setorderQuantity(setquantity+1)}}/>
                     </div>
         </>
     )
-}
+
+OrderQuantity.propTypes = {
+    setorderQuantity: PropTypes.func.isRequired,
+    setquantity: PropTypes.number.isRequired
+  };
+
 
 export default OrderQuantity;

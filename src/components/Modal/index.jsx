@@ -1,18 +1,10 @@
 import PropTypes from 'prop-types';
 import './index.scss';
 
-function Modal({ children, closeModal }) {
+function Modal({ children, width, height }) {
   return (
     <div className="modal-container">
-      <div className="modal">
-        <button
-          className="close button"
-          onClick={() => closeModal()}
-          aria-hidden="true"
-          type="button"
-        >
-          close
-        </button>
+      <div className="modal" style={{width, height}}>
         {children}
       </div>
     </div>
@@ -21,7 +13,8 @@ function Modal({ children, closeModal }) {
 
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
-  closeModal: PropTypes.func.isRequired,
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired
 };
 
 export default Modal;
