@@ -3,8 +3,6 @@ import * as ROUTES from './utils/constants/routePaths';
 import './App.scss';
 
 import ErrorPage from './screens/ErrorPage';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import Home from './screens/Home';
 import Category from './screens/Category';
 import Product from './screens/Product'
@@ -12,7 +10,6 @@ import Product from './screens/Product'
 function Routes() {
   return (
     <>
-      <Header />
       <BrowserRouter>
         <Switch>
           <Route exact path={ROUTES.HOME} component={Home}/>
@@ -22,7 +19,6 @@ function Routes() {
           <Route path={ROUTES.ERROR} component={ErrorPage} />
         </Switch>
       </BrowserRouter>
-      <Footer />
     </>
   );
 }
