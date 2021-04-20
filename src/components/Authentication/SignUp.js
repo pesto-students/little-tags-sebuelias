@@ -39,8 +39,16 @@ function SignUp({ closeModal }) {
   };
 
   return (
-    <Modal closeModal={closeModal}>
+    <Modal width="50%" height="50%">
       {!!errorMessage && <p className="error-message">{errorMessage}</p>}
+      <button
+          className="close button"
+          onClick={() => closeModal()}
+          aria-hidden="true"
+          type="button"
+        >
+          close
+        </button>
       <div className="sign-up">
         <h3>Log in / Sign up</h3>
         <button

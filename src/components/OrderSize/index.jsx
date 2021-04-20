@@ -1,9 +1,14 @@
-import { useState } from "react"
+import PropTypes from 'prop-types';
+import { useState, useEffect } from "react"
 import "./index.scss"
 
-const OrderSize = () => {
+const OrderSize = ({setSize}) => {
 
     const [size, setsize] = useState("")
+
+    useEffect(() => {
+        setSize(size)
+    }, [size])
 
     return (
         <>
@@ -18,5 +23,11 @@ const OrderSize = () => {
         </>
     )   
 }
+
+OrderSize.propTypes = {
+    setSize: PropTypes.func.isRequired,
+  };
+
+
 
 export default OrderSize;

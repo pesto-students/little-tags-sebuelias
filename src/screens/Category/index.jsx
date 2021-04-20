@@ -6,15 +6,17 @@ import Card from "../../components/Card"
 import Sort from "../../components/Sort"
 import FilterBox from "../../components/FilterBox"
 import "./index.sass"
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 function Category(props) {
   
   const [Products, setProducts] = useState([])
-  const [currCategory, setcurrCategory] = useState(props.location.state.QueryCategory.toUpperCase() || "ALL PRODUCTS")
+  const [currCategory, setcurrCategory] = useState(props.location.state.QueryCategory ? props.location.state.QueryCategory.toUpperCase() : "ALL PRODUCTS")
   const [, setsortedValue] = useState("SORT: NONE")
 
   useEffect(() => {
-    if(!props.location.state  || props.location.state.QueryCategory === 'all-products') {
+    if(!props.location.state || !props.location.state.QueryCategory || props.location.state.QueryCategory === 'all-products') {
       setProducts(props.apparrelData)
     } else if(props.location.state.QueryCategory === 'search') {
       setProducts(props.apparrelData)
@@ -58,6 +60,7 @@ function Category(props) {
 
   return (
     <>
+    <Header />
     <div style={{height:"100px"}}/>
      <h1 className="best-sellar-title">{currCategory}</h1>
      <div className="flex-row flex-one">
@@ -69,6 +72,7 @@ function Category(props) {
       </div>
        </div>
      </div>
+     <Footer/>
     </>
   );
 }
