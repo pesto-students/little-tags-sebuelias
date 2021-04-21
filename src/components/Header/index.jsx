@@ -106,10 +106,11 @@ function Header(props) {
           </ul>
         </div>
       </nav>
-      {openModal ? (
+      {openModal || props.openSignUpModal ? (
         <Signup
           closeModal={() => {
             setopenModal(false);
+            if (props.closeSignUpModal) {props.closeSignUpModal()}
             enableScroll();
           }}
         />
@@ -125,6 +126,8 @@ Header.propTypes = {
     emailVerified: PropTypes.bool,
     username: PropTypes.string,
   }),
+  openSignUpModal: PropTypes.bool.isRequired,
+  closeSignUpModal: PropTypes.func.isRequired
 };
 
 Header.defaultProps = {

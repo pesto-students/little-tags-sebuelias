@@ -31,5 +31,10 @@ Home.propTypes = {
 
 const dispatchToProps = { requestData };
 
-export default connect(null, dispatchToProps)(Home);
+const mapStateToProps = (state) => ({
+  apparrelData: state.apparrelData,
+  auth: state.authDetails
+});
+
+export default connect(mapStateToProps, dispatchToProps)(Home);
 

@@ -1,23 +1,50 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux"
 import "./index.sass"
 import AddRemoveWhislist from '../AddRemoveWhislist';
 import { hitWhislist } from "../../store/modules/apparrelData/actions"
+import FirebaseContext from '../../services/Firebase/context';
+// import { useEffect } from 'react';
 
 const Card = (props) => {
-
+  const firebase = useContext(FirebaseContext);
   const [whislist, setwhislist] = useState(false)
+  const [firstTime, setfirstTime] = useState(false)
 
   const handleAddWhislist = () => {
-    props.hitWhislist({actionType: "add", productDetail: props.value})
+    if (props.authDetails) {
     setwhislist(true)
+    setfirstTime(true)
+    props.hitWhislist({actionType: "add", productDetail: props.value})
+    } else {
+      props.openSignUpModal()
+    }
+    // setwhislist(true)
 }
 
 const handleRemoveWhislist = () => {
+  if (props.authDetails) {
     setwhislist(false)
+    setfirstTime(true)
     props.hitWhislist({actionType: "remove", productDetail: props.value})
+  } else {
+    props.openSignUpModal()
+  }
 }
+
+useEffect(() => {
+  if (props.authDetails) {
+    const checkWhislist = props.apparrelData.whisList.filter(({id}) => id === props.value.id)
+    if (checkWhislist.length) {setwhislist(true)}
+  }
+}, [props])
+
+useEffect(() => {
+  if (props.authDetails && firstTime) {
+firebase.saveDataToDatabase(props.authDetails.uid, "whisList", props.apparrelData.whisList)
+  } 
+},[whislist])
 
   return (
   <>
@@ -35,13 +62,17 @@ Card.propTypes = {
     index: PropTypes.number.isRequired,
     value: PropTypes.objectOf(PropTypes.string).isRequired,
     history: PropTypes.objectOf(PropTypes.object).isRequired,
-    hitWhislist: PropTypes.func.isRequired
+    hitWhislist: PropTypes.func.isRequired,
+    authDetails:  PropTypes.objectOf(PropTypes.object).isRequired,
+    apparrelData:  PropTypes.objectOf(PropTypes.object).isRequired,
+    openSignUpModal: PropTypes.func.isRequired,
   };
 
 const dispatchToProps = { hitWhislist };
 
 const mapStateToProps = (state) => ({
     apparrelData: state.apparrelData,
+    authDetails: state.authDetails.auth
   });
   
 export default connect(mapStateToProps, dispatchToProps)(Card);

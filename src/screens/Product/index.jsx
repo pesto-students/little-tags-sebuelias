@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import {
   hitCartAddRemove,
@@ -14,8 +14,10 @@ import Cart from '../../components/Cart';
 import './index.scss';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import FirebaseContext from '../../services/Firebase/context';
 
 const Product = (props) => {
+  const firebase = useContext(FirebaseContext);
   const [productDetail, setproductDetail] = useState(
     props.location.state ? props.location.state.product : {}
   );
@@ -24,17 +26,56 @@ const Product = (props) => {
   const [error, seterror] = useState('');
   const [openModal, setopenModal] = useState(false);
   const [addBagString, setaddBagString] = useState(false);
-
+  const [openSignUpModal, setopenSignUpModal] = useState(false);
   const [whislist, setwhislist] = useState(false);
 
+  useEffect(() => {
+    if (props.authDetails) {
+      firebase.saveDataToDatabase(
+        props.authDetails.uid,
+        'cart',
+        props.apparrelData.cart
+      );
+    }
+  }, [addBagString]);
+
+  useEffect(() => {
+    if (props.authDetails) {
+      const checkWhislist = props.apparrelData.whisList.filter(
+        ({ id }) => id === productDetail.id
+      );
+      if (checkWhislist.length) {
+        setwhislist(true);
+      }
+    }
+  }, [props]);
+
+  useEffect(() => {
+    if (props.authDetails) {
+      firebase.saveDataToDatabase(
+        props.authDetails.uid,
+        'whisList',
+        props.apparrelData.whisList
+      );
+    }
+  }, [whislist]);
+
   const handleAddWhislist = () => {
-    props.hitWhislist({ actionType: 'add', productDetail });
-    setwhislist(true);
+    if (props.authDetails) {
+      setwhislist(true);
+      props.hitWhislist({ actionType: 'add', productDetail });
+    } else {
+      setopenSignUpModal(true);
+    }
   };
 
   const handleRemoveWhislist = () => {
-    setwhislist(false);
-    props.hitWhislist({ actionType: 'remove', productDetail });
+    if (props.authDetails) {
+      setwhislist(false);
+      props.hitWhislist({ actionType: 'remove', productDetail });
+    } else {
+      setopenSignUpModal(true);
+    }
   };
 
   useEffect(() => {
@@ -59,28 +100,35 @@ const Product = (props) => {
   }, [props]);
 
   const handleAddBag = () => {
-    if (quantity === 0) {
-      seterror('Please provide the order quatity');
-      return;
+    if (props.authDetails) {
+      if (quantity === 0) {
+        seterror('Please provide the order quatity');
+        return;
+      }
+      if (
+        (productDetail.category === 'women clothing' ||
+          productDetail.category === 'men clothing') &&
+        !size
+      ) {
+        seterror('Please select the apparrel size');
+        return;
+      }
+      props.hitCartAddRemove({
+        actionType: 'add',
+        productDetail: { ...productDetail, quantity, size },
+      });
+      setaddBagString(true);
+    } else {
+      setopenSignUpModal(true);
     }
-    if (
-      (productDetail.category === 'women clothing' ||
-        productDetail.category === 'men clothing') &&
-      !size
-    ) {
-      seterror('Please select the apparrel size');
-      return;
-    }
-    props.hitCartAddRemove({
-      actionType: 'add',
-      productDetail: { ...productDetail, quantity, size },
-    });
-    setaddBagString(true);
   };
 
   return (
     <>
-      <Header />
+      <Header
+        openSignUpModal={openSignUpModal}
+        closeSignUpModal={() => setopenSignUpModal(false)}
+      />
       <div style={{ height: '100px' }} />
       {openModal ? (
         <Cart
@@ -178,12 +226,14 @@ Product.propTypes = {
   apparrelData: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.objectOf(PropTypes.object).isRequired,
   history: PropTypes.objectOf(PropTypes.object).isRequired,
+  authDetails: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 const dispatchToProps = { hitCartAddRemove, requestData, hitWhislist };
 
 const mapStateToProps = (state) => ({
   apparrelData: state.apparrelData,
+  authDetails: state.authDetails.auth,
 });
 
 export default connect(mapStateToProps, dispatchToProps)(Product);

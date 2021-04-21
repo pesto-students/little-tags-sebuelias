@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { MdRemoveShoppingCart } from 'react-icons/md';
@@ -10,10 +10,12 @@ import {
 } from '../../store/modules/apparrelData/actions';
 import Tooltip from '../Tooltip';
 import OrderQuantity from '../OrderQuantity';
+import FirebaseContext from '../../services/Firebase/context';
 import './index.scss';
 
 const CartSingle = (props) => {
   const [quantity, setquantity] = useState(props.productDetail.quantity);
+  const firebase = useContext(FirebaseContext);
 
   const handleAddWhislist = () => {
     props.hitCartAddRemove({ actionType: 'remove', index: props.index });
@@ -30,6 +32,8 @@ const CartSingle = (props) => {
 
   useEffect(() => {
     setquantity(props.productDetail.quantity);
+    firebase.saveDataToDatabase(props.authDetails.uid, "cart", props.apparrelData.cart)
+    firebase.saveDataToDatabase(props.authDetails.uid, "whisList", props.apparrelData.whisList)
   }, [props]);
 
   useEffect(() => {
@@ -95,6 +99,8 @@ CartSingle.propTypes = {
   hitCartAddRemove: PropTypes.func.isRequired,
   hitAddRemoveApparelCount: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
+  authDetails: PropTypes.objectOf(PropTypes.object).isRequired,
+  apparrelData: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 const dispatchToProps = {
@@ -105,6 +111,7 @@ const dispatchToProps = {
 
 const mapStateToProps = (state) => ({
   apparrelData: state.apparrelData,
+  authDetails: state.authDetails.auth
 });
 
 export default connect(mapStateToProps, dispatchToProps)(CartSingle);
