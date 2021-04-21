@@ -16,10 +16,12 @@ function SignUp({ closeModal }) {
     firebase
       .doGoogleSignIn()
       .then((authUser) => {
+        if (authUser.additionalUserInfo.isNewUser) {
         firebase.user(authUser.user.uid).set({
           email: authUser.user.email,
           username: authUser.user.displayName,
         });
+      }
         closeModal();
       })
       .catch((error) => setErrorMessage(error.message));
@@ -29,10 +31,12 @@ function SignUp({ closeModal }) {
     firebase
       .doFacebookSignIn()
       .then((authUser) => {
+        if (authUser.additionalUserInfo.isNewUser) {
         firebase.user(authUser.user.uid).set({
           email: authUser.user.email,
           username: authUser.user.displayName,
         });
+      }
         closeModal();
       })
       .catch((error) => setErrorMessage(error.message));

@@ -12,7 +12,8 @@ import Footer from '../../components/Footer';
 function Category(props) {
   
   const [Products, setProducts] = useState([])
-  const [currCategory, setcurrCategory] = useState(props.location.state.QueryCategory ? props.location.state.QueryCategory.toUpperCase() : "ALL PRODUCTS")
+  const [currCategory, setcurrCategory] = useState(props.location.state && props.location.state.QueryCategory ? props.location.state.QueryCategory.toUpperCase() : "ALL PRODUCTS")
+  const [openSignUpModal, setopenSignUpModal] = useState(false)
   const [, setsortedValue] = useState("SORT: NONE")
 
   useEffect(() => {
@@ -55,12 +56,12 @@ function Category(props) {
   };
 
   const visualizeBestSellarBox = (Products || []).map((value, index) =>(
-    <Card index={index} value={value} key={index.toString()} {...props}/>
+    <Card index={index} value={value} key={index.toString()} {...props} openSignUpModal={()=>setopenSignUpModal(true)}/>
   ))
 
   return (
     <>
-    <Header />
+    <Header openSignUpModal={openSignUpModal} closeSignUpModal={()=>setopenSignUpModal(false)}/>
     <div style={{height:"100px"}}/>
      <h1 className="best-sellar-title">{currCategory}</h1>
      <div className="flex-row flex-one">
@@ -89,6 +90,7 @@ const dispatchToProps = { requestData };
 
 const mapStateToProps = (state) => ({
   apparrelData: state.apparrelData.apparrelData,
+  authDetails: state.authDetails.auth
 });
 
 

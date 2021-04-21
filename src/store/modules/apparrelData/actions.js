@@ -1,6 +1,6 @@
 import { REQUEST_API_DATA, RECEIVE_API_DATA, APPARREL_API_ERROR,
   HIT_WHISLIST, ADD_WHISLIST, REMOVE_WHISLIST, HIT_CART,
-ADD_CART, REMOVE_CART, HIT_APPARREL_COUNT, ADD_APPARREL_COUNT, REMOVE_APPARREL_COUNT } from  '../types'
+ADD_CART, REMOVE_CART, HIT_APPARREL_COUNT, ADD_APPARREL_COUNT, REMOVE_APPARREL_COUNT, HIT_USER_ORDER_DETAILS, ADD_USER_ORDER_DETAILS } from  '../types'
 
 export const storeData = data =>
     ({
@@ -73,3 +73,16 @@ export const removeApparelCount = data =>
       type: REMOVE_APPARREL_COUNT,
       payload: data
     });
+
+export const hitFirebaseApparel = data =>
+    ({
+      type: HIT_USER_ORDER_DETAILS,
+      payload: data
+    });
+
+export const storeFirebaseApparrel = data =>
+    ({
+      type: ADD_USER_ORDER_DETAILS,
+      payload: data
+    });
+

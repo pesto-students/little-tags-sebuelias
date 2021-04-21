@@ -21,13 +21,18 @@ class Firebase {
 
   doGoogleSignIn = () => this.auth.signInWithPopup(this.googleAuthProvider);
 
-  doFacebookSignIn = () =>  this.auth.signInWithPopup(this.facebookAuthProvider);
+  doFacebookSignIn = () => this.auth.signInWithPopup(this.facebookAuthProvider);
 
   user = (uid) => this.db.ref(`/users/${uid}`);
 
+  saveDataToDatabase = (uid, key, value) => {
+    this.user(uid).update({ [key]: value });
+  };
+
   doSignOut = () => this.auth.signOut();
 
-  onAuthChangeListener = (next, fallback = () => {}) => this.auth.onAuthStateChanged((authUser) => {
+  onAuthChangeListener = (next, fallback = () => {}) =>
+    this.auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         this.user(authUser.uid)
           .once('value')
@@ -45,7 +50,6 @@ class Firebase {
         fallback();
       }
     });
-
 }
 
 export default Firebase;

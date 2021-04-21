@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { storeData, storeError, addWhislist, removeWhislist, addCart, removeCart, addApparelCount } from "./actions";
-import { REQUEST_API_DATA, HIT_WHISLIST, HIT_CART, HIT_APPARREL_COUNT } from '../types'
+import { storeData, storeError, addWhislist, removeWhislist, addCart, removeCart, addApparelCount, storeFirebaseApparrel } from "./actions";
+import { REQUEST_API_DATA, HIT_WHISLIST, HIT_CART, HIT_APPARREL_COUNT, HIT_USER_ORDER_DETAILS } from '../types'
 import getApparrelData from "./api";
 
 function* getData(action) {
@@ -45,6 +45,15 @@ function* cartApparrelCount(action) {
 }
 
 
+function* firebaseApparrelData(action) {
+    try {
+        yield put(storeFirebaseApparrel(action.payload))
+    } catch (e) {
+        yield put(storeError({error: e.message}));
+    }
+}
+
+
 export function* watchApparrelData() {
     yield takeEvery(REQUEST_API_DATA, getData);
 }
@@ -59,4 +68,8 @@ export function* watchCartData() {
 
 export function* watchApparrelCount() {
     yield takeEvery(HIT_APPARREL_COUNT, cartApparrelCount);
+}
+
+export function* watchFirebaseApparrelData() {
+    yield takeEvery(HIT_USER_ORDER_DETAILS, firebaseApparrelData);
 }
