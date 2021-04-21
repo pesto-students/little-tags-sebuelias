@@ -30,7 +30,7 @@ $textColor: var(--black);
     display: flex;
     justify-content: center;
     align-items: center;
-    // font-size: 3rem;
+    font-size: 2rem;
   }
 
   .hamburger-parent {
@@ -50,6 +50,7 @@ $textColor: var(--black);
 
   ul {
     list-style-type: none;
+    padding: 1rem;
   }
 
   .wishlist {
@@ -60,10 +61,16 @@ $textColor: var(--black);
     // color: #dc3545;
     cursor: pointer;
   }
-  .login {
+  .login,
+  .logout {
     cursor: pointer;
     text-decoration: none;
     color: $textColor;
+  }
+
+  .username {
+    padding-right: 1rem;
+    cursor: pointer;
   }
 }
 nav.header.scrolled {

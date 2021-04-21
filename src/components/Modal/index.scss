@@ -2,15 +2,21 @@
   background: var(--light);
   border-radius: 20px;
   color: var(--black);
-  overflow-y: scroll;
-  position: fixed;
+  position: absolute;
   top: 20%;
   z-index: 10;
+  box-shadow: 5px -5px 6px 0px rgba(22, 22, 22, 1);
 }
 
 .modal-container {
   display: flex;
   justify-content: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  // transition: background 250ms ease-in;
+  background: rgba(2, 2, 2, 0.5);
 }
 
 .close {
