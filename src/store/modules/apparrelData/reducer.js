@@ -1,4 +1,5 @@
-import { RECEIVE_API_DATA, APPARREL_API_ERROR, ADD_WHISLIST, REMOVE_WHISLIST, ADD_CART, REMOVE_CART, ADD_APPARREL_COUNT } from  '../types'
+import { RECEIVE_API_DATA, APPARREL_API_ERROR, ADD_WHISLIST, REMOVE_WHISLIST, ADD_CART, REMOVE_CART, ADD_APPARREL_COUNT,
+  ADD_USER_ORDER_DETAILS} from  '../types'
 
 const INITIAL_STATE = {
   apparrelData: null,
@@ -22,6 +23,8 @@ export default function auth(state = INITIAL_STATE, action) {
       case REMOVE_WHISLIST:
           state.whisList = state.whisList.filter(({id}) => id !== action.payload.id);
           return {...state, whisList: state.whisList };
+      case ADD_USER_ORDER_DETAILS:
+           return {...state, ...action.payload };
       case ADD_CART:
           checkDuplicate = state.cart.filter((obj) => obj.id === action.payload.id && obj.size === action.payload.size)
           if (checkDuplicate.length) {
