@@ -78,10 +78,6 @@ function Category(props) {
 
   return (
     <>
-      <Header
-        openSignUpModal={openSignUpModal}
-        closeSignUpModal={() => setopenSignUpModal(false)}
-      />
       <div style={{ height: '100px' }} />
 
       <div className="flex-row flex-one">
@@ -98,7 +94,6 @@ function Category(props) {
           <div className="complete-data">{visualizeBestSellerBox}</div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

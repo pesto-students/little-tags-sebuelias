@@ -66,7 +66,9 @@ function Header(props) {
           Little Tags
         </h1>
 
-        <Search />
+        <div className="search-container">
+          <Search {...props} />
+        </div>
 
         <div className="header-buttons">
           <ul>

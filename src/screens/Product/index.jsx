@@ -128,6 +128,7 @@ const Product = (props) => {
       <Header
         openSignUpModal={openSignUpModal}
         closeSignUpModal={() => setopenSignUpModal(false)}
+        {...props}
       />
       <div style={{ height: '100px' }} />
       {openModal ? (
@@ -222,8 +223,7 @@ const Product = (props) => {
           </div>
         </div>
       </div>
-
-      <Footer />
+      <Footer {...props}/>
     </>
   );
 };
