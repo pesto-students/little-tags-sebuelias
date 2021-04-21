@@ -16,12 +16,12 @@ const Home = (props) => {
   }, []);
 
   return (<>
-  <Header />
+  <Header {...props}/>
     <div className="home-container">
       <Carousel slides={CarouselImages} {...props}/>
       <Categories {...props}/>
     </div>
-    <Footer />
+    <Footer {...props}/>
   </>)
 };
 

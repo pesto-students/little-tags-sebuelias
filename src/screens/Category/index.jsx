@@ -61,7 +61,7 @@ function Category(props) {
 
   return (
     <>
-    <Header openSignUpModal={openSignUpModal} closeSignUpModal={()=>setopenSignUpModal(false)}/>
+    <Header openSignUpModal={openSignUpModal} closeSignUpModal={()=>setopenSignUpModal(false)} {...props}/>
     <div style={{height:"100px"}}/>
      <h1 className="best-sellar-title">{currCategory}</h1>
      <div className="flex-row flex-one">
@@ -73,7 +73,7 @@ function Category(props) {
       </div>
        </div>
      </div>
-     <Footer/>
+     <Footer {...props}/>
     </>
   );
 }
