@@ -2,6 +2,7 @@ import { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hitLogin } from '../../store/modules/auth/actions';
+import { hitFirebaseApparel } from '../../store/modules/apparrelData/actions';
 import FirebaseContext from '../Firebase/context';
 
 const withAuthentication = (Component) => {
@@ -12,7 +13,16 @@ const withAuthentication = (Component) => {
     };
     const next = (authUser) => {
       saveToLocalStorage(authUser);
-      props.hitLogin(authUser);
+      props.hitLogin({
+        email: authUser.email,
+        emailVerified: authUser.emailVerified,
+        uid: authUser.uid,
+        username: authUser.username,
+      });
+      props.hitFirebaseApparel({
+        cart: authUser.cart || [],
+        whisList: authUser.whisList || [],
+      });
     };
     const fallback = () => {
       localStorage.removeItem('authUser');
@@ -20,7 +30,16 @@ const withAuthentication = (Component) => {
     };
     useEffect(() => {
       const user = JSON.parse(localStorage.getItem('authUser'));
-      props.hitLogin(user);
+      if (user) {
+        props.hitLogin({
+          email: user.email,
+          emailVerified: user.emailVerified,
+          uid: user.uid,
+          username: user.username,
+        });
+      } else {
+        props.hitLogin(user);
+      }
       firebase.onAuthChangeListener(next, fallback);
     }, []);
 
@@ -30,9 +49,10 @@ const withAuthentication = (Component) => {
 
   NewComponent.propTypes = {
     hitLogin: PropTypes.func.isRequired,
+    hitFirebaseApparel: PropTypes.func.isRequired,
   };
 
-  return connect(null, { hitLogin })(NewComponent);
+  return connect(null, { hitLogin, hitFirebaseApparel })(NewComponent);
 };
 
 export default withAuthentication;
