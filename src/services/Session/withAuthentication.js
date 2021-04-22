@@ -2,7 +2,7 @@ import { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hitLogin } from '../../store/modules/auth/actions';
-import { hitFirebaseApparel } from '../../store/modules/apparrelData/actions';
+import { hitFirebaseApparel, requestData } from '../../store/modules/apparrelData/actions';
 import FirebaseContext from '../Firebase/context';
 
 const withAuthentication = (Component) => {
@@ -22,6 +22,8 @@ const withAuthentication = (Component) => {
       props.hitFirebaseApparel({
         cart: authUser.cart || [],
         whisList: authUser.whisList || [],
+        address: authUser.address || [],
+        order: authUser.order || [],
       });
     };
     const fallback = () => {
@@ -29,6 +31,7 @@ const withAuthentication = (Component) => {
       props.hitLogin(null);
     };
     useEffect(() => {
+      props.requestData()
       const user = JSON.parse(localStorage.getItem('authUser'));
       if (user) {
         props.hitLogin({
@@ -50,9 +53,10 @@ const withAuthentication = (Component) => {
   NewComponent.propTypes = {
     hitLogin: PropTypes.func.isRequired,
     hitFirebaseApparel: PropTypes.func.isRequired,
+    requestData: PropTypes.func.isRequired,
   };
 
-  return connect(null, { hitLogin, hitFirebaseApparel })(NewComponent);
+  return connect(null, { hitLogin, hitFirebaseApparel, requestData })(NewComponent);
 };
 
 export default withAuthentication;
