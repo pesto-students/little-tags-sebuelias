@@ -16,10 +16,12 @@
 
   margin: 4rem;
   padding: 2rem;
+  padding-right: 0;
   font-size: 2rem;
   display: flex;
   flex-direction: column;
 }
 .Category {
   cursor: pointer;
+  text-indent: 1rem;
 }
