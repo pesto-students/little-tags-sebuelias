@@ -1,7 +1,7 @@
 .categories-container {
   display: grid;
   width: 80vw;
-  grid-gap: 2rem;
+  grid-gap: 4rem;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 400px);
   grid-auto-rows: minmax(15rem, auto);
@@ -15,7 +15,14 @@
     // color: var(--lightBrown);
     color: var(--brown);
     font-family: 'Reenie Beanie';
-    padding: 2rem;
+    // padding: 2rem;
+    position: relative;
+
+    .image-overlay {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+    }
 
     &:hover {
       cursor: pointer;
@@ -81,41 +88,25 @@
 
   .women {
     grid-column: 1 / 3;
-    background-color: red;
-    background-image: url('../../assets/categoryImages/women.jpg');
   }
   .men {
     grid-row: 2 / 4;
-    background-color: green;
-    background-image: url('../../assets/categoryImages/men.jpg');
   }
   .electronics {
     grid-column: 2 / 4;
     grid-row: 2 / 3;
-    background-color: yellow;
-    background-image: url('../../assets/categoryImages/electronics.jpg');
-    background-position: initial;
   }
   .jewlery {
     grid-column: 2 / 4;
     grid-row: 3 / 4;
-    background-color: blue;
-    background-image: url('../../assets/categoryImages/jewlery.jpg');
-    background-position: center;
   }
   .all {
     grid-column: 3 / 4;
     grid-row: 1 / 2;
-    background-color: blue;
-    background-image: url('../../assets/categoryImages/all.jpg');
-    background-position: center;
   }
   img {
     width: 100%;
     height: 100%;
-  }
-  .image {
-    height: 10%;
-    width: 10%;
+    border-radius: 10px;
   }
 }
