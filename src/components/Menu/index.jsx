@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 import './index.scss';
 
+/**
+ * category
+ * order
+ * user
+ *
+ */
 function Menu({ open }) {
   return (
     <div className={`menu menu-${open ? 'open' : 'close'}`} open={open}>

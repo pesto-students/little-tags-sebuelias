@@ -1,63 +1,51 @@
 $color: var(--black);
 // $color: #f8f9fa;
 
-.search {
-  display: table;
-  input {
-    background: none;
-    border: none;
-    outline: none;
-    width: 28px;
-    min-width: 0;
-    padding: 0;
-    z-index: 1;
-    position: relative;
-    line-height: 18px;
-    margin: 5px 0;
-    font-size: 14px;
-    -webkit-appearance: none;
-    font-family: 'Mukta Malar';
-    transition: all 0.6s ease;
-    cursor: pointer;
-    color: $color;
-    & + div {
-      position: relative;
-      height: 28px;
-      width: 100%;
-      margin: -28px 0 0 0;
-      svg {
-        display: block;
-        position: absolute;
-        height: 28px;
-        width: 160px;
-        right: 0;
-        top: 0;
-        fill: none;
-        stroke: $color;
-        stroke-width: 1.5px;
-        stroke-dashoffset: 212.908 + 59;
-        stroke-dasharray: 59 212.908;
-        transition: all 0.6s ease;
-      }
-    }
-    &:not(:placeholder-shown),
-    &:focus {
-      width: 160px;
-      padding: 0 4px;
-      cursor: text;
-      & + div {
-        svg {
-          stroke-dasharray: 150 212.908;
-          stroke-dashoffset: 300;
-        }
-      }
-    }
+.search-container {
+  border-radius: 40px;
+  display: flex;
+  position: relative;
+  min-width: 3rem;
+  align-items: center;
+  color: var(--black);
+  &:hover {
+    color: var(--brown);
   }
 }
+.seach-text {
+  font-size: 2rem;
+  background-color: transparent;
+  width: 25rem;
+  padding: 0.2rem 3rem 0.2rem 2rem;
+  outline: 0;
+  border: none;
+  border-radius: 40px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 
+  &:focus,
+  &:hover {
+    border-bottom: 1px solid var(--brown);
+    // color: var(--brown);
+  }
+}
+.seach-button {
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+}
+.seach-button:hover {
+  color: var(--brown);
+}
 ::selection {
-  background: rgba(#fff, 0.2);
+  background: rgba(#222, 0.2);
 }
 ::-moz-selection {
-  background: rgba(#fff, 0.2);
+  background: rgba(#222, 0.2);
 }

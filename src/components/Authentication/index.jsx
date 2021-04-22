@@ -37,9 +37,8 @@ function SignUp({ closeModal }) {
 
   return (
     <Modal closeModal={closeModal}>
-      {!!errorMessage && <p className="error-message">{errorMessage}</p>}
       <div className="sign-up">
-        <h3>Log in / Sign up</h3>
+        <h2>Log in / Register</h2>
         <button
           className="btn google"
           type="button"
@@ -60,6 +59,7 @@ function SignUp({ closeModal }) {
           </i>
           Using Facebook
         </button>
+        <p className="error-message">{errorMessage ? `${errorMessage}` : ''}</p>
       </div>
     </Modal>
   );

@@ -66,9 +66,7 @@ function Header(props) {
           Little Tags
         </h1>
 
-        <div className="search-container">
-          <Search />
-        </div>
+        <Search />
 
         <div className="header-buttons">
           <ul>
@@ -112,7 +110,9 @@ function Header(props) {
         <Signup
           closeModal={() => {
             setopenModal(false);
-            if (props.closeSignUpModal) {props.closeSignUpModal()}
+            if (props.closeSignUpModal) {
+              props.closeSignUpModal();
+            }
             enableScroll();
           }}
         />
@@ -129,7 +129,7 @@ Header.propTypes = {
     username: PropTypes.string,
   }),
   openSignUpModal: PropTypes.bool.isRequired,
-  closeSignUpModal: PropTypes.func.isRequired
+  closeSignUpModal: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
