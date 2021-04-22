@@ -1,10 +1,22 @@
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './index.scss';
 
-function Search() {
+function Search(props) {
+
+  const [searchText, setsearchText] = useState("")
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      props.history.push({pathname: '/categories', state: { QueryCategory: "search", QueryValue: searchText}})
+    }
+  }
+
   return (
     <>
       <div className="search">
-        <input className="seachBar" type="text" placeholder=" " />
+        <input className="seachBar" type="text" placeholder="Type and hit enter" value={searchText}
+        onChange={(event)=>setsearchText(event.target.value)} onKeyDown={handleKeyDown} />
         <div>
           <svg>
             <use xlinkHref="#path" />
@@ -26,5 +38,10 @@ function Search() {
     </>
   );
 }
+
+Search.propTypes = {
+  history: PropTypes.objectOf(PropTypes.object).isRequired,
+};
+
 
 export default Search;

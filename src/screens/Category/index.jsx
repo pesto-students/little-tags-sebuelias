@@ -20,7 +20,11 @@ function Category(props) {
     if(!props.location.state || !props.location.state.QueryCategory || props.location.state.QueryCategory === 'all-products') {
       setProducts(props.apparrelData)
     } else if(props.location.state.QueryCategory === 'search') {
-      setProducts(props.apparrelData)
+      setcurrCategory("SEARCH")
+      const QueryValue = props.location.state.QueryValue.toLowerCase() || ""
+      const filteredCategory = (props.apparrelData || []).filter(({category, description, title}) => 
+      category.toLowerCase().indexOf(QueryValue) !== -1 || title.toLowerCase().indexOf(QueryValue) !== -1 || description.toLowerCase().indexOf(QueryValue) !== -1)
+      setProducts(filteredCategory)
     } else {
       const filteredCategory = (props.apparrelData || []).filter(({category}) => category === props.location.state.QueryCategory)
       setProducts(filteredCategory)
@@ -39,9 +43,21 @@ function Category(props) {
   }
     
   useEffect(() => {
-    if (!props.apparrelData) {
-      props.requestData();
+
+    // if (!props.apparrelData) {
+    //   props.requestData();
+    // }
+
+    const onUnload = () => {
+      const {state} = props.location;
+      if (state.QueryCategory === "search") {
+        delete state.QueryCategory;
+      }
+      state.QueryCategory = currCategory.toLowerCase()
+      props.history.replace({pathname: "/categories" , state });
     }
+    window.addEventListener("beforeunload", onUnload);
+    return () => window.removeEventListener("beforeunload", onUnload);
   }, [])
 
   const handleDropDownValue = (event) => {
@@ -63,14 +79,17 @@ function Category(props) {
     <>
     <Header openSignUpModal={openSignUpModal} closeSignUpModal={()=>setopenSignUpModal(false)} {...props}/>
     <div style={{height:"100px"}}/>
-     <h1 className="best-sellar-title">{currCategory}</h1>
+     <h1 className="best-sellar-title">{currCategory === "SEARCH" ? `${currCategory} ${props.location.state.QueryValue}` :currCategory }</h1>
      <div className="flex-row flex-one">
          <FilterBox filterBox={(value) => filterBox(value)}/>
        <div className="flex-column flex-one">
          <Sort handleDropDownValue={(event) => {handleDropDownValue(event)}} />
-         <div className="complete-data">
+         {visualizeBestSellarBox.length ? <div className="complete-data">
           {visualizeBestSellarBox}
-      </div>
+      </div>: <div>
+        <h2>Oops! Your query does not match any item</h2>
+        </div>
+        }
        </div>
      </div>
      <Footer {...props}/>
