@@ -1,6 +1,6 @@
 import { REQUEST_API_DATA, RECEIVE_API_DATA, APPARREL_API_ERROR,
   HIT_WHISLIST, ADD_WHISLIST, REMOVE_WHISLIST, HIT_CART,
-ADD_CART, REMOVE_CART, HIT_APPARREL_COUNT, ADD_APPARREL_COUNT, REMOVE_APPARREL_COUNT, HIT_USER_ORDER_DETAILS, ADD_USER_ORDER_DETAILS } from  '../types'
+ADD_CART, REMOVE_CART, HIT_APPARREL_COUNT, ADD_APPARREL_COUNT, REMOVE_APPARREL_COUNT, HIT_USER_ORDER_DETAILS, ADD_USER_ORDER_DETAILS, HIT_ADDRESS, ADD_ADDRESS, REMOVE_ADDRESS, HIT_ORDER, ADD_ORDER } from  '../types'
 
 export const storeData = data =>
     ({
@@ -86,3 +86,32 @@ export const storeFirebaseApparrel = data =>
       payload: data
     });
 
+export const hitAddressAddRemove = data =>
+    ({
+      type: HIT_ADDRESS,
+      payload: data
+    });
+
+export const addAddress = data =>
+    ({
+      type: ADD_ADDRESS,
+      payload: data
+    });
+
+export const removeAddress = data =>
+    ({
+      type: REMOVE_ADDRESS,
+      payload: data
+    });
+
+export const hitOrderAdd = data =>
+    ({
+      type: HIT_ORDER,
+      payload: data
+    });
+
+export const addOrder = data =>
+    ({
+      type: ADD_ORDER,
+      payload: data
+    });
