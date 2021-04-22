@@ -8,6 +8,11 @@
   z-index: 10;
 }
 
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
 .modal-container {
   display: flex;
   justify-content: center;
