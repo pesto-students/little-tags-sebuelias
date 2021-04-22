@@ -8,3 +8,4 @@ export const PAYMENT = '/payment';
 export const WISHLIST = '/wishlist';
 export const SIGN_IN = '/signin';
 export const PRODUCT = '/categories/:id'
+export const ORDER_PLACED = "/order-placed"
