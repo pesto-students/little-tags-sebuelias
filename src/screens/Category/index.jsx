@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { requestData } from '../../store/modules/apparrelData/actions';
@@ -18,6 +18,8 @@ function Category(props) {
   );
   const [openSignUpModal, setopenSignUpModal] = useState(false);
   const [, setsortedValue] = useState('SORT: NONE');
+  const categoryRef = useRef(currCategory);
+  categoryRef.current = currCategory;
 
   useEffect(() => {
     if(!props.location.state || !props.location.state.QueryCategory || props.location.state.QueryCategory === 'all-products') {
@@ -50,17 +52,12 @@ function Category(props) {
   };
 
   useEffect(() => {
-
-    // if (!props.apparrelData) {
-    //   props.requestData();
-    // }
-
     const onUnload = () => {
       const {state} = props.location;
       if (state.QueryCategory === "search") {
         delete state.QueryCategory;
       }
-      state.QueryCategory = currCategory.toLowerCase()
+      state.QueryCategory = categoryRef.current.toLowerCase()
       props.history.replace({pathname: "/categories" , state });
     }
     window.addEventListener("beforeunload", onUnload);
