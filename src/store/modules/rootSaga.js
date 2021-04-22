@@ -1,6 +1,14 @@
 import { all } from 'redux-saga/effects';
-import { watchLogin, watchLogout } from './auth/sagas'
-import {watchApparrelData, watchWhislistData, watchCartData, watchApparrelCount, watchFirebaseApparrelData } from './apparrelData/sagas'
+import { watchLogin, watchLogout } from './auth/sagas';
+import {
+  watchApparrelData,
+  watchWhislistData,
+  watchCartData,
+  watchApparrelCount,
+  watchFirebaseApparrelData,
+  watchAddressData,
+  watchOrderData,
+} from './apparrelData/sagas';
 
 export default function* rootSaga() {
   yield all([
@@ -11,5 +19,7 @@ export default function* rootSaga() {
     watchCartData(),
     watchApparrelCount(),
     watchFirebaseApparrelData(),
+    watchAddressData(),
+    watchOrderData(),
   ]);
 }
