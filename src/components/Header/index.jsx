@@ -11,11 +11,13 @@ import Signup from '../Authentication/SignUp';
 import Search from '../Search';
 import './index.scss';
 import { disableScroll, enableScroll } from '../../utils/scrollControl';
+import Cart from '../Cart';
 
 function Header(props) {
   const firebase = useContext(FirebaseContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openModal, setopenModal] = useState(false);
+  const [openCartModal, setopenCartModal] = useState(false)
   const [headerScrolled, setHeaderScroll] = useState('');
 
   const menuRef = useRef();
@@ -93,15 +95,13 @@ function Header(props) {
 
           <ul>
             <li className="wishlist">
-              <FaRegHeart />
-              <span className="item-count">5</span>
+              <FaRegHeart onClick={()=>{if (props.authUser) {props.history.push({pathname:"/whislist"})} else {setopenModal(true)} }}/>
             </li>
           </ul>
 
           <ul>
             <li className="cart">
-              <FiShoppingBag />
-              <span className="item-count">5</span>
+              <FiShoppingBag  onClick={()=>{if (props.authUser) {setopenCartModal(true)} else {setopenModal(true)} }}/>
             </li>
           </ul>
         </div>
@@ -112,6 +112,14 @@ function Header(props) {
             setopenModal(false);
             if (props.closeSignUpModal) {props.closeSignUpModal()}
             enableScroll();
+          }}
+        />
+      ) : null}
+      {openCartModal ? (
+        <Cart
+          {...props}
+          closeModal={() => {
+            setopenCartModal(false);
           }}
         />
       ) : null}
@@ -126,6 +134,7 @@ Header.propTypes = {
     emailVerified: PropTypes.bool,
     username: PropTypes.string,
   }),
+  history: PropTypes.objectOf(PropTypes.string).isRequired,
   openSignUpModal: PropTypes.bool.isRequired,
   closeSignUpModal: PropTypes.func.isRequired
 };
