@@ -6,14 +6,13 @@ import ErrorPage from './screens/ErrorPage';
 import Home from './screens/Home';
 import Category from './screens/Category';
 import Product from './screens/Product';
-// import Header from './components/Header';
-// import Footer from './components/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-/* ! TODO: Use common Header / Footer  */
 function Routes() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <BrowserRouter>
         <Switch>
           <Route exact path={ROUTES.HOME} component={Home} />
@@ -23,7 +22,7 @@ function Routes() {
           <Route path={ROUTES.ERROR} component={ErrorPage} />
         </Switch>
       </BrowserRouter>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

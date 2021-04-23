@@ -152,24 +152,11 @@ const Product = (props) => {
           />
         </div>
         <div className="flex-column content-display-box">
-          <div className="flex-column title-head">
-            <h2>{productDetail.title}</h2>
+          <div className="flex-column">
+            <h2 className="title-head">{productDetail.title}</h2>
             <h2>&#8377; {productDetail.price}</h2>
           </div>
-
-          {productDetail.category === 'women clothing' ||
-          productDetail.category === 'men clothing' ? (
-            <div className="flex-column">
-              <OrderSize
-                setSize={(value) => {
-                  setsize(value);
-                  seterror('');
-                }}
-              />
-            </div>
-          ) : null}
-
-          <div className="flex-column button-group">
+          <div className="flex-row">
             <div className="flex-column">
               {!addBagString ? (
                 <OrderQuantity
@@ -181,48 +168,51 @@ const Product = (props) => {
                 />
               ) : null}
             </div>
-
-            <div className="flex-row add-button">
-              <div className="add-to-bag">
-                {!addBagString ? (
-                  <button
-                    className="button"
-                    type="button"
-                    onClick={handleAddBag}
-                  >
-                    ADD TO BAG
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    className="button"
-                    onClick={() => {
-                      setopenModal(true);
-                    }}
-                  >
-                    GO TO BAG
-                  </button>
-                )}
-              </div>
-              <div className="add-to-whislist">
-                <AddRemoveWhislist
-                  whislist={whislist}
-                  handleAddWhislist={handleAddWhislist}
-                  handleRemoveWhislist={handleRemoveWhislist}
-                  productDetail={productDetail}
+            {productDetail.category === 'women clothing' ||
+            productDetail.category === 'men clothing' ? (
+              <div className="flex-column" style={{ margin: '0 0 0 26px' }}>
+                <OrderSize
+                  setSize={(value) => {
+                    setsize(value);
+                    seterror('');
+                  }}
                 />
               </div>
-            </div>
-            {error ? <span style={{ color: 'red' }}>{error}</span> : null}
+            ) : null}
           </div>
-
-          <div className="flex-column description">
-            <h2>DESCRIPTION</h2>
+          <div className="flex-row">
+            <div className="add-to-bag">
+              {!addBagString ? (
+                <button type="button" onClick={handleAddBag}>
+                  ADD TO BAG
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setopenModal(true);
+                  }}
+                >
+                  GO TO BAG
+                </button>
+              )}
+            </div>
+            <div className="add-to-whislist">
+              <AddRemoveWhislist
+                whislist={whislist}
+                handleAddWhislist={handleAddWhislist}
+                handleRemoveWhislist={handleRemoveWhislist}
+                productDetail={productDetail}
+              />
+            </div>
+          </div>
+          {error ? <span style={{ color: 'red' }}>{error}</span> : null}
+          <div className="flex-column">
+            <h2>PRODUCT DESCRIPTION</h2>
             <p>{productDetail.description}</p>
           </div>
         </div>
       </div>
-
       <Footer />
     </>
   );
