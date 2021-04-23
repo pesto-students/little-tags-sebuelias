@@ -43,18 +43,6 @@ export default function Carousel({ slides }) {
           )}
         </div>
       ))}
-      {/*
-      <div className="row">
-        <div className="column">
-          <img
-            className="demo cursor"
-            src="img_woods.jpg"
-            style="width:100%"
-            onclick="currentSlide(1)"
-            alt="The Woods"
-          />
-        </div>
-      </div> */}
     </section>
   );
 }

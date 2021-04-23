@@ -1,5 +1,5 @@
-$backgroundColor: var(--black);
-$fontColor: var(--white);
+$backgroundColor: var(--light);
+$fontColor: var(--black);
 
 .contact-box {
   width: 250px;
@@ -8,7 +8,6 @@ $fontColor: var(--white);
 .footer {
   background-color: $backgroundColor;
   color: $fontColor;
-  font-size: 1.2rem;
 }
 
 .store-icon {

@@ -7,60 +7,39 @@
   color: var(--black);
 }
 
-.btn {
+.sign-button {
   height: 43px;
   width: 200px;
-  display: block;
-  text-decoration: none;
-  margin: 20px 0;
-  padding: 15px 15px;
-  border-radius: 5px;
-  position: relative;
-  padding-left: 64px;
-  z-index: 1;
-
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: all 0.2s ease-in-out;
-    box-shadow: inset 0 3px 0 hsla(0, 0, 0, 0), 0 3px 3px hsla(0, 0, 0, 0.2);
-    border-radius: 5px;
-  }
-
-  &:hover::after {
-    background: hsla(0, 0, 0, 0.1);
-    box-shadow: inset -9px -6px 0 hsla(0, 0, 0, 0.2);
-  }
-
-  .fa {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 50px;
-    height: 100%;
-    text-align: center;
-    background: hsla(0, 0, 0, 0.1);
-    line-height: 3.2;
-    border-radius: 5px 0 0 5px;
-  }
-}
-.google {
-  background-color: hsl(7, 71%, 55%);
-}
-.facebook {
-  background-color: hsl(221, 44%, 41%);
-}
-
-.error-message {
-  color: var(--red);
+  height: 43px;
+  width: 200px;
+  font-size: 12px;
   font-weight: bold;
-  font-size: 1.1rem;
-  margin-top: 0;
-  height: 2.5rem;
+  // color: #385898;
+  border-radius: 10px;
+  border-width: 2px;
+  // border-color: #385898;
+}
+
+.google-string {
+  justify-content: center;
+  margin: 0;
+}
+
+.google-button {
+  border-left-color: yellow;
+  border-top-color: red;
+  border-bottom-color: lightgreen;
+  border-right-color: blue;
+  color: green;
+}
+
+.facebook-button {
+  color: #385898;
+  border-color: #385898;
+}
+
+
+.icon-width {
+  height: 20px;
+  width: 20px;
 }

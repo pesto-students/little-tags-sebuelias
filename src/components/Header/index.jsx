@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import { FaRegHeart } from 'react-icons/fa';
-import { FiShoppingBag, FiLogOut } from 'react-icons/fi';
+import { FiShoppingBag } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useOnClickOutside } from '../../utils/hooks/useOnClickOutside';
 import FirebaseContext from '../../services/Firebase/context';
 import Burger from '../Burger';
 import Menu from '../Menu';
-import Signup from '../Authentication';
+import Signup from '../Authentication/SignUp';
 import Search from '../Search';
 import './index.scss';
 import { disableScroll, enableScroll } from '../../utils/scrollControl';
@@ -54,35 +54,13 @@ function Header(props) {
           <Menu open={menuOpen} />
         </div>
 
-        <h1
-          className="title"
-          // onClick={() => {
-          //   props.history.push({
-          //     pathname: '/categories',
-          //     state: { QueryCategory: 'women clothing' },
-          //   });
-          // }}
-        >
-          Little Tags
-        </h1>
+        <h1 className="title">Little Tags</h1>
 
-        <Search />
+        <div className="search-container">
+          <Search />
+        </div>
 
         <div className="header-buttons">
-          <ul>
-            <li className="wishlist">
-              <span className="item-count">5</span>
-              <FaRegHeart />
-            </li>
-          </ul>
-
-          <ul>
-            <li className="cart">
-              <span className="item-count">5</span>
-              <FiShoppingBag />
-            </li>
-          </ul>
-
           <ul>
             {!props.authUser ? (
               <li onClick={handleLoginModal} aria-hidden="true">
@@ -98,11 +76,33 @@ function Header(props) {
                 </a>
               </li>
             ) : (
-              <li aria-hidden="true">
-                <span className="username">UserName</span>
-                <FiLogOut className="logout" onClick={handleLogout} />
+              <li onClick={handleLogout} aria-hidden="true">
+                <a
+                  className="login"
+                  href="login.html"
+                  data-toggle="tooltip"
+                  data-selector="true"
+                  data-placement="bottom"
+                  title="Logout"
+                >
+                  Logout
+                </a>
               </li>
             )}
+          </ul>
+
+          <ul>
+            <li className="wishlist">
+              <FaRegHeart />
+              <span className="item-count">5</span>
+            </li>
+          </ul>
+
+          <ul>
+            <li className="cart">
+              <FiShoppingBag />
+              <span className="item-count">5</span>
+            </li>
           </ul>
         </div>
       </nav>
@@ -110,9 +110,7 @@ function Header(props) {
         <Signup
           closeModal={() => {
             setopenModal(false);
-            if (props.closeSignUpModal) {
-              props.closeSignUpModal();
-            }
+            if (props.closeSignUpModal) {props.closeSignUpModal()}
             enableScroll();
           }}
         />
@@ -129,7 +127,7 @@ Header.propTypes = {
     username: PropTypes.string,
   }),
   openSignUpModal: PropTypes.bool.isRequired,
-  closeSignUpModal: PropTypes.func.isRequired,
+  closeSignUpModal: PropTypes.func.isRequired
 };
 
 Header.defaultProps = {

@@ -6,21 +6,23 @@ import CarouselImages from '../../assets/sliderImage/CarouselImages';
 import Categories from '../../components/Categories';
 import { requestData } from '../../store/modules/apparrelData/actions';
 import './index.scss';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 
 const Home = (props) => {
+
   useEffect(() => {
     props.requestData();
   }, []);
 
-  return (
-    <>
-      <div className="home-container">
-        <Carousel slides={CarouselImages} {...props} />
-        TITLE
-        <Categories {...props} />
-      </div>
-    </>
-  );
+  return (<>
+  <Header />
+    <div className="home-container">
+      <Carousel slides={CarouselImages} {...props}/>
+      <Categories {...props}/>
+    </div>
+    <Footer />
+  </>)
 };
 
 Home.propTypes = {
@@ -31,7 +33,8 @@ const dispatchToProps = { requestData };
 
 const mapStateToProps = (state) => ({
   apparrelData: state.apparrelData,
-  auth: state.authDetails,
+  auth: state.authDetails
 });
 
 export default connect(mapStateToProps, dispatchToProps)(Home);
+
