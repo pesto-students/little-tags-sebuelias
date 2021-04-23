@@ -11,11 +11,13 @@ import Signup from '../Authentication';
 import Search from '../Search';
 import './index.scss';
 import { disableScroll, enableScroll } from '../../utils/scrollControl';
+import Cart from '../Cart';
 
 function Header(props) {
   const firebase = useContext(FirebaseContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openModal, setopenModal] = useState(false);
+  const [openCartModal, setopenCartModal] = useState(false)
   const [headerScrolled, setHeaderScroll] = useState('');
 
   const menuRef = useRef();
@@ -106,6 +108,18 @@ function Header(props) {
               </li>
             )}
           </ul>
+
+          <ul>
+            <li className="wishlist">
+              <FaRegHeart onClick={()=>{if (props.authUser) {props.history.push({pathname:"/whislist"})} else {setopenModal(true)} }}/>
+            </li>
+          </ul>
+
+          <ul>
+            <li className="cart">
+              <FiShoppingBag  onClick={()=>{if (props.authUser) {setopenCartModal(true)} else {setopenModal(true)} }}/>
+            </li>
+          </ul>
         </div>
       </nav>
       {openModal || props.openSignUpModal ? (
@@ -116,6 +130,14 @@ function Header(props) {
               props.closeSignUpModal();
             }
             enableScroll();
+          }}
+        />
+      ) : null}
+      {openCartModal ? (
+        <Cart
+          {...props}
+          closeModal={() => {
+            setopenCartModal(false);
           }}
         />
       ) : null}
@@ -130,6 +152,7 @@ Header.propTypes = {
     emailVerified: PropTypes.bool,
     username: PropTypes.string,
   }),
+  history: PropTypes.objectOf(PropTypes.string).isRequired,
   openSignUpModal: PropTypes.bool.isRequired,
   closeSignUpModal: PropTypes.func.isRequired,
 };
