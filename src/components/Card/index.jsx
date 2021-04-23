@@ -5,7 +5,6 @@ import "./index.sass"
 import AddRemoveWhislist from '../AddRemoveWhislist';
 import { hitWhislist } from "../../store/modules/apparrelData/actions"
 import FirebaseContext from '../../services/Firebase/context';
-// import { useEffect } from 'react';
 
 const Card = (props) => {
   const firebase = useContext(FirebaseContext);
@@ -20,7 +19,6 @@ const Card = (props) => {
     } else {
       props.openSignUpModal()
     }
-    // setwhislist(true)
 }
 
 const handleRemoveWhislist = () => {
@@ -36,7 +34,7 @@ const handleRemoveWhislist = () => {
 useEffect(() => {
   if (props.authDetails) {
     const checkWhislist = props.apparrelData.whisList.filter(({id}) => id === props.value.id)
-    if (checkWhislist.length) {setwhislist(true)}
+    if (checkWhislist.length) {setwhislist(true)} else {setwhislist(false)}
   }
 }, [props])
 

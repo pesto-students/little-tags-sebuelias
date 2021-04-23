@@ -8,6 +8,7 @@ import Category from './screens/Category';
 import Product from './screens/Product'
 import Address from './screens/Address';
 import OrderPlaced from './screens/OrderPlaced';
+import Wishlist from './screens/Wishlist';
 
 function Routes() {
   return (
@@ -20,7 +21,9 @@ function Routes() {
           <Route exact path={ROUTES.ADDRESS} component={Address} />
           <Route exact path={ROUTES.ORDER_PLACED} component={OrderPlaced} />
           <Route exact path={ROUTES.SIGN_IN} component={Category} />
+          <Route exact path={ROUTES.WISHLIST} component={Wishlist} />
           <Route path={ROUTES.ERROR} component={ErrorPage} />
+          <Route component={ErrorPage} />
         </Switch>
       </BrowserRouter>
     </>
