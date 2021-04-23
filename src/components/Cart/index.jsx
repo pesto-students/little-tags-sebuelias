@@ -30,14 +30,22 @@ function Cart(props) {
   return (
     <Modal width="80%" height="70%">
       <div className="flex-column">
+        <button
+          className="close button"
+          onClick={() => props.closeModal()}
+          aria-hidden="true"
+          type="button"
+        >
+          close
+        </button>
         {props.apparrelData.cart.length > 0 ? (
-          <div className="flex-row flex-space-arround cart-header">
+          <div className="flex-row flex-space-arround">
             <h1 className="cart-title">
               Cart ({props.apparrelData.cart.length}{' '}
               {props.apparrelData.cart.length > 1 ? 'items' : 'item'})
             </h1>
-            <div className="flex-row order">
-              <h1>Total Amount &#8377;{totalAmount.toFixed(2)}</h1>
+            <div className="flex-row">
+              <h1>Total Amount &#8377;{totalAmount}</h1>
               <button className="place-order-button" type="button">
                 Place Order
               </button>
