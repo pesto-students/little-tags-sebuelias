@@ -17,6 +17,10 @@ function Cart(props) {
     settotalAmount(amount);
   }, [props]);
 
+  const handlePlaceOrder = () => {
+      props.history.push({pathname: "/address", state:{proceedToPayment: true}})
+  }
+
   const visualizeCart = (props.apparrelData.cart || []).map((value, index) => (
     <CartSingle
       productDetail={value}
@@ -46,7 +50,7 @@ function Cart(props) {
             </h1>
             <div className="flex-row">
               <h1>Total Amount &#8377;{totalAmount}</h1>
-              <button className="place-order-button" type="button">
+              <button className="place-order-button" type="button" onClick={handlePlaceOrder}>
                 Place Order
               </button>
             </div>

@@ -29,12 +29,14 @@ const Product = (props) => {
 
   useEffect(() => {
     if (props.authDetails) {
+        if (addBagString) {
       firebase.saveDataToDatabase(
         props.authDetails.uid,
         'cart',
         props.apparrelData.cart
       );
-    }
+    }}
+    setaddBagString(false)
   }, [addBagString]);
 
   useEffect(() => {
@@ -116,6 +118,8 @@ const Product = (props) => {
         productDetail: { ...productDetail, quantity, size },
       });
       setaddBagString(true);
+      setsize("")
+      setquantity(1)
     } else {
       props.changeSignUpBool({signUpModal:true})
     }
@@ -152,7 +156,6 @@ const Product = (props) => {
           </div>
           <div className="flex-row">
             <div className="flex-column">
-              {!addBagString ? (
                 <OrderQuantity
                   setquantity={quantity}
                   setorderQuantity={(value) => {
@@ -160,12 +163,12 @@ const Product = (props) => {
                     seterror('');
                   }}
                 />
-              ) : null}
             </div>
             {productDetail.category === 'women clothing' ||
             productDetail.category === 'men clothing' ? (
               <div className="flex-column" style={{ margin: '0 0 0 26px' }}>
                 <OrderSize
+                  Size={size}
                   setSize={(value) => {
                     setsize(value);
                     seterror('');
@@ -176,20 +179,9 @@ const Product = (props) => {
           </div>
           <div className="flex-row">
             <div className="add-to-bag">
-              {!addBagString ? (
                 <button type="button" onClick={handleAddBag}>
                   ADD TO BAG
                 </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setopenModal(true);
-                  }}
-                >
-                  GO TO BAG
-                </button>
-              )}
             </div>
             <div className="add-to-whislist">
               <AddRemoveWhislist

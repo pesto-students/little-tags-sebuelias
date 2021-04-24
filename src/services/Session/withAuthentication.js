@@ -2,7 +2,7 @@ import { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hitLogin } from '../../store/modules/auth/actions';
-import { hitFirebaseApparel, requestData } from '../../store/modules/apparrelData/actions';
+import { hitFirebaseApparel, requestData, changeSignUpBool } from '../../store/modules/apparrelData/actions';
 import FirebaseContext from '../Firebase/context';
 
 const withAuthentication = (Component) => {
@@ -33,6 +33,7 @@ const withAuthentication = (Component) => {
     useEffect(() => {
       props.requestData()
       const user = JSON.parse(localStorage.getItem('authUser'));
+      const firstTimeUser = JSON.parse(localStorage.getItem('firstTimeUser'));
       if (user) {
         props.hitLogin({
           email: user.email,
@@ -42,6 +43,12 @@ const withAuthentication = (Component) => {
         });
       } else {
         props.hitLogin(user);
+        if (!firstTimeUser) {
+          setTimeout(() => {
+            props.changeSignUpBool({signUpModal:true})
+            localStorage.setItem('firstTimeUser', JSON.stringify(true));
+          }, 5000);
+        }
       }
       firebase.onAuthChangeListener(next, fallback);
     }, []);
@@ -54,9 +61,10 @@ const withAuthentication = (Component) => {
     hitLogin: PropTypes.func.isRequired,
     hitFirebaseApparel: PropTypes.func.isRequired,
     requestData: PropTypes.func.isRequired,
+    changeSignUpBool: PropTypes.func.isRequired,
   };
 
-  return connect(null, { hitLogin, hitFirebaseApparel, requestData })(NewComponent);
+  return connect(null, { hitLogin, hitFirebaseApparel, requestData, changeSignUpBool })(NewComponent);
 };
 
 export default withAuthentication;
