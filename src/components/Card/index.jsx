@@ -85,7 +85,7 @@ const Card = (props) => {
       </div>
       <div className="card-footer-div">
         <button className="button" type="button">
-          Add to Cart
+          Buy Now
         </button>
         <AddRemoveWhislist
           whislist={whislist}
