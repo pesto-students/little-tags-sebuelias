@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import FirebaseContext from '../Firebase/context';
-import SignUp from "../../components/Authentication/SignUp"
+import SignUp from "../../components/Authentication"
 
 const withAuthorization = (Component) => {
 
