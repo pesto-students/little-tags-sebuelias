@@ -60,6 +60,8 @@ function Header(props) {
 
         <h1
           className="title"
+          onClick={()=>{props.history.push({pathname:"/"})}}
+          aria-hidden="true"
         >
           Little Tags
         </h1>
