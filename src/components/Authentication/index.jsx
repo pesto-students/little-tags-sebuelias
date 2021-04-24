@@ -36,9 +36,8 @@ function SignUp({ closeModal, history, checkAuth }) {
 
   return (
     <Modal width="50%" height="50%">
-      {!!errorMessage && <p className="error-message">{errorMessage}</p>}
-      {!checkAuth ? 
-      <button
+      {!checkAuth ? (
+        <button
           className="close button"
           onClick={() => closeModal()}
           aria-hidden="true"
@@ -46,16 +45,16 @@ function SignUp({ closeModal, history, checkAuth }) {
         >
           close
         </button>
-         :
+      ) : (
         <button
-        className="close button"
-        onClick={() => history.goBack()}
-        aria-hidden="true"
-        type="button"
-      >
-        go back
-      </button>
-       }
+          className="close button"
+          onClick={() => history.goBack()}
+          aria-hidden="true"
+          type="button"
+        >
+          go back
+        </button>
+      )}
       <div className="sign-up">
         <h2>Log in / Register</h2>
         <button

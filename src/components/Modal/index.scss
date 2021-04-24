@@ -6,6 +6,7 @@
   z-index: 10;
   box-shadow: 5px 7px 10px 1px var(--black);
   width: 40%;
+  overflow: auto;
   border: solid 5px var(--brown);
 
   // &::after {
@@ -26,8 +27,8 @@
 }
 
 ::-webkit-scrollbar {
-  width: 0;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 .modal-container {

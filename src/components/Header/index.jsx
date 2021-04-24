@@ -19,7 +19,7 @@ function Header(props) {
   const firebase = useContext(FirebaseContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openModal, setopenModal] = useState(false);
-  const [openCartModal, setopenCartModal] = useState(false)
+  const [openCartModal, setopenCartModal] = useState(false);
   const [headerScrolled, setHeaderScroll] = useState('');
 
   const menuRef = useRef();
@@ -60,7 +60,9 @@ function Header(props) {
 
         <h1
           className="title"
-          onClick={()=>{props.history.push({pathname:"/"})}}
+          onClick={() => {
+            props.history.push({ pathname: '/' });
+          }}
           aria-hidden="true"
         >
           Little Tags
@@ -108,21 +110,47 @@ function Header(props) {
 
           <ul>
             <li className="wishlist">
-            <span className="item-count">{ props.apparrelData.whisList ? props.apparrelData.whisList.length : 0 }</span>
-              <FaRegHeart onClick={()=>{if (props.authUser) {props.history.push({pathname:"/whislist"})} else {setopenModal(true)} }}/>
+              <span className="item-count">
+                {props.apparrelData.whisList.length
+                  ? props.apparrelData.whisList.length
+                  : ' '}
+              </span>
+              <FaRegHeart
+                onClick={() => {
+                  if (props.authUser) {
+                    props.history.push({ pathname: '/whislist' });
+                  } else {
+                    setopenModal(true);
+                  }
+                }}
+              />
             </li>
           </ul>
 
           <ul>
             <li className="cart">
-            <span className="item-count">{ props.apparrelData.cart ? props.apparrelData.cart.length : 0 }</span>
-              <FiShoppingBag  onClick={()=>{if (props.authUser) {setopenCartModal(true)} else {setopenModal(true)} }}/>
+              <span className="item-count">
+                {props.apparrelData.cart.length
+                  ? props.apparrelData.cart.length
+                  : ' '}
+              </span>
+              <FiShoppingBag
+                onClick={() => {
+                  if (props.authUser) {
+                    setopenCartModal(true);
+                  } else {
+                    setopenModal(true);
+                  }
+                }}
+              />
             </li>
           </ul>
 
           <ul>
             <li className="cart">
-            {props.authUser ? <FiLogOut className="logout" onClick={handleLogout} /> : null}
+              {props.authUser ? (
+                <FiLogOut className="logout" onClick={handleLogout} />
+              ) : null}
             </li>
           </ul>
         </div>
@@ -131,7 +159,7 @@ function Header(props) {
         <Signup
           closeModal={() => {
             setopenModal(false);
-            props.changeSignUpBool({signUpModal:false})
+            props.changeSignUpBool({ signUpModal: false });
             enableScroll();
           }}
         />
@@ -158,7 +186,7 @@ Header.propTypes = {
   history: PropTypes.objectOf(PropTypes.string).isRequired,
   apparrelData: PropTypes.objectOf(PropTypes.string).isRequired,
   changeSignUpBool: PropTypes.func.isRequired,
-  closeSignUpModal: PropTypes.func.isRequired
+  closeSignUpModal: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
@@ -170,4 +198,6 @@ const mapStateToProps = (state) => ({
   apparrelData: state.apparrelData,
 });
 
-export default withRouter(connect(mapStateToProps, {changeSignUpBool})(Header));
+export default withRouter(
+  connect(mapStateToProps, { changeSignUpBool })(Header)
+);

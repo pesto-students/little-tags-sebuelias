@@ -30,6 +30,7 @@
   flex-direction: column;
   font-size: 1.3rem;
   height: 15rem;
+  cursor: pointer;
 
   .title-price {
     font-weight: bold;
@@ -51,8 +52,7 @@
     background: transparent;
     padding: 1rem 3rem;
     border-radius: 4rem;
-    // border-radius: 4rem 0;
-
+    font-family: 'Montserrat';
     border: none;
     font-size: 1.5rem;
     letter-spacing: 1px;
@@ -60,7 +60,6 @@
     transition: all ease-in 0.4s;
     &:hover {
       background: var(--red);
-      // border: 2px solid var(--light);
       color: var(--light);
     }
   }

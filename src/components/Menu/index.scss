@@ -1,4 +1,4 @@
-$backgroundColor: var(--light);
+$backgroundColor: var(--bgColor);
 $textColor: var(--black);
 $textHoverColor: var(--purples);
 
@@ -14,12 +14,24 @@ div.menu {
   position: absolute;
   top: 0;
   left: 0;
+
+  // box-shadow: 0 4px 8px 0 rgba(2, 2, 2, 0.5), 0 6px 20px 0 rgba(2, 2, 2, 0.49);
   transition: transform 0.3s ease-in-out;
 
   &-close {
     transform: translateX(-100%);
   }
   &-open {
+    border-right: 0.5px solid;
+    border-image-slice: 1;
+    border-width: 0.5px;
+    border-image-source: linear-gradient(
+      to bottom,
+      $backgroundColor,
+      $textColor,
+      $backgroundColor
+    );
+    box-shadow: 0 2px 16px 4px rgba(40, 44, 63, 0.7);
     transform: translateX(0);
   }
 
