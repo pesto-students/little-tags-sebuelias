@@ -29,12 +29,14 @@ const Product = (props) => {
 
   useEffect(() => {
     if (props.authDetails) {
+        if (addBagString) {
       firebase.saveDataToDatabase(
         props.authDetails.uid,
         'cart',
         props.apparrelData.cart
       );
-    }
+    }}
+    setaddBagString(false)
   }, [addBagString]);
 
   useEffect(() => {
@@ -116,6 +118,8 @@ const Product = (props) => {
         productDetail: { ...productDetail, quantity, size },
       });
       setaddBagString(true);
+      setsize("")
+      setquantity(1)
     } else {
       props.changeSignUpBool({signUpModal:true})
     }
@@ -165,7 +169,6 @@ const Product = (props) => {
 
           <div className="flex-column button-group">
             <div className="flex-column">
-              {!addBagString ? (
                 <OrderQuantity
                   setquantity={quantity}
                   setorderQuantity={(value) => {
@@ -173,31 +176,14 @@ const Product = (props) => {
                     seterror('');
                   }}
                 />
-              ) : null}
             </div>
 
             <div className="flex-row add-button">
-              <div className="add-to-bag">
-                {!addBagString ? (
-                  <button
-                    className="button"
-                    type="button"
-                    onClick={handleAddBag}
-                  >
-                    ADD TO BAG
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    className="button"
-                    onClick={() => {
-                      setopenModal(true);
-                    }}
-                  >
-                    GO TO BAG
-                  </button>
-                )}
-              </div>
+            <div className="add-to-bag">
+                <button type="button" onClick={handleAddBag}>
+                  ADD TO BAG
+                </button>
+            </div>
               <div className="add-to-whislist">
                 <AddRemoveWhislist
                   whislist={whislist}

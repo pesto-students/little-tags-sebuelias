@@ -1,24 +1,16 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
 import './index.scss';
 
-const OrderSize = ({ setSize }) => {
-  const [size, setsize] = useState('');
-
-  useEffect(() => {
-    setSize(size);
-  }, [size]);
-
-  return (
+const OrderSize = ({setSize, Size}) => (
     <>
       <h3>SIZE:</h3>
       <div className="flex-row">
         <p
           className={`size-circle ${
-            size === 'S' ? 'size-selected' : 'size-unselected'
+            Size === 'S' ? 'size-selected' : 'size-unselected'
           }`}
           onClick={() => {
-            setsize('S');
+            setSize('S');
           }}
           aria-hidden="true"
         >
@@ -26,10 +18,10 @@ const OrderSize = ({ setSize }) => {
         </p>
         <p
           className={`size-circle ${
-            size === 'M' ? 'size-selected' : 'size-unselected'
+            Size === 'M' ? 'size-selected' : 'size-unselected'
           }`}
           onClick={() => {
-            setsize('M');
+            setSize('M');
           }}
           aria-hidden="true"
         >
@@ -37,10 +29,10 @@ const OrderSize = ({ setSize }) => {
         </p>
         <p
           className={`size-circle ${
-            size === 'L' ? 'size-selected' : 'size-unselected'
+            Size === 'L' ? 'size-selected' : 'size-unselected'
           }`}
           onClick={() => {
-            setsize('L');
+            setSize('L');
           }}
           aria-hidden="true"
         >
@@ -48,10 +40,10 @@ const OrderSize = ({ setSize }) => {
         </p>
         <p
           className={`size-circle ${
-            size === 'XL' ? 'size-selected' : 'size-unselected'
+            Size === 'XL' ? 'size-selected' : 'size-unselected'
           }`}
           onClick={() => {
-            setsize('XL');
+            setSize('XL');
           }}
           aria-hidden="true"
         >
@@ -59,10 +51,10 @@ const OrderSize = ({ setSize }) => {
         </p>
         <p
           className={`size-circle ${
-            size === 'XXL' ? 'size-selected' : 'size-unselected'
+            Size === 'XXL' ? 'size-selected' : 'size-unselected'
           }`}
           onClick={() => {
-            setsize('XXL');
+            setSize('XXL');
           }}
           aria-hidden="true"
         >
@@ -71,10 +63,11 @@ const OrderSize = ({ setSize }) => {
       </div>
     </>
   );
-};
 
 OrderSize.propTypes = {
-  setSize: PropTypes.func.isRequired,
-};
+    setSize: PropTypes.func.isRequired,
+    Size: PropTypes.string.isRequired,
+  };
+
 
 export default OrderSize;

@@ -5,7 +5,7 @@ import Modal from '../Modal';
 import {} from './index.scss';
 import FirebaseContext from '../../services/Firebase/context';
 
-function SignUp({ closeModal }) {
+function SignUp({ closeModal, history, checkAuth }) {
   const firebase = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -36,7 +36,24 @@ function SignUp({ closeModal }) {
   };
 
   return (
-    <Modal closeModal={closeModal}>
+    <Modal width="50%" height="50%">
+      {!!errorMessage && <p className="error-message">{errorMessage}</p>}
+      {!checkAuth ? <button
+          className="close button"
+          onClick={() => closeModal()}
+          aria-hidden="true"
+          type="button"
+        >
+          close
+        </button>:
+        <button
+        className="close button"
+        onClick={() => history.goBack()}
+        aria-hidden="true"
+        type="button"
+      >
+        go back
+      </button>}
       <div className="sign-up">
         <h2>Log in / Register</h2>
         <button
@@ -67,6 +84,13 @@ function SignUp({ closeModal }) {
 
 SignUp.propTypes = {
   closeModal: PropTypes.func.isRequired,
+  checkAuth: PropTypes.bool,
+  history: PropTypes.objectOf(PropTypes.string),
+};
+
+SignUp.defaultProps = {
+  checkAuth: false,
+  history: {},
 };
 
 export default SignUp;
