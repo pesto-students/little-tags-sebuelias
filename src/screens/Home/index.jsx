@@ -8,17 +8,19 @@ import { requestData } from '../../store/modules/apparrelData/actions';
 import './index.scss';
 
 const Home = (props) => {
-
   useEffect(() => {
     props.requestData();
   }, []);
 
-  return (<>
-    <div className="home-container">
-      <Carousel slides={CarouselImages} {...props}/>
-      <Categories {...props}/>
-    </div>
-  </>)
+  return (
+    <>
+      <div className="home-container">
+        <Carousel slides={CarouselImages} {...props} />
+        TITLE
+        <Categories {...props} />
+      </div>
+    </>
+  );
 };
 
 Home.propTypes = {
@@ -27,5 +29,9 @@ Home.propTypes = {
 
 const dispatchToProps = { requestData };
 
-export default connect(null, dispatchToProps)(Home);
+const mapStateToProps = (state) => ({
+  apparrelData: state.apparrelData,
+  auth: state.authDetails,
+});
 
+export default connect(mapStateToProps, dispatchToProps)(Home);

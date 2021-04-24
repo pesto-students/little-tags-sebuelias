@@ -1,0 +1,21 @@
+.whislist {
+  font-size: 2rem;
+  &.removed {
+    font-size: x-large;
+    cursor: pointer;
+    color: var(--black);
+    transition: ease-in 0.3s;
+
+    &:hover {
+      color: var(--red);
+    }
+  }
+  &.added {
+    font-size: x-large;
+    cursor: pointer;
+    color: var(--red);
+    &:hover {
+      color: var(--black);
+    }
+  }
+}

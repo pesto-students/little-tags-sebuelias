@@ -1,7 +1,5 @@
-import { apparrelData } from "../../../services/api"
+import APPARREL_DATA from "../../../assets/data.json";
 
-export default data => new Promise((resolve, reject) => {
-    apparrelData.get("/products", data, {})
-        .then((response) => resolve(response))
-        .catch((error) => reject(error));
-  })
+export default () => new Promise((resolve, ) => {
+    resolve(APPARREL_DATA);
+  });
