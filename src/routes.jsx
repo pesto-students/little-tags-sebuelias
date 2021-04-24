@@ -9,11 +9,15 @@ import Product from './screens/Product'
 import Address from './screens/Address';
 import OrderPlaced from './screens/OrderPlaced';
 import Wishlist from './screens/Wishlist';
+import Payment from './screens/Payment';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function Routes() {
   return (
     <>
       <BrowserRouter>
+      <Header />
         <Switch>
           <Route exact path={ROUTES.HOME} component={Home}/>
           <Route exact path={ROUTES.CATEGORIES} component={Category}/>
@@ -22,9 +26,11 @@ function Routes() {
           <Route exact path={ROUTES.ORDER_PLACED} component={OrderPlaced} />
           <Route exact path={ROUTES.SIGN_IN} component={Category} />
           <Route exact path={ROUTES.WISHLIST} component={Wishlist} />
+          <Route exact path={ROUTES.PAYMENT} component={Payment} />
           <Route path={ROUTES.ERROR} component={ErrorPage} />
           <Route component={ErrorPage} />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </>
   );
