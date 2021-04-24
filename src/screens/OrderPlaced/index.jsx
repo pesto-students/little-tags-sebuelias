@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import { useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import FirebaseContext from '../../services/Firebase/context';
+import withAuthorization from "../../services/Session/withAuthorization"
 import './index.scss';
 
 const OrderPlaced = (props) => {
   const firebase = useContext(FirebaseContext);
 
   useEffect(() => {
-    if (props.location.state.previousLocation === 'payment') {
+    if (props.location.state && props.location.state.previousLocation === 'payment') {
       firebase.saveDataToDatabase(
         props.authDetails.uid,
         'order',
@@ -51,4 +52,4 @@ const mapStateToProps = (state) => ({
   authDetails: state.authDetails.auth,
 });
 
-export default connect(mapStateToProps)(OrderPlaced);
+export default withAuthorization(connect(mapStateToProps)(OrderPlaced));
