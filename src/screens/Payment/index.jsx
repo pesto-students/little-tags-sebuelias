@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux"
 import { hitOrderAdd, hitFirebaseApparel } from '../../store/modules/apparrelData/actions';
+import withAuthorization from "../../services/Session/withAuthorization"
 import "./index.scss";
 
 function Payment(props) {
@@ -13,10 +14,6 @@ function Payment(props) {
     image: "https://cdn.razorpay.com/logos/7K3b6d18wHwKzL_medium.png",
     // eslint-disable-next-line func-names
     "handler": function (response){
-        // props.hitOrderAdd({
-        //     order: {address : props.apparrelData.address[props.location.state.AddIndex], cart: props.apparrelData.cart,
-        //     orderDate: Date.now()},paymentId:response.razorpay_payment_id
-        //   })
           const order = [...props.apparrelData.order, {address : props.apparrelData.address[props.location.state.AddIndex], cart: props.apparrelData.cart,
             orderDate: Date.now(),paymentId:response.razorpay_payment_id}]
           props.hitFirebaseApparel({
@@ -44,7 +41,14 @@ function Payment(props) {
   const rzp1 = new window.Razorpay(options);
 
   useEffect(() => {
-    rzp1.open();
+      if (
+        props.location.state &&
+        props.location.state.previousLocation === 'address'
+      ) {
+        rzp1.open();
+      } else {
+        props.history.push({ pathname: '/categories' });
+      }
   }, []);
 
   // eslint-disable-next-line prefer-arrow-callback
@@ -59,14 +63,11 @@ function Payment(props) {
 
 Payment.propTypes = {
     history: PropTypes.objectOf(PropTypes.object).isRequired,
-    // hitOrderAdd: PropTypes.func.isRequired,
     hitFirebaseApparel: PropTypes.func.isRequired,
     apparrelData: PropTypes.objectOf(PropTypes.object).isRequired,
     location: PropTypes.objectOf(PropTypes.object).isRequired,
   };
   
-
-// export default Payment;
 const dispatchToProps = { hitOrderAdd, hitFirebaseApparel };
 
 const mapStateToProps = (state) => ({
@@ -74,4 +75,4 @@ const mapStateToProps = (state) => ({
   authDetails: state.authDetails.auth,
 });
 
-export default connect(mapStateToProps, dispatchToProps)(Payment);
+export default withAuthorization(connect(mapStateToProps, dispatchToProps)(Payment));

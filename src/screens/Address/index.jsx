@@ -1,25 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { GrAdd } from 'react-icons/gr';
 import { AiOutlineDelete } from 'react-icons/ai';
 import AddAddress from '../../components/AddAddress';
 import { hitAddressAddRemove, hitOrderAdd } from '../../store/modules/apparrelData/actions';
+import withAuthorization from "../../services/Session/withAuthorization"
 import './index.scss';
 import Tooltip from '../../components/Tooltip';
+import FirebaseContext from '../../services/Firebase/context';
 
 const Address = (props) => {
   const [openModal, setopenModal] = useState(false);
   const [selected, setselected] = useState('0');
+  const [checkDelete, setcheckDelete] = useState(false)
   const [ proceedToPayment,] = useState(props.location.state ? props.location.state.proceedToPayment : false)
+
+  const firebase = useContext(FirebaseContext);
 
   const handleRadioClick = (index) => {
     setselected(index);
   };
 
   const handlePayment = () => {
-      props.history.push({pathname:"/payment", state:{AddIndex: Number(selected)}})
+      props.history.push({pathname:"/payment", state:{AddIndex: Number(selected), previousLocation : "address"}})
   }
+
+  useEffect(()=>{
+      if (checkDelete) {
+    firebase.saveDataToDatabase(
+        props.authDetails.uid,
+        'address',
+        props.apparrelData.address
+      );
+    }
+      setcheckDelete(false)
+  }, [checkDelete])
 
   const visualizeAddress = (props.apparrelData.address || []).map(
     (value, index) => (
@@ -44,7 +60,10 @@ const Address = (props) => {
           {value.address}
         </p>
         <Tooltip add="delete address">
-          <AiOutlineDelete className="cursor-pointer" />
+          <AiOutlineDelete className="cursor-pointer" onClick={() => {
+              props.hitAddressAddRemove({  actionType: 'remove', index})
+              setcheckDelete(true)
+      }}/>
         </Tooltip>
       </div>
     )
@@ -78,8 +97,10 @@ const Address = (props) => {
 
 Address.propTypes = {
   apparrelData: PropTypes.objectOf(PropTypes.object).isRequired,
+  authDetails: PropTypes.objectOf(PropTypes.object).isRequired,
   location: PropTypes.objectOf(PropTypes.object).isRequired,
   history: PropTypes.objectOf(PropTypes.object).isRequired,
+  hitAddressAddRemove: PropTypes.func.isRequired,
 };
 
 const dispatchToProps = { hitAddressAddRemove, hitOrderAdd };
@@ -89,4 +110,4 @@ const mapStateToProps = (state) => ({
   authDetails: state.authDetails.auth,
 });
 
-export default connect(mapStateToProps, dispatchToProps)(Address);
+export default withAuthorization(connect(mapStateToProps, dispatchToProps)(Address));
