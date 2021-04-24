@@ -3,7 +3,9 @@ import { FaRegHeart } from 'react-icons/fa';
 import { FiShoppingBag, FiLogOut } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { useOnClickOutside } from '../../utils/hooks/useOnClickOutside';
+import { changeSignUpBool } from '../../store/modules/apparrelData/actions';
 import FirebaseContext from '../../services/Firebase/context';
 import Burger from '../Burger';
 import Menu from '../Menu';
@@ -122,13 +124,11 @@ function Header(props) {
           </ul>
         </div>
       </nav>
-      {openModal || props.openSignUpModal ? (
+      {openModal || props.apparrelData.openSignUpModal ? (
         <Signup
           closeModal={() => {
             setopenModal(false);
-            if (props.closeSignUpModal) {
-              props.closeSignUpModal();
-            }
+            props.changeSignUpBool({signUpModal:false})
             enableScroll();
           }}
         />
@@ -153,8 +153,9 @@ Header.propTypes = {
     username: PropTypes.string,
   }),
   history: PropTypes.objectOf(PropTypes.string).isRequired,
-  openSignUpModal: PropTypes.bool.isRequired,
-  closeSignUpModal: PropTypes.func.isRequired,
+  apparrelData: PropTypes.objectOf(PropTypes.string).isRequired,
+  changeSignUpBool: PropTypes.func.isRequired,
+  closeSignUpModal: PropTypes.func.isRequired
 };
 
 Header.defaultProps = {
@@ -163,6 +164,7 @@ Header.defaultProps = {
 
 const mapStateToProps = (state) => ({
   authUser: state.authDetails.auth,
+  apparrelData: state.apparrelData,
 });
 
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps, {changeSignUpBool})(Header));

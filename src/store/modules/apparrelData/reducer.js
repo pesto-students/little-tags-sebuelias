@@ -10,6 +10,7 @@ import {
   ADD_ADDRESS,
   REMOVE_ADDRESS,
   ADD_ORDER,
+  CHANGE_SIGN_UP_MODAL,
 } from '../types';
 
 const INITIAL_STATE = {
@@ -18,6 +19,7 @@ const INITIAL_STATE = {
   cart: [],
   order: [],
   address: [],
+  openSignUpModal: false,
 };
 
 let checkDuplicate;
@@ -68,6 +70,8 @@ export default function auth(state = INITIAL_STATE, action) {
     case ADD_APPARREL_COUNT:
       state.cart[action.payload.index].quantity = action.payload.quantity;
       return { ...state, cart: state.cart };
+    case CHANGE_SIGN_UP_MODAL:
+      return { ...state, openSignUpModal: action.payload.signUpModal };
     default:
       return state;
   }

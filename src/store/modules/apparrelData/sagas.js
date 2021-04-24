@@ -11,6 +11,7 @@ import {
   addAddress,
   removeAddress,
   addOrder,
+  changeSignUpBool,
 } from './actions';
 import {
   REQUEST_API_DATA,
@@ -20,6 +21,7 @@ import {
   HIT_USER_ORDER_DETAILS,
   HIT_ADDRESS,
   HIT_ORDER,
+  OPEN_SIGN_UP_MODAL,
 } from '../types';
 import getApparrelData from './api';
 
@@ -97,6 +99,15 @@ function* OrderData(action) {
   }
 }
 
+function* signUpModal(action) {
+  try {
+    yield put(changeSignUpBool(action.payload.signUpModal));
+  } catch (e) {
+    yield put(storeError({ error: e.message }));
+  }
+}
+
+  
 export function* watchApparrelData() {
   yield takeEvery(REQUEST_API_DATA, getData);
 }
@@ -124,3 +135,8 @@ export function* watchAddressData() {
 export function* watchOrderData() {
   yield takeEvery(HIT_ORDER, OrderData);
 }
+
+export function* watchSignUpModal() {
+    yield takeEvery(OPEN_SIGN_UP_MODAL, signUpModal);
+  }
+  

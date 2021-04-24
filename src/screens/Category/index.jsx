@@ -1,23 +1,21 @@
 import { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { requestData } from '../../store/modules/apparrelData/actions';
-import Card from '../../components/Card';
-import Sort from '../../components/Sort';
-import FilterBox from '../../components/FilterBox';
-import './index.sass';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import { requestData, changeSignUpBool } from '../../store/modules/apparrelData/actions';
+import Card from "../../components/Card"
+import Sort from "../../components/Sort"
+import FilterBox from "../../components/FilterBox"
+import "./index.sass"
 
 function Category(props) {
-  const [Products, setProducts] = useState([]);
+  
+  const [Products, setProducts] = useState([])
   const [currCategory, setcurrCategory] = useState(
     props.location.state && props.location.state.QueryCategory
       ? props.location.state.QueryCategory.toUpperCase()
       : 'ALL PRODUCTS'
   );
-  const [openSignUpModal, setopenSignUpModal] = useState(false);
-  const [, setsortedValue] = useState('SORT: NONE');
+  const [, setsortedValue] = useState("SORT: NONE")
   const categoryRef = useRef(currCategory);
   categoryRef.current = currCategory;
 
@@ -54,10 +52,10 @@ function Category(props) {
   useEffect(() => {
     const onUnload = () => {
       const {state} = props.location;
+      state.QueryCategory = categoryRef.current.toLowerCase()
       if (state.QueryCategory === "search") {
         delete state.QueryCategory;
       }
-      state.QueryCategory = categoryRef.current.toLowerCase()
       props.history.replace({pathname: "/categories" , state });
     }
     window.addEventListener("beforeunload", onUnload);
@@ -81,7 +79,7 @@ function Category(props) {
       value={value}
       key={index.toString()}
       {...props}
-      openSignUpModal={() => setopenSignUpModal(true)}
+      openSignUpModal={()=>props.changeSignUpBool({signUpModal:true})}
     />
   ));
 
@@ -115,12 +113,13 @@ function Category(props) {
 Category.propTypes = {
   requestData: PropTypes.func.isRequired,
   QueryCategory: PropTypes.string.isRequired,
+  changeSignUpBool: PropTypes.func.isRequired,
   location: PropTypes.objectOf(PropTypes.object).isRequired,
   history: PropTypes.objectOf(PropTypes.object).isRequired,
   apparrelData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const dispatchToProps = { requestData };
+const dispatchToProps = { requestData, changeSignUpBool };
 
 const mapStateToProps = (state) => ({
   apparrelData: state.apparrelData.apparrelData,
