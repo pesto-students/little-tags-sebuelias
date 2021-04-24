@@ -23,7 +23,7 @@ const withAuthorization = (Component) => {
         <>
         <div style={{height:"100px"}}/>
       <h1>You need to sign in to access this page </h1>
-      <SignUp checkAuth history={props.history} closeModal={() => {}}/>
+      <SignUp checkAuth history={props.history} closeModal={() => {props.history.push({pathname:"/categories"})}}/>
       </>
     );
   };

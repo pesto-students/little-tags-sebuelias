@@ -18,6 +18,7 @@ function Cart(props) {
   }, [props]);
 
   const handlePlaceOrder = () => {
+    props.closeModal()
       props.history.push({pathname: "/address", state:{proceedToPayment: true}})
   }
 
@@ -34,6 +35,14 @@ function Cart(props) {
   return (
     <Modal width="80%" height="70%">
       <div className="flex-column">
+      <button
+          className="close button"
+          onClick={() => props.closeModal()}
+          aria-hidden="true"
+          type="button"
+        >
+          close
+        </button>
         {props.apparrelData.cart.length > 0 ? (
           <div className="flex-row flex-space-arround cart-header">
             <h1 className="cart-title">

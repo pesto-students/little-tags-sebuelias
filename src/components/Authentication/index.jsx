@@ -8,7 +8,6 @@ import FirebaseContext from '../../services/Firebase/context';
 function SignUp({ closeModal, history, checkAuth }) {
   const firebase = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState('');
-
   const handleGoogleSignIn = () => {
     firebase
       .doGoogleSignIn()
@@ -38,14 +37,16 @@ function SignUp({ closeModal, history, checkAuth }) {
   return (
     <Modal width="50%" height="50%">
       {!!errorMessage && <p className="error-message">{errorMessage}</p>}
-      {!checkAuth ? <button
+      {!checkAuth ? 
+      <button
           className="close button"
           onClick={() => closeModal()}
           aria-hidden="true"
           type="button"
         >
           close
-        </button>:
+        </button>
+         :
         <button
         className="close button"
         onClick={() => history.goBack()}
@@ -53,7 +54,8 @@ function SignUp({ closeModal, history, checkAuth }) {
         type="button"
       >
         go back
-      </button>}
+      </button>
+       }
       <div className="sign-up">
         <h2>Log in / Register</h2>
         <button

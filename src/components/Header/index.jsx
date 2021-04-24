@@ -60,12 +60,6 @@ function Header(props) {
 
         <h1
           className="title"
-          // onClick={() => {
-          //   props.history.push({
-          //     pathname: '/categories',
-          //     state: { QueryCategory: 'women clothing' },
-          //   });
-          // }}
         >
           Little Tags
         </h1>
@@ -75,19 +69,19 @@ function Header(props) {
         </div>
 
         <div className="header-buttons">
-          <ul>
+          {/* <ul>
             <li className="wishlist">
-              <span className="item-count">5</span>
+              <span className="item-count">{ props.apparrelData.whisList ? props.apparrelData.whisList.length : 0 }</span>
               <FaRegHeart />
             </li>
           </ul>
 
           <ul>
             <li className="cart">
-              <span className="item-count">5</span>
+              <span className="item-count">{ props.apparrelData.cart ? props.apparrelData.cart.length : 0 }</span>
               <FiShoppingBag />
             </li>
-          </ul>
+          </ul> */}
 
           <ul>
             {!props.authUser ? (
@@ -105,21 +99,28 @@ function Header(props) {
               </li>
             ) : (
               <li aria-hidden="true">
-                <span className="username">UserName</span>
-                <FiLogOut className="logout" onClick={handleLogout} />
+                <span className="username">Hi,{props.authUser.username}</span>
               </li>
             )}
           </ul>
 
           <ul>
             <li className="wishlist">
+            <span className="item-count">{ props.apparrelData.whisList ? props.apparrelData.whisList.length : 0 }</span>
               <FaRegHeart onClick={()=>{if (props.authUser) {props.history.push({pathname:"/whislist"})} else {setopenModal(true)} }}/>
             </li>
           </ul>
 
           <ul>
             <li className="cart">
+            <span className="item-count">{ props.apparrelData.cart ? props.apparrelData.cart.length : 0 }</span>
               <FiShoppingBag  onClick={()=>{if (props.authUser) {setopenCartModal(true)} else {setopenModal(true)} }}/>
+            </li>
+          </ul>
+
+          <ul>
+            <li className="cart">
+            {props.authUser ? <FiLogOut className="logout" onClick={handleLogout} /> : null}
             </li>
           </ul>
         </div>

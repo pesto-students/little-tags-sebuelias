@@ -159,6 +159,7 @@ const Product = (props) => {
           productDetail.category === 'men clothing' ? (
             <div className="flex-column">
               <OrderSize
+              Size={size}
                 setSize={(value) => {
                   setsize(value);
                   seterror('');
@@ -180,7 +181,7 @@ const Product = (props) => {
 
             <div className="flex-row add-button">
             <div className="add-to-bag">
-                <button type="button" onClick={handleAddBag}>
+                <button type="button" className="button" onClick={handleAddBag}>
                   ADD TO BAG
                 </button>
             </div>
