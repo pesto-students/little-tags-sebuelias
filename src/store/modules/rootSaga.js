@@ -8,6 +8,7 @@ import {
   watchFirebaseApparrelData,
   watchAddressData,
   watchOrderData,
+  watchSignUpModal,
 } from './apparrelData/sagas';
 
 export default function* rootSaga() {
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     watchFirebaseApparrelData(),
     watchAddressData(),
     watchOrderData(),
+    watchSignUpModal(),
   ]);
 }

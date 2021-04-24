@@ -5,6 +5,7 @@ import {
   hitCartAddRemove,
   requestData,
   hitWhislist,
+  changeSignUpBool,
 } from '../../store/modules/apparrelData/actions';
 import AddRemoveWhislist from '../../components/AddRemoveWhislist';
 import OrderQuantity from '../../components/OrderQuantity';
@@ -12,8 +13,6 @@ import OrderSize from '../../components/OrderSize';
 import Cart from '../../components/Cart';
 
 import './index.scss';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import FirebaseContext from '../../services/Firebase/context';
 
 const Product = (props) => {
@@ -26,7 +25,6 @@ const Product = (props) => {
   const [error, seterror] = useState('');
   const [openModal, setopenModal] = useState(false);
   const [addBagString, setaddBagString] = useState(false);
-  const [openSignUpModal, setopenSignUpModal] = useState(false);
   const [whislist, setwhislist] = useState(false);
 
   useEffect(() => {
@@ -65,7 +63,7 @@ const Product = (props) => {
       setwhislist(true);
       props.hitWhislist({ actionType: 'add', productDetail });
     } else {
-      setopenSignUpModal(true);
+      props.changeSignUpBool({signUpModal:true})
     }
   };
 
@@ -74,7 +72,7 @@ const Product = (props) => {
       setwhislist(false);
       props.hitWhislist({ actionType: 'remove', productDetail });
     } else {
-      setopenSignUpModal(true);
+      props.changeSignUpBool({signUpModal:true})
     }
   };
 
@@ -119,17 +117,12 @@ const Product = (props) => {
       });
       setaddBagString(true);
     } else {
-      setopenSignUpModal(true);
+      props.changeSignUpBool({signUpModal:true})
     }
   };
 
   return (
     <>
-      <Header
-        openSignUpModal={openSignUpModal}
-        closeSignUpModal={() => setopenSignUpModal(false)}
-        {...props}
-      />
       <div style={{ height: '100px' }} />
       {openModal ? (
         <Cart
@@ -214,7 +207,6 @@ const Product = (props) => {
           </div>
         </div>
       </div>
-      <Footer {...props}/>
     </>
   );
 };
@@ -223,6 +215,7 @@ Product.propTypes = {
   location: PropTypes.objectOf(PropTypes.object).isRequired,
   hitCartAddRemove: PropTypes.func.isRequired,
   requestData: PropTypes.func.isRequired,
+  changeSignUpBool: PropTypes.func.isRequired,
   hitWhislist: PropTypes.func.isRequired,
   apparrelData: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.objectOf(PropTypes.object).isRequired,
@@ -230,7 +223,7 @@ Product.propTypes = {
   authDetails: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
-const dispatchToProps = { hitCartAddRemove, requestData, hitWhislist };
+const dispatchToProps = { hitCartAddRemove, requestData, hitWhislist, changeSignUpBool };
 
 const mapStateToProps = (state) => ({
   apparrelData: state.apparrelData,

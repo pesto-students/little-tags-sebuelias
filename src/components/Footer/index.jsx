@@ -9,7 +9,7 @@ import {
   FaCcAmazonPay,
   FaCcPaypal,
 } from 'react-icons/fa';
-
+import { withRouter } from 'react-router-dom';
 import Subscribe from '../Subscribe';
 import AppStoreIcon from '../../assets/image/app_store_icon.png';
 import PlayStoreIcon from '../../assets/image/play_store_icon.png';
@@ -96,4 +96,4 @@ const Footer = () => (
   </>
 );
 
-export default Footer;
+export default withRouter(Footer);

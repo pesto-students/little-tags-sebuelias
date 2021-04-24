@@ -5,8 +5,6 @@ import { GrAdd } from 'react-icons/gr';
 import { AiOutlineDelete } from 'react-icons/ai';
 import AddAddress from '../../components/AddAddress';
 import { hitAddressAddRemove, hitOrderAdd } from '../../store/modules/apparrelData/actions';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
 import './index.scss';
 import Tooltip from '../../components/Tooltip';
 
@@ -20,11 +18,7 @@ const Address = (props) => {
   };
 
   const handlePayment = () => {
-      props.hitOrderAdd({
-        order: {address : props.apparrelData.address[Number(selected)], cart: props.apparrelData.cart,
-        orderDate: Date.now()},
-      })
-      props.history.push({pathname:"/order-placed"})
+      props.history.push({pathname:"/payment", state:{AddIndex: Number(selected)}})
   }
 
   const visualizeAddress = (props.apparrelData.address || []).map(
@@ -58,7 +52,6 @@ const Address = (props) => {
 
   return (
     <>
-      <Header {...props} />
       <div style={{ height: '100px' }} />
       {openModal ? (
         <AddAddress
@@ -79,15 +72,11 @@ const Address = (props) => {
         </div>
       </div>
       {visualizeAddress}
-      <Footer {...props} />
     </>
   );
 };
 
 Address.propTypes = {
-  hitAddressAddRemove: PropTypes.func.isRequired,
-  hitOrderAdd: PropTypes.func.isRequired,
-  authDetails: PropTypes.objectOf(PropTypes.object).isRequired,
   apparrelData: PropTypes.objectOf(PropTypes.object).isRequired,
   location: PropTypes.objectOf(PropTypes.object).isRequired,
   history: PropTypes.objectOf(PropTypes.object).isRequired,
