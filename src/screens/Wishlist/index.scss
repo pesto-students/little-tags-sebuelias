@@ -1,12 +1,17 @@
-.best-sellar-title{
-    font-weight: bold;
-    font-size: 43px;
-    display: flex;
-    justify-content: center;
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 5rem 5rem;
+}
+.best-sellar-title {
+  font-weight: bold;
+  font-size: 7rem;
+  font-family: 'Reenie Beanie';
+  margin: 0;
 }
 
-.complete-data{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.complete-data {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }

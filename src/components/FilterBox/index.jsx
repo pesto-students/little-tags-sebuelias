@@ -41,7 +41,7 @@ function FilterBox(props) {
             aria-hidden="true"
             className="Category"
           >
-            Jwellary
+            Jewlery
           </li>
         </ul>
       </div>

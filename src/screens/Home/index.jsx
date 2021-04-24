@@ -16,7 +16,7 @@ const Home = (props) => {
     <>
       <div className="home-container">
         <Carousel slides={CarouselImages} {...props} />
-        TITLE
+        <h2 className="category">Categories</h2>
         <Categories {...props} />
       </div>
     </>
