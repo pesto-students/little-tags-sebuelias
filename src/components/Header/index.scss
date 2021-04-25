@@ -77,3 +77,15 @@ nav.header.scrolled {
   font-weight: bold;
   min-width: 1ch;
 }
+
+.icons {
+  font-size: 1.7rem;
+  cursor: pointer;
+  color: var(--black);
+  transition: ease-in 0.3s;
+  margin-left: 1rem;
+
+  &:hover {
+    color: var(--red);
+  }
+}

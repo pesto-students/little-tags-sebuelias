@@ -1,14 +1,14 @@
 import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { MdRemoveShoppingCart } from 'react-icons/md';
+import { AiOutlineDelete } from 'react-icons/ai';
+
 import AddRemoveWhislist from '../AddRemoveWhislist';
 import {
   hitWhislist,
   hitCartAddRemove,
   hitAddRemoveApparelCount,
 } from '../../store/modules/apparrelData/actions';
-import Tooltip from '../Tooltip';
 import OrderQuantity from '../OrderQuantity';
 import FirebaseContext from '../../services/Firebase/context';
 import './index.scss';
@@ -32,8 +32,16 @@ const CartSingle = (props) => {
 
   useEffect(() => {
     setquantity(props.productDetail.quantity);
-    firebase.saveDataToDatabase(props.authDetails.uid, "cart", props.apparrelData.cart)
-    firebase.saveDataToDatabase(props.authDetails.uid, "whisList", props.apparrelData.whisList)
+    firebase.saveDataToDatabase(
+      props.authDetails.uid,
+      'cart',
+      props.apparrelData.cart
+    );
+    firebase.saveDataToDatabase(
+      props.authDetails.uid,
+      'whisList',
+      props.apparrelData.whisList
+    );
   }, [props]);
 
   useEffect(() => {
@@ -65,16 +73,13 @@ const CartSingle = (props) => {
           </h3>
           <div className="flex-row">
             <AddRemoveWhislist
+              className="icons"
               whislist={false}
               handleAddWhislist={handleAddWhislist}
               handleRemoveWhislist={() => {}}
               productDetail={props.productDetail}
             />
-            <Tooltip add="remove from cart">
-              <div className="cart-remove">
-                <MdRemoveShoppingCart onClick={handleRemoveCart} />
-              </div>
-            </Tooltip>
+            <AiOutlineDelete className="icons" onClick={handleRemoveCart} />
           </div>
         </div>
         <div className="flex-column">
@@ -111,7 +116,7 @@ const dispatchToProps = {
 
 const mapStateToProps = (state) => ({
   apparrelData: state.apparrelData,
-  authDetails: state.authDetails.auth
+  authDetails: state.authDetails.auth,
 });
 
 export default connect(mapStateToProps, dispatchToProps)(CartSingle);

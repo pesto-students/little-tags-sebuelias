@@ -2,6 +2,9 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+.prod-page-container {
+  height: 100vh;
+}
 
 h2 {
   font-size: 2rem;
@@ -56,6 +59,10 @@ h2 {
       color: var(--light);
     }
   }
+}
+.error {
+  color: var(--red);
+  font-size: 1rem;
 }
 .add-button {
   margin: 2rem 1rem 0 0;

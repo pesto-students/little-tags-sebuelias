@@ -18,9 +18,12 @@ function Cart(props) {
   }, [props]);
 
   const handlePlaceOrder = () => {
-    props.closeModal()
-      props.history.push({pathname: "/address", state:{proceedToPayment: true}})
-  }
+    props.closeModal();
+    props.history.push({
+      pathname: '/address',
+      state: { proceedToPayment: true },
+    });
+  };
 
   const visualizeCart = (props.apparrelData.cart || []).map((value, index) => (
     <CartSingle
@@ -35,8 +38,8 @@ function Cart(props) {
   return (
     <Modal width="80%" height="70%">
       <div className="flex-column">
-      <button
-          className="close button"
+        <button
+          className="close"
           onClick={() => props.closeModal()}
           aria-hidden="true"
           type="button"
@@ -51,14 +54,18 @@ function Cart(props) {
             </h1>
             <div className="flex-row order">
               <h1>Total Amount &#8377;{totalAmount.toFixed(2)}</h1>
-              <button className="place-order-button" type="button" onClick={handlePlaceOrder}>
+              <button
+                className="place-order-button"
+                type="button"
+                onClick={handlePlaceOrder}
+              >
                 Place Order
               </button>
             </div>
           </div>
         ) : (
-          <div>
-            <h3>Oops! You do not have anything in cart</h3>
+          <div className="empty">
+            <h1>Oops! You do not have anything in cart</h1>
           </div>
         )}
         {visualizeCart}
