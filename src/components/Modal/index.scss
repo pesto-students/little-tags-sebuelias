@@ -1,5 +1,5 @@
 .modal {
-  background: var(--light);
+  background: var(--white);
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   color: var(--black);
   position: absolute;
@@ -8,22 +8,7 @@
   width: 40%;
   overflow: auto;
   border: solid 5px var(--brown);
-
-  // &::after {
-  //   content: '';
-  //   position: absolute;
-  //   bottom: 1rem;
-  //   top: 1rem;
-  //   right: 1rem;
-  //   left: 1rem;
-  // }
-
-  // &::before {
-  //   transform: scale(1, 1);
-  //   transition: transform ease-out 250ms;
-  //   border-top: 1px solid var(--lightBrown);
-  //   border-bottom: 1px solid var(--lightBrown);
-  // }
+  // padding: 2rem;
 }
 
 ::-webkit-scrollbar {
@@ -59,6 +44,6 @@
 
   &:hover,
   &:focus {
-    color: var(--brown);
+    color: var(--red);
   }
 }

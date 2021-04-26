@@ -59,7 +59,7 @@ function Header(props) {
         </div>
 
         <h1
-          className="title"
+          className="title icons"
           onClick={() => {
             props.history.push({ pathname: '/' });
           }}
@@ -73,25 +73,11 @@ function Header(props) {
         </div>
 
         <div className="header-buttons">
-          {/* <ul>
-            <li className="wishlist">
-              <span className="item-count">{ props.apparrelData.whisList ? props.apparrelData.whisList.length : 0 }</span>
-              <FaRegHeart />
-            </li>
-          </ul>
-
-          <ul>
-            <li className="cart">
-              <span className="item-count">{ props.apparrelData.cart ? props.apparrelData.cart.length : 0 }</span>
-              <FiShoppingBag />
-            </li>
-          </ul> */}
-
           <ul>
             {!props.authUser ? (
               <li onClick={handleLoginModal} aria-hidden="true">
                 <a
-                  className="login"
+                  className="login icons"
                   href="login.html"
                   data-toggle="tooltip"
                   data-selector="true"
@@ -103,7 +89,9 @@ function Header(props) {
               </li>
             ) : (
               <li aria-hidden="true">
-                <span className="username">Hi,{props.authUser.username}</span>
+                <span className="username icons">
+                  Hi,{props.authUser.username}
+                </span>
               </li>
             )}
           </ul>
@@ -116,6 +104,7 @@ function Header(props) {
                   : ' '}
               </span>
               <FaRegHeart
+                className="icons"
                 onClick={() => {
                   if (props.authUser) {
                     props.history.push({ pathname: '/whislist' });
@@ -135,6 +124,7 @@ function Header(props) {
                   : ' '}
               </span>
               <FiShoppingBag
+                className="icons"
                 onClick={() => {
                   if (props.authUser) {
                     setopenCartModal(true);
@@ -149,7 +139,7 @@ function Header(props) {
           <ul>
             <li className="cart">
               {props.authUser ? (
-                <FiLogOut className="logout" onClick={handleLogout} />
+                <FiLogOut className="logout icons" onClick={handleLogout} />
               ) : null}
             </li>
           </ul>

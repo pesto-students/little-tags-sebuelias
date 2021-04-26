@@ -38,7 +38,7 @@ function Sort(props) {
       />
 
       {openDropDown ? (
-        <div className="dropdown-menu dropdown-menu-width">
+        <div className="dropdown-menu">
           <input
             type="button"
             className="dropdown-content general-font-design"
@@ -49,14 +49,14 @@ function Sort(props) {
           <input
             type="button"
             className="dropdown-content general-font-design"
-            value="SORT BY: HIGH TO LOW"
+            value="SORT: HIGH TO LOW"
             name={1}
             onClick={handleDropDownValue}
           />
           <input
             type="button"
             className="dropdown-content general-font-design"
-            value="SORT BY: LOW TO HIGH"
+            value="SORT: LOW TO HIGH"
             name={1.5}
             onClick={handleDropDownValue}
           />

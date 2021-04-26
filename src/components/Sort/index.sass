@@ -1,26 +1,19 @@
 .drop-down-div
   width: 40rem
-  align-self: flex-end
-  height: 160px
-  margin-right: 17px
+  height: 8rem
+  margin-right: 2rem
   display: flex
   flex-direction: column
+  position: relative
 
 .dropdown
   text-transform: uppercase
-  // display: flex
-  // height: 66px
-  // right: 1rem
   padding: 0px 0px 0px 29px
   border-radius: 15px
-  box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8)
-  border: solid 1px var(--white)
-  // font-family: Breamcatcher
-  font-size: 2rem
+  // box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8)
+  border: none
+  font-size: 1.7rem
   cursor: pointer
-  // color: var(--cool-grey-two)
-  -webkit-appearance: none
-  -moz-appearance: none
   background: url(../../assets/arrow/arrow.png) 97% center no-repeat
   &::-moz-focus-inner
     border: 0
@@ -32,31 +25,30 @@
   font-weight: normal
   font-stretch: normal
   font-style: normal
-  line-height: 1.2
+  color: var(--black)
   letter-spacing: normal
   text-align: left
+  font-size: 1.6rem
+  transition: ease-in 0.3s
+  &:hover
+    color: var(--red)
 
 .dropdown-menu
   display: flex
   flex-direction: column
   justify-content: center
-  border-bottom-right-radius: 15px
-  border-bottom-left-radius: 15px
-  height: 110px
   margin: 0px 11px 0
+  position: absolute
+  width: 90%
+  right: 0
+  bottom: 0%
   opacity: 0.59
-  box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8)
+  box-shadow: 6px 8px 17px 0 rgba(0, 0, 0 , .8)
   background-color: var(--white)
 
-.dropdown-menu-width
-  width: 425px
+
 
 .dropdown-content
-  width: 408px
-  height: 25px
-  margin: 0 48.1px 5px 8px
-  // font-family: Breamcatcher
-  font-size: 25px
   cursor: pointer
   color: var(--evergreen)
   text-transform: uppercase

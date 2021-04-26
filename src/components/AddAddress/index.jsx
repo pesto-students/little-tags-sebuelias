@@ -30,7 +30,7 @@ const AddAddress = (props) => {
     const addressString = `${address}\n${City} - ${Pincode}\n${State}, ${Country}\nMobile: ${Mobile}`;
     props.hitAddressAddRemove({
       actionType: 'add',
-      address: {address : addressString, name: Name},
+      address: { address: addressString, name: Name },
     });
     setfirstTime(true);
   };
@@ -48,10 +48,11 @@ const AddAddress = (props) => {
 
   return (
     <>
-      <Modal width="350px" height="70%">
-        <div className="flex-column">
+      <Modal>
+        <div className="heading">
+          <h2>Add address</h2>
           <button
-            className="close button"
+            className="close"
             onClick={() => props.closeModal()}
             aria-hidden="true"
             type="button"
@@ -195,8 +196,8 @@ const AddAddress = (props) => {
               <span className="error-text">{erroraddress}</span>
             ) : null}
             <input
-              autoComplete="new-password"
-              className="input-data"
+              autoComplete="address"
+              className="input-data button"
               type="submit"
               value="ADD ADDRESS"
               id="submit-address"
