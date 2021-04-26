@@ -2,7 +2,7 @@
 import './index.scss';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 // import CarouselImages from './CarouselImages';
 
 export default function Carousel({ slides }) {
@@ -29,9 +29,9 @@ export default function Carousel({ slides }) {
 
   return (
     <section className="carousel">
-      <FaArrowAltCircleLeft className="left arrow" onClick={nextSlide} />
+      <IoIosArrowBack className="left arrow" onClick={nextSlide} />
 
-      <FaArrowAltCircleRight className="right arrow" onClick={prevSlide} />
+      <IoIosArrowForward className="right arrow" onClick={prevSlide} />
 
       {slides.map((slide, index) => (
         <div
