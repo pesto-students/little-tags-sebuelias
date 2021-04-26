@@ -51,7 +51,7 @@ function SignUp({ closeModal, history, checkAuth }) {
         </button>
       ) : (
         <button
-          className="close button"
+          className="close button/"
           onClick={() => history.goBack()}
           aria-hidden="true"
           type="button"
