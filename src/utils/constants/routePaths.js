@@ -9,3 +9,4 @@ export const WISHLIST = '/whislist';
 export const SIGN_IN = '/signin';
 export const PRODUCT = '/categories/:id'
 export const ORDER_PLACED = "/order-placed"
+export const ORDERS = "/orders"

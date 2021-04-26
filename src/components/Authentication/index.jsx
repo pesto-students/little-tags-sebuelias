@@ -12,10 +12,12 @@ function SignUp({ closeModal, history, checkAuth }) {
     firebase
       .doGoogleSignIn()
       .then((authUser) => {
+        if (authUser.additionalUserInfo.isNewUser) {
         firebase.user(authUser.user.uid).set({
           email: authUser.user.email,
           username: authUser.user.displayName,
         });
+      }
         closeModal();
       })
       .catch((error) => setErrorMessage(error.message));
@@ -25,10 +27,12 @@ function SignUp({ closeModal, history, checkAuth }) {
     firebase
       .doFacebookSignIn()
       .then((authUser) => {
+        if (authUser.additionalUserInfo.isNewUser) {
         firebase.user(authUser.user.uid).set({
           email: authUser.user.email,
           username: authUser.user.displayName,
         });
+      }
         closeModal();
       })
       .catch((error) => setErrorMessage(error.message));
@@ -47,7 +51,7 @@ function SignUp({ closeModal, history, checkAuth }) {
         </button>
       ) : (
         <button
-          className="close button"
+          className="close button/"
           onClick={() => history.goBack()}
           aria-hidden="true"
           type="button"
