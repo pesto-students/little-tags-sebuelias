@@ -4,7 +4,7 @@ import './index.scss';
 
 const OrderQuantity = ({ setquantity, setorderQuantity }) => (
   <>
-    <h3>QUANTITY:</h3>
+    <h3 className="heading-quantity">QUANTITY:</h3>
     <div className="flex-row add-substract-quantity">
       <BiMinus
         className="counter"

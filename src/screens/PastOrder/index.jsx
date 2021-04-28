@@ -26,7 +26,7 @@ const PastOrder = (props) => {
           {value.cart.map((cartValue, cartIndex) => (
             <div className="flex-row cart-row" key={cartIndex.toString()}>
               <img
-                className="image-box"
+                className="image-box-order"
                 src={cartValue.image}
                 alt={cartValue.title}
                 aria-hidden="true"

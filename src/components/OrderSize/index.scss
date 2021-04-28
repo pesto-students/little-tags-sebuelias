@@ -8,9 +8,9 @@
   align-items: center;
   text-transform: capitalize;
   cursor: pointer;
-  height: 2rem;
+  height: 3rem;
   padding: 0.2rem;
-  font-weight: bold;
+  font-weight: 600;
   margin: 0;
   margin-right: 1rem;
 }
@@ -34,4 +34,8 @@
     border: 1px solid var(--black);
     color: var(--black);
   }
+}
+
+.heading-quantity{
+  font-weight: 600;
 }

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Sort from '../Sort';
 import './index.scss';
 
 function FilterBox(props) {
@@ -46,7 +47,8 @@ function FilterBox(props) {
         </ul>
       </div>
       <div>
-        <h5>PRICE</h5>
+        <h5>SORT</h5>
+        <Sort handleDropDownValue={(event)=>props.handleDropDownValue(event)}/>
       </div>
     </div>
   );
@@ -54,6 +56,7 @@ function FilterBox(props) {
 
 FilterBox.propTypes = {
   filterBox: PropTypes.func.isRequired,
+  handleDropDownValue: PropTypes.func.isRequired,
 };
 
 export default FilterBox;

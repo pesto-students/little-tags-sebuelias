@@ -3,7 +3,7 @@ import './index.scss';
 
 const OrderSize = ({setSize, Size}) => (
     <>
-      <h3>SIZE:</h3>
+      <h3 className="heading-quantity">SIZE:</h3>
       <div className="flex-row">
         <p
           className={`size-circle ${

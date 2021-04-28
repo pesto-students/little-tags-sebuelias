@@ -1,5 +1,6 @@
 .add-substract-quantity {
   font-size: 37px;
+  font-weight: 600;
   svg {
     cursor: pointer;
   }
@@ -18,4 +19,8 @@
   &:hover {
     color: var(--red);
   }
+}
+
+.heading-quantity{
+  font-weight: 600;
 }
