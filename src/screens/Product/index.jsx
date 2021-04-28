@@ -10,7 +10,7 @@ import {
 import AddRemoveWhislist from '../../components/AddRemoveWhislist';
 import OrderQuantity from '../../components/OrderQuantity';
 import OrderSize from '../../components/OrderSize';
-import Cart from '../../components/Cart';
+import Card from "../../components/Card"
 
 import './index.scss';
 import FirebaseContext from '../../services/Firebase/context';
@@ -22,11 +22,11 @@ const Product = (props) => {
     props.location.state ? props.location.state.product : {}
   );
   const [quantity, setquantity] = useState(1);
-  const [size, setsize] = useState('');
+  const [size, setsize] = useState('M');
   const [error, seterror] = useState('');
-  const [openModal, setopenModal] = useState(false);
   const [addBagString, setaddBagString] = useState(false);
   const [whislist, setwhislist] = useState(false);
+  const [similarProduct, setsimilarProduct] = useState([])
 
   useEffect(() => {
     if (props.authDetails) {
@@ -38,7 +38,7 @@ const Product = (props) => {
         );
       }
     }
-    setaddBagString(false);
+    setTimeout(() => setaddBagString(false), 3000) ;
   }, [addBagString]);
 
   useEffect(() => {
@@ -46,6 +46,10 @@ const Product = (props) => {
       const checkWhislist = props.apparrelData.whisList.filter(
         ({ id }) => id === productDetail.id
       );
+      const checkSimilarProd = (props.apparrelData.apparrelData || []).filter(
+        ({ category, id }) =>  id !== productDetail.id && category === productDetail.category
+      );
+      setsimilarProduct(checkSimilarProd)
       if (checkWhislist.length) {
         setwhislist(true);
       }
@@ -120,43 +124,38 @@ const Product = (props) => {
         productDetail: { ...productDetail, quantity, size },
       });
       setaddBagString(true);
-      setsize('');
+      setsize("M");
       setquantity(1);
     } else {
       props.changeSignUpBool({ signUpModal: true });
     }
   };
 
+  const visualizeSimilarProduct = similarProduct.map((value, index) => (
+    <Card
+    index={index}
+    value={value}
+    key={index.toString()}
+    {...props}
+    openSignUpModal={()=>props.changeSignUpBool({signUpModal:true})}
+  />
+  ))
+
   return (
     <div className="prod-page-container">
       <div style={{ height: '100px' }} />
-      {openModal ? (
-        <Cart
-          {...props}
-          productDetail={productDetail}
-          closeModal={() => {
-            setopenModal(false);
-            setaddBagString(false);
-            setquantity(1);
-          }}
-        />
-      ) : null}
       <div className="flex-row flex-one display-product">
         <div className="flex-row image-crousel-box">
           <Carousel slides={[productDetail.image, productDetail.image]} />
-
-          {/* <img
-            className="image-box"
-            src={productDetail.image}
-            alt={productDetail.title}
-            aria-hidden="true"
-            onClick={() => {}}
-          /> */}
         </div>
         <div className="flex-column content-display-box">
           <div className="flex-column title-head">
             <h2>{productDetail.title}</h2>
             <h2>&#8377; {productDetail.price}</h2>
+          </div>
+          <div className="flex-column description">
+            <h2>DESCRIPTION</h2>
+            <p>{productDetail.description}</p>
           </div>
 
           {productDetail.category === 'women clothing' ||
@@ -187,7 +186,7 @@ const Product = (props) => {
             <div className="flex-row add-button">
               <div className="add-to-bag">
                 <button type="button" className="button" onClick={handleAddBag}>
-                  ADD TO BAG
+                  {addBagString ? "ADDED TO BAG" : "ADD TO BAG"}
                 </button>
               </div>
               <div className="add-to-whislist">
@@ -200,12 +199,11 @@ const Product = (props) => {
               </div>
             </div>
           </div>
-
-          <div className="flex-column description">
-            <h2>DESCRIPTION</h2>
-            <p>{productDetail.description}</p>
-          </div>
         </div>
+      </div>
+      <div className="flex-column similar-products">
+        <h2 className="heading-similar-prod">SIMILAR PRODUCTS</h2>
+        <div className="complete-data">{visualizeSimilarProduct}</div>
       </div>
     </div>
   );
