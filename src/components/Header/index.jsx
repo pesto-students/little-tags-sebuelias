@@ -55,7 +55,7 @@ function Header(props) {
       <nav className={`header ${headerScrolled}`}>
         <div className="hamburger-parent" ref={menuRef}>
           <Burger open={menuOpen} setOpen={setMenuOpen} />
-          <Menu open={menuOpen} />
+          <Menu open={menuOpen} close={()=>setMenuOpen(false)} {...props}/>
         </div>
 
         <h1

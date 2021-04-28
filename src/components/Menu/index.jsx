@@ -10,22 +10,63 @@ import './index.scss';
  * user
  *
  */
-function Menu({ open }) {
+function Menu({ open, history, close }) {
   return (
     <div className={`menu menu-${open ? 'open' : 'close'}`} open={open}>
       <div className="category-menu">
         <h3>Categories</h3>
-        <li href="/">Mens</li>
-        <li href="/">Womens</li>
-        <li href="/">Electronics</li>
-        <li href="/">Accessories</li>
+        <li  onClick={() => {
+          close()
+          history.push({
+            pathname: '/categories',
+            state: { QueryCategory: 'men clothing' },
+          });
+        }}
+        aria-hidden="true">Mens</li>
+        <li  onClick={() => {
+          close()
+          history.push({
+            pathname: '/categories',
+            state: { QueryCategory: 'women clothing' },
+          });
+        }}
+        aria-hidden="true">Womens</li>
+        <li  onClick={() => {
+          close()
+          history.push({
+            pathname: '/categories',
+            state: { QueryCategory: 'electronics' },
+          });
+        }}
+        aria-hidden="true">Electronics</li>
+        <li onClick={() => {
+          close()
+          history.push({
+            pathname: '/categories',
+            state: { QueryCategory: 'jewelery'},
+          });
+        }}
+        aria-hidden="true">Accessories</li>
       </div>
 
       <div className="user">
         <h3>UserName</h3>
 
-        <li href="/">Address</li>
-        <li href="/">Past Orders</li>
+        <li onClick={() => {
+          close()
+          history.push({
+            pathname: '/address',
+          });
+        }}
+        aria-hidden="true">Address</li>
+        <li onClick={() => {
+          close()
+          history.push({
+            pathname: '/orders',
+            state: { QueryCategory: 'electronics' },
+          });
+        }}
+        aria-hidden="true">Past Orders</li>
         <div className="user-buttons">
           <li className="wishlist">
             <span className="item-count">5</span>
@@ -50,6 +91,8 @@ function Menu({ open }) {
 
 Menu.propTypes = {
   open: PropTypes.bool.isRequired,
+  close: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default Menu;
