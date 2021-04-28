@@ -27,12 +27,10 @@
   display: flex;
   flex-direction: column;
   font-size: 1.3rem;
-  height: 15rem;
   cursor: pointer;
 
   .title-head {
     font-weight: bold;
-    // font-size: 1.7rem;
     width: 25rem;
   }
 }
@@ -43,6 +41,7 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1rem;
+  font-size: 1.3rem;
 
   .button {
     background: transparent;
