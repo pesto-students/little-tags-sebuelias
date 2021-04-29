@@ -119,9 +119,10 @@ const Product = (props) => {
         seterror('Please select the apparrel size');
         return;
       }
+      const getSize = productDetail.category === 'women clothing' || productDetail.category === 'men clothing' ? size : ""
       props.hitCartAddRemove({
         actionType: 'add',
-        productDetail: { ...productDetail, quantity, size },
+        productDetail: { ...productDetail, quantity, size : getSize },
       });
       setaddBagString(true);
       setsize("M");
