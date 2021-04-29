@@ -67,6 +67,12 @@
     }
   }
   button {
+    // color: white;
+    font-size: 16px;
+    width: 250px;
+    font-weight: 600;
     cursor: pointer;
+    color: var(--light);
+    background: var(--red);
   }
 }

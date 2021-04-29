@@ -32,7 +32,7 @@ const PastOrder = (props) => {
                 aria-hidden="true"
                 onClick={() => {}}
               />
-              <div className="flex-column cart-title">
+              <div className="flex-column cart-title-past-order">
                 <p className="title-head">{cartValue.title}</p>
                 <p className="size-info">
                   {cartValue.size ? `SIZE: ${cartValue.size}` : null}
@@ -58,6 +58,7 @@ const PastOrder = (props) => {
   return (
     <>
       <div style={{ height: '100px' }} />
+      <h1 className="best-sellar-title">Orders</h1>
       <div>{visualizeOrder}</div>
     </>
   );

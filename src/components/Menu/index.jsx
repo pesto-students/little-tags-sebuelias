@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-import { FaRegHeart } from 'react-icons/fa';
-import { FiShoppingBag, FiLogOut } from 'react-icons/fi';
 
 import './index.scss';
 
@@ -50,7 +48,7 @@ function Menu({ open, history, close }) {
       </div>
 
       <div className="user">
-        <h3>UserName</h3>
+        <h3>Account</h3>
 
         <li onClick={() => {
           close()
@@ -63,27 +61,23 @@ function Menu({ open, history, close }) {
           close()
           history.push({
             pathname: '/orders',
-            state: { QueryCategory: 'electronics' },
           });
         }}
-        aria-hidden="true">Past Orders</li>
-        <div className="user-buttons">
-          <li className="wishlist">
-            <span className="item-count">5</span>
-            <FaRegHeart />
-          </li>
-
-          <li className="cart">
-            <span className="item-count">5</span>
-            <FiShoppingBag />
-          </li>
-
-          <li className="logout">
-            {/* {props.authUser ? ( */}
-            <FiLogOut /* onClick={handleLogout}  */ />
-            {/* ) : null} */}
-          </li>
-        </div>
+        aria-hidden="true">Orders</li>
+             <li onClick={() => {
+          close()
+          history.push({
+            pathname: '/whislist',
+          });
+        }}
+        aria-hidden="true">Whislist</li>
+             <li onClick={() => {
+          close()
+          history.push({
+            pathname: '/cart',
+          });
+        }}
+        aria-hidden="true">Cart</li>
       </div>
     </div>
   );

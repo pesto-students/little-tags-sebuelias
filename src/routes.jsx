@@ -14,6 +14,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from "./utils/ScrollToTop"
 import PastOrder from './screens/PastOrder';
+import Cart from './components/Cart';
 
 /* ! TODO: Use common Header / Footer  */
 function Routes() {
@@ -33,6 +34,7 @@ function Routes() {
           <Route exact path={ROUTES.WISHLIST} component={Wishlist} />
           <Route exact path={ROUTES.PAYMENT} component={Payment} />
           <Route exact path={ROUTES.ORDERS} component={PastOrder} />
+          <Route exact path={ROUTES.CART} component={Cart} />
           <Route path={ROUTES.ERROR} component={ErrorPage} />
           <Route component={ErrorPage} />
         </Switch>

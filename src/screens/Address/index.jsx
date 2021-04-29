@@ -85,7 +85,7 @@ const Address = (props) => {
           }}
         />
       ) : null}
-      {proceedToPayment ? (
+      
         <div className="proceed-to-payment">
           <div
             className="add-address"
@@ -95,11 +95,11 @@ const Address = (props) => {
             <BiPlus className="icon" />
             <h1>Add address</h1>
           </div>
-          <button className="button" type="button" onClick={handlePayment}>
+          {proceedToPayment ? ( <button className="button" type="button" onClick={handlePayment}>
             Proceed to payment
-          </button>{' '}
+          </button>) : null }
         </div>
-      ) : null}
+      
       {visualizeAddress}
     </div>
   );
