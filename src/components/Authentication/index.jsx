@@ -38,7 +38,7 @@ function SignUp({ closeModal, history, checkAuth }) {
     <Modal width="50%" height="50%">
       {!checkAuth ? (
         <button
-          className="close button"
+          className="close"
           onClick={() => closeModal()}
           aria-hidden="true"
           type="button"
@@ -47,7 +47,7 @@ function SignUp({ closeModal, history, checkAuth }) {
         </button>
       ) : (
         <button
-          className="close button"
+          className="close"
           onClick={() => history.goBack()}
           aria-hidden="true"
           type="button"
