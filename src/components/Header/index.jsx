@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useContext } from 'react';
-import { FaRegHeart } from 'react-icons/fa';
-import { FiShoppingBag, FiLogOut } from 'react-icons/fi';
+import { FaRegHeart, FaRegUser } from 'react-icons/fa';
+import { FiShoppingBag } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -21,6 +21,7 @@ function Header(props) {
   const [openModal, setopenModal] = useState(false);
   const [openCartModal, setopenCartModal] = useState(false);
   const [headerScrolled, setHeaderScroll] = useState('');
+  const [onHoverUser, setonHoverUser] = useState(false)
 
   const menuRef = useRef();
   useOnClickOutside(menuRef, () => setMenuOpen(false));
@@ -74,29 +75,6 @@ function Header(props) {
 
         <div className="header-buttons">
           <ul>
-            {!props.authUser ? (
-              <li onClick={handleLoginModal} aria-hidden="true">
-                <a
-                  className="login icons"
-                  href="login.html"
-                  data-toggle="tooltip"
-                  data-selector="true"
-                  data-placement="bottom"
-                  title="Login / Register"
-                >
-                  Login
-                </a>
-              </li>
-            ) : (
-              <li aria-hidden="true">
-                <span className="username icons">
-                  Hi,{props.authUser.username}
-                </span>
-              </li>
-            )}
-          </ul>
-
-          <ul>
             <li className="wishlist">
               <span className="item-count">
                 {props.apparrelData.whisList.length
@@ -135,13 +113,45 @@ function Header(props) {
               />
             </li>
           </ul>
-
-          <ul>
-            <li className="cart">
-              {props.authUser ? (
-                <FiLogOut className="logout icons" onClick={handleLogout} />
-              ) : null}
-            </li>
+          <ul className="auth-feature">
+            {!props.authUser ? (
+              <li onClick={handleLoginModal} aria-hidden="true">
+                <a
+                  className="login icons"
+                  href="login.html"
+                  data-toggle="tooltip"
+                  data-selector="true"
+                  data-placement="bottom"
+                  title="Login / Register"
+                >
+                  Login
+                </a>
+              </li>
+            ) : (
+              <li aria-hidden="true" className="flex-column user-icon" onMouseLeave={(event) => {
+                event.preventDefault();
+                setonHoverUser(false);
+              }}>
+                <FaRegUser className="logout icons" onClick={()=>{}} onMouseOver={(event) => {
+          event.preventDefault();
+          setonHoverUser(true);
+        }}
+        onFocus={(event) => {
+          event.preventDefault();
+          setonHoverUser(false);
+        }}/>
+                
+                {onHoverUser ? <div className="onhover-user">
+                  <div className="arrow"/>
+                  <div className="flex-column dropdown-user-content">
+                   <span className="username icons-hover">
+                  Hi, <br/>{props.authUser.username}
+                </span>
+                <span className="logout icons-hover" onClick={handleLogout} aria-hidden="true">Logout</span>
+                </div>
+                </div> : null}
+              </li>
+            )}
           </ul>
         </div>
       </nav>

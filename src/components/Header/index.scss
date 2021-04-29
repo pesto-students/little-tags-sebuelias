@@ -46,11 +46,9 @@ $textColor: var(--textColor);
   }
 
   .wishlist {
-    // color: #dc3545;
     cursor: pointer;
   }
   .cart {
-    // color: #dc3545;
     cursor: pointer;
   }
   .login,
@@ -62,7 +60,6 @@ $textColor: var(--textColor);
 
   .username {
     padding-right: 1rem;
-    cursor: pointer;
   }
 }
 nav.header.scrolled {
@@ -78,9 +75,7 @@ nav.header.scrolled {
   min-width: 1ch;
 }
 
-.icons {
-  font-size: 1.7rem;
-  cursor: pointer;
+.icons-hover {
   color: var(--black);
   transition: ease-in 0.3s;
   margin-left: 1rem;
@@ -88,4 +83,48 @@ nav.header.scrolled {
   &:hover {
     color: var(--red);
   }
+}
+
+
+.onhover-user{
+  width: 200px;
+  height: 122px;
+  background: white;
+  border-radius: 7px;
+  border: 1px solid brown;
+  position: fixed;
+  margin: 35px 0px 0px -162px;
+}
+
+.arrow{
+  content: "";
+    position: absolute;
+    top: -16%;
+    left: 91%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent brown transparent;
+    font-size: 3rem;
+    color: var(--black);
+    z-index: 3;
+    cursor: pointer;
+    user-select: none;
+    transition: all ease-in 0.2s;
+}
+
+.dropdown-user-content{
+  height: 122px;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.user-icon{
+  margin-bottom: 7px;
+}
+
+.auth-feature{
+  width: 100px;
+  display: flex;
+  justify-content: flex-end;
 }
