@@ -80,19 +80,16 @@ const Card = (props) => {
           });
         }}
       >
-        <h3 className="title-head">{props.value.title}</h3>
-        <h3 className="title-head">&#8377; {props.value.price}</h3>
-      </div>
-      <div className="card-footer-div">
-        <button className="button" type="button">
-          Buy Now
-        </button>
-        <AddRemoveWhislist
-          whislist={whislist}
-          handleAddWhislist={handleAddWhislist}
-          handleRemoveWhislist={handleRemoveWhislist}
-          productDetail={props.value}
-        />
+        <h3 className="item-name">{props.value.title}</h3>
+        <span className="card-footer">
+          <h3 className="title-price">&#8377; {props.value.price}</h3>
+          <AddRemoveWhislist
+            whislist={whislist}
+            handleAddWhislist={handleAddWhislist}
+            handleRemoveWhislist={handleRemoveWhislist}
+            productDetail={props.value}
+          />
+        </span>
       </div>
     </div>
   );

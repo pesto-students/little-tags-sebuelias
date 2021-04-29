@@ -1,15 +1,14 @@
 /* eslint-disable react/no-array-index-key */
 import './index.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
-// import CarouselImages from './CarouselImages';
 
-export default function Carousel({ slides }) {
+export default function Carousel({ slides, timer }) {
   const [currentSlideNumber, setCurrentSlideNumber] = useState(0);
   // eslint-disable-next-line prefer-destructuring
-  // eslint-disable-next-line prefer-destructuring
   const length = slides.length;
+  let autoSlideTimer = null;
 
   const nextSlide = () => {
     setCurrentSlideNumber(
@@ -22,6 +21,19 @@ export default function Carousel({ slides }) {
       currentSlideNumber === 0 ? length - 1 : currentSlideNumber - 1
     );
   };
+
+  useEffect(() => {
+    if (timer !== 0) {
+      autoSlideTimer = setInterval(() => {
+        nextSlide();
+      }, timer);
+    }
+    return () => {
+      if (autoSlideTimer) {
+        clearInterval(autoSlideTimer);
+      }
+    };
+  });
 
   if (!Array.isArray(slides) || length === 0) {
     return null;
@@ -43,18 +55,6 @@ export default function Carousel({ slides }) {
           )}
         </div>
       ))}
-      {/*
-      <div className="row">
-        <div className="column">
-          <img
-            className="demo cursor"
-            src="img_woods.jpg"
-            style="width:100%"
-            onclick="currentSlide(1)"
-            alt="The Woods"
-          />
-        </div>
-      </div> */}
     </section>
   );
 }
@@ -63,4 +63,9 @@ Carousel.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   // eslint-disable-next-line react/forbid-prop-types
   slides: PropTypes.array.isRequired,
+  timer: PropTypes.number,
+};
+
+Carousel.defaultProps = {
+  timer: 0,
 };

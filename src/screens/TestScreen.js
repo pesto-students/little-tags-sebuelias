@@ -6,7 +6,7 @@ import Categories from '../components/Categories';
 const TestScreen = () => (
   <>
     <div>
-      <Carousel slides={CarouselImages} />
+      <Carousel slides={CarouselImages} timer={500} />
       <Categories />
       {/* <div style={{}}>
         <BestSeller />

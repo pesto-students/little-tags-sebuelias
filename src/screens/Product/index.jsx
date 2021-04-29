@@ -143,7 +143,10 @@ const Product = (props) => {
       ) : null}
       <div className="flex-row flex-one display-product">
         <div className="flex-row image-crousel-box">
-          <Carousel slides={[productDetail.image, productDetail.image]} />
+          <Carousel
+            timer={3000}
+            slides={[productDetail.image, productDetail.image]}
+          />
 
           {/* <img
             className="image-box"
