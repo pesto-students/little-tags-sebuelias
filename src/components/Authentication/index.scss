@@ -38,37 +38,24 @@
   padding-left: 64px;
   z-index: 1;
   color: var(--white);
+  opacity: 0.85;
+
   border: none;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: all 0.2s ease-in-out;
-    // box-shadow: inset 0 3px 0 hsla(0, 0, 0, 0), 0 3px 3px hsla(0, 0, 0, 0.2);
-    border-radius: 5px;
-  }
-
-  &:hover::after {
-    background: hsla(0, 0, 0, 0.1);
-    // box-shadow: inset -9px -6px 0 hsla(0, 0, 0, 0.2);
+  &:hover {
+    opacity: 1;
+    box-shadow: 0 4px 8px 0 rgba(2, 2, 2, 0.5), 0 6px 20px 0 rgba(2, 2, 2, 0.49);
   }
 
   .fa {
     position: absolute;
-    top: 0;
     left: 0;
     z-index: 1;
     width: 50px;
-    height: 100%;
     text-align: center;
     background: hsla(0, 0, 0, 0.1);
     line-height: 3.2;
@@ -76,10 +63,10 @@
   }
 }
 .google {
-  background-color: hsl(7, 71%, 55%);
+  background-color: #dd4b39; // hsl(7, 71%, 55%);
 }
 .facebook {
-  background-color: hsl(221, 44%, 41%);
+  background-color: #3b5998; // hsl(221, 44%, 41%);
 }
 
 .error-message {

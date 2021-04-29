@@ -15,6 +15,7 @@ function Menu({ open }) {
     <div className={`menu menu-${open ? 'open' : 'close'}`} open={open}>
       <div className="category-menu">
         <h3>Categories</h3>
+        <li href="/">All</li>
         <li href="/">Mens</li>
         <li href="/">Womens</li>
         <li href="/">Electronics</li>

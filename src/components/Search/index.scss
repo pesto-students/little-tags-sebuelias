@@ -8,8 +8,10 @@ $color: var(--black);
   min-width: 3rem;
   align-items: center;
   color: var(--black);
+  transition: all 250ms ease-in;
+
   &:hover {
-    color: var(--brown);
+    color: var(--red);
   }
 }
 .seach-text {
@@ -19,7 +21,13 @@ $color: var(--black);
   width: 25rem;
   padding: 0.2rem 3rem 0.2rem 2rem;
   outline: 0;
-  border: none;
+  // border: none;
+
+  border: 3px solid var(--black);
+  border-top: none;
+  border-bottom: 3px solid transparent;
+  transition: all 250ms ease-in;
+
   border-radius: 40px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -28,7 +36,8 @@ $color: var(--black);
 
   &:focus,
   &:hover {
-    border-bottom: 1px solid var(--brown);
+    border: 3px solid var(--red);
+    border-top: none;
     // color: var(--brown);
   }
 }

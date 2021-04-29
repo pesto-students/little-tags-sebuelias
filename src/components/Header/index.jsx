@@ -73,76 +73,68 @@ function Header(props) {
         </div>
 
         <div className="header-buttons">
-          <ul>
-            {!props.authUser ? (
-              <li onClick={handleLoginModal} aria-hidden="true">
-                <a
-                  className="login icons"
-                  href="login.html"
-                  data-toggle="tooltip"
-                  data-selector="true"
-                  data-placement="bottom"
-                  title="Login / Register"
-                >
-                  Login
-                </a>
-              </li>
-            ) : (
-              <li aria-hidden="true">
-                <span className="username icons">
-                  Hi,{props.authUser.username}
-                </span>
-              </li>
-            )}
-          </ul>
+          <li className="wishlist">
+            <span className="item-count">
+              {props.apparrelData.whisList.length
+                ? props.apparrelData.whisList.length
+                : ' '}
+            </span>
+            <FaRegHeart
+              className="icons"
+              onClick={() => {
+                if (props.authUser) {
+                  props.history.push({ pathname: '/whislist' });
+                } else {
+                  setopenModal(true);
+                }
+              }}
+            />
+          </li>
 
-          <ul>
-            <li className="wishlist">
-              <span className="item-count">
-                {props.apparrelData.whisList.length
-                  ? props.apparrelData.whisList.length
-                  : ' '}
+          <li className="cart">
+            <span className="item-count">
+              {props.apparrelData.cart.length
+                ? props.apparrelData.cart.length
+                : ' '}
+            </span>
+            <FiShoppingBag
+              className="icons"
+              onClick={() => {
+                if (props.authUser) {
+                  setopenCartModal(true);
+                } else {
+                  setopenModal(true);
+                }
+              }}
+            />
+          </li>
+
+          <li className="cart">
+            {props.authUser ? (
+              <FiLogOut className="logout icons" onClick={handleLogout} />
+            ) : null}
+          </li>
+
+          {!props.authUser ? (
+            <li onClick={handleLoginModal} aria-hidden="true">
+              <a
+                className="login icons"
+                href="login.html"
+                data-toggle="tooltip"
+                data-selector="true"
+                data-placement="bottom"
+                title="Login / Register"
+              >
+                Login
+              </a>
+            </li>
+          ) : (
+            <li aria-hidden="true">
+              <span className="username icons">
+                Hi,{props.authUser.username}
               </span>
-              <FaRegHeart
-                className="icons"
-                onClick={() => {
-                  if (props.authUser) {
-                    props.history.push({ pathname: '/whislist' });
-                  } else {
-                    setopenModal(true);
-                  }
-                }}
-              />
             </li>
-          </ul>
-
-          <ul>
-            <li className="cart">
-              <span className="item-count">
-                {props.apparrelData.cart.length
-                  ? props.apparrelData.cart.length
-                  : ' '}
-              </span>
-              <FiShoppingBag
-                className="icons"
-                onClick={() => {
-                  if (props.authUser) {
-                    setopenCartModal(true);
-                  } else {
-                    setopenModal(true);
-                  }
-                }}
-              />
-            </li>
-          </ul>
-
-          <ul>
-            <li className="cart">
-              {props.authUser ? (
-                <FiLogOut className="logout icons" onClick={handleLogout} />
-              ) : null}
-            </li>
-          </ul>
+          )}
         </div>
       </nav>
       {openModal || props.apparrelData.openSignUpModal ? (

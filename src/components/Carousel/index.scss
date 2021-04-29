@@ -2,7 +2,6 @@ $color: var(--black);
 .home-container {
   .carousel {
     position: relative;
-    // height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -10,9 +9,8 @@ $color: var(--black);
   }
 
   .image {
-    width: 97.5vw;
+    width: 100vw;
     height: 100vh;
-    border-radius: 10px;
   }
 }
 .arrow {
@@ -39,12 +37,16 @@ $color: var(--black);
 }
 
 .slide {
-  opacity: 0;
+  // opacity: 0;
+  transform: translateX(-100%);
+
   transition-duration: 1s ease;
 }
 
 .slide.active {
-  opacity: 1;
+  // opacity: 1;
+  transform: translateX(0%);
+
   transition-duration: 1s;
-  transform: scale(1.01);
+  // transform: scale(1.01);
 }

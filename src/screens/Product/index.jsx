@@ -147,14 +147,6 @@ const Product = (props) => {
             timer={3000}
             slides={[productDetail.image, productDetail.image]}
           />
-
-          {/* <img
-            className="image-box"
-            src={productDetail.image}
-            alt={productDetail.title}
-            aria-hidden="true"
-            onClick={() => {}}
-          /> */}
         </div>
         <div className="flex-column content-display-box">
           <div className="flex-column title-head">
@@ -188,19 +180,15 @@ const Product = (props) => {
             </div>
 
             <div className="flex-row add-button">
-              <div className="add-to-bag">
-                <button type="button" className="button" onClick={handleAddBag}>
-                  ADD TO BAG
-                </button>
-              </div>
-              <div className="add-to-whislist">
-                <AddRemoveWhislist
-                  whislist={whislist}
-                  handleAddWhislist={handleAddWhislist}
-                  handleRemoveWhislist={handleRemoveWhislist}
-                  productDetail={productDetail}
-                />
-              </div>
+              <button type="button" className="button" onClick={handleAddBag}>
+                ADD TO BAG
+              </button>
+              <AddRemoveWhislist
+                whislist={whislist}
+                handleAddWhislist={handleAddWhislist}
+                handleRemoveWhislist={handleRemoveWhislist}
+                productDetail={productDetail}
+              />
             </div>
           </div>
 
