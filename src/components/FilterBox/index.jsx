@@ -45,9 +45,6 @@ function FilterBox(props) {
           </li>
         </ul>
       </div>
-      <div>
-        <h5>PRICE</h5>
-      </div>
     </div>
   );
 }
