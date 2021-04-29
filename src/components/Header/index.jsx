@@ -105,7 +105,7 @@ function Header(props) {
                 className="icons"
                 onClick={() => {
                   if (props.authUser) {
-                    setopenCartModal(true);
+                    props.history.push({ pathname: '/cart' });
                   } else {
                     setopenModal(true);
                   }

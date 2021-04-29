@@ -57,14 +57,13 @@ const CartSingle = (props) => {
           alt={props.productDetail.title}
           aria-hidden="true"
           onClick={() => {
-            props.closeModal();
             props.history.push({
               pathname: `/categories/${props.productDetail.id}`,
               state: { product: props.productDetail },
             });
           }}
         />
-        <div className="flex-column">
+        <div className="flex-column cart-title-whislist">
           <h3 className="title-head">{props.productDetail.title}</h3>
           <h3 className="size-info">
             {props.productDetail.size
@@ -99,7 +98,6 @@ const CartSingle = (props) => {
 CartSingle.propTypes = {
   productDetail: PropTypes.objectOf(PropTypes.string).isRequired,
   history: PropTypes.objectOf(PropTypes.object).isRequired,
-  closeModal: PropTypes.func.isRequired,
   hitWhislist: PropTypes.func.isRequired,
   hitCartAddRemove: PropTypes.func.isRequired,
   hitAddRemoveApparelCount: PropTypes.func.isRequired,
