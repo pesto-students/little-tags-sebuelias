@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaFacebookF, FaGoogle } from 'react-icons/fa';
+import {IoMdClose} from "react-icons/io"
 import Modal from '../Modal';
 import {} from './index.scss';
 import FirebaseContext from '../../services/Firebase/context';
@@ -41,14 +42,7 @@ function SignUp({ closeModal, history, checkAuth }) {
   return (
     <Modal width="50%" height="50%">
       {!checkAuth ? (
-        <button
-          className="close button"
-          onClick={() => closeModal()}
-          aria-hidden="true"
-          type="button"
-        >
-          close
-        </button>
+                  <IoMdClose className="close" onClick={() => closeModal()}/>
       ) : (
         <button
           className="close button/"

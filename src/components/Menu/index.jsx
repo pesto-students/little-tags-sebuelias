@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { connect } from "react-redux"
 
 import './index.scss';
 
@@ -8,7 +9,7 @@ import './index.scss';
  * user
  *
  */
-function Menu({ open, history, close }) {
+function Menu({ open, history, close, authDetails }) {
   return (
     <div className={`menu menu-${open ? 'open' : 'close'}`} open={open}>
       <div className="category-menu">
@@ -47,7 +48,7 @@ function Menu({ open, history, close }) {
         aria-hidden="true">Accessories</li>
       </div>
 
-      <div className="user">
+      {authDetails ? <div className="user">
         <h3>Account</h3>
 
         <li onClick={() => {
@@ -78,7 +79,7 @@ function Menu({ open, history, close }) {
           });
         }}
         aria-hidden="true">Cart</li>
-      </div>
+      </div> : null }
     </div>
   );
 }
@@ -86,7 +87,12 @@ function Menu({ open, history, close }) {
 Menu.propTypes = {
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
-  history: PropTypes.objectOf(PropTypes.string).isRequired
+  history: PropTypes.objectOf(PropTypes.string).isRequired,
+  authDetails: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
-export default Menu;
+const mapStateToProps = (state) => ({
+  authDetails: state.authDetails.auth,
+});
+
+export default connect(mapStateToProps)(Menu);

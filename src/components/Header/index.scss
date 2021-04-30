@@ -69,7 +69,7 @@ nav.header.scrolled {
 }
 
 .item-count {
-  color: var(--red);
+  color: var(--light);
   font-size: 1.2rem;
   font-weight: bold;
   min-width: 1ch;
@@ -127,4 +127,17 @@ nav.header.scrolled {
   width: 100px;
   display: flex;
   justify-content: flex-end;
+}
+
+.quantity-on-icon{
+  background: var(--red);
+  border-radius: 50%;
+  width: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  position: fixed;
+  margin: -7px 0px 0px 26px;
+  padding: 0px 0px 0px 2px;
 }

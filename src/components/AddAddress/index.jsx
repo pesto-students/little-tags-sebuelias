@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import {IoMdClose} from "react-icons/io"
 import Modal from '../Modal';
 import { hitAddressAddRemove } from '../../store/modules/apparrelData/actions';
 import FirebaseContext from '../../services/Firebase/context';
@@ -51,14 +52,7 @@ const AddAddress = (props) => {
       <Modal>
         <div className="heading">
           <h2>Add address</h2>
-          <button
-            className="close"
-            onClick={() => props.closeModal()}
-            aria-hidden="true"
-            type="button"
-          >
-            close
-          </button>
+          <IoMdClose className="close" onClick={() => props.closeModal()}/>
           <form onSubmit={handleSubmit}>
             <input
               autoComplete="off"

@@ -76,11 +76,11 @@ function Header(props) {
         <div className="header-buttons">
           <ul>
             <li className="wishlist">
-              <span className="item-count">
+            {props.apparrelData.whisList.length ? <div className="quantity-on-icon"><span className="item-count">
                 {props.apparrelData.whisList.length
                   ? props.apparrelData.whisList.length
                   : ' '}
-              </span>
+              </span> </div>: null}
               <FaRegHeart
                 className="icons"
                 onClick={() => {
@@ -96,11 +96,11 @@ function Header(props) {
 
           <ul>
             <li className="cart">
-              <span className="item-count">
+            {props.apparrelData.cart.length ? <div className="quantity-on-icon"><span className="item-count">
                 {props.apparrelData.cart.length
                   ? props.apparrelData.cart.length
                   : ' '}
-              </span>
+              </span> </div>: null}
               <FiShoppingBag
                 className="icons"
                 onClick={() => {
