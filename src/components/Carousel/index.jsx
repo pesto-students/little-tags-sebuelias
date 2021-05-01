@@ -40,7 +40,7 @@ export default function Carousel({ slides, timer }) {
   }
 
   return (
-    <section className="carousel">
+    <section className="carousel flex-column">
       <IoIosArrowBack className="left arrow-crousel" onClick={nextSlide} />
 
       <IoIosArrowForward className="right arrow-crousel" onClick={prevSlide} />
@@ -54,7 +54,13 @@ export default function Carousel({ slides, timer }) {
             <img src={slide} alt="test" className="image" key={index} />
           )}
         </div>
+        
       ))}
+      <div className="flex-row cousel-indicator">
+      {slides.map((slide, index) => (
+        <li className={index === currentSlideNumber ? "selected-cousel-indicator" : ""} key={index.toString()}/>
+      ))}
+      </div>
     </section>
   );
 }
