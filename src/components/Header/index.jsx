@@ -145,9 +145,9 @@ function Header(props) {
                   <div className="arrow"/>
                   <div className="flex-column dropdown-user-content">
                    <span className="username icons-hover">
-                  Hi, <br/>{props.authUser.username}
+                  Hi,{props.authUser.username.split(" ")[0]}
                 </span>
-                <span className="logout icons-hover" onClick={handleLogout} aria-hidden="true">Logout</span>
+                <span className="logout-button icons-hover" onClick={handleLogout} aria-hidden="true">Logout</span>
                 </div>
                 </div> : null}
               </li>

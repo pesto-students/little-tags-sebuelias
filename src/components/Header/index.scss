@@ -58,6 +58,14 @@ $textColor: var(--textColor);
     color: $textColor;
   }
 
+  .logout-button{
+    height: 20px;
+    padding: 16px 0 0 0;
+    cursor: pointer;
+    text-decoration: none;
+    color: $textColor;
+  }
+
   .username {
     padding-right: 1rem;
   }
@@ -88,7 +96,7 @@ nav.header.scrolled {
 
 .onhover-user{
   width: 200px;
-  height: 122px;
+  height: 100px;
   background: white;
   border-radius: 7px;
   border: 1px solid brown;
@@ -99,7 +107,7 @@ nav.header.scrolled {
 .arrow{
   content: "";
     position: absolute;
-    top: -16%;
+    top: -21%;
     left: 91%;
     margin-left: -5px;
     border-width: 10px;
@@ -115,8 +123,8 @@ nav.header.scrolled {
 
 .dropdown-user-content{
   height: 122px;
-  justify-content: center;
-  margin-left: 10px;
+  justify-content: flex-start;
+  padding: 17px 0px 0px 0px;
 }
 
 .user-icon{
