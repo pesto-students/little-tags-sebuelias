@@ -49,11 +49,12 @@ const AddAddress = (props) => {
 
   return (
     <>
-      <Modal>
+      <Modal width="400px">
         <div className="heading">
           <h2>Add address</h2>
           <IoMdClose className="close" onClick={() => props.closeModal()}/>
           <form onSubmit={handleSubmit}>
+            <div className="flex-column">
             <input
               autoComplete="off"
               onBlur={(event) =>
@@ -70,6 +71,8 @@ const AddAddress = (props) => {
               }}
             />
             {errorName ? <span className="error-text">{errorName}</span> : null}
+            </div>
+            <div className="flex-column">
             <input
               autoComplete="off"
               className="input-data"
@@ -87,6 +90,7 @@ const AddAddress = (props) => {
             {errorMobile ? (
               <span className="error-text">{errorMobile}</span>
             ) : null}
+            </div>
             <div className="flex-row">
               <div className="flex-column">
                 <input
@@ -171,6 +175,7 @@ const AddAddress = (props) => {
                 ) : null}
               </div>
             </div>
+            <div className="flex-column">
             <textarea
               autoComplete="new-password"
               id="address"
@@ -189,6 +194,7 @@ const AddAddress = (props) => {
             {erroraddress ? (
               <span className="error-text">{erroraddress}</span>
             ) : null}
+            </div>
             <input
               autoComplete="address"
               className="input-data button"

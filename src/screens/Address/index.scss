@@ -22,7 +22,7 @@
 
 .icon-delete {
   cursor: pointer;
-  width: 30px;
+  width: 35px;
   height: 16px;
 
   color: var(--black);
@@ -36,8 +36,13 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 250px;
-  margin: 30px 12% 20px 12%;
+  width: 280px;
+  margin: 30px 10% 20px 10%;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: brown;
+  padding: 0 10px 0 10px;
 }
 .name-address {
   display: flex;
