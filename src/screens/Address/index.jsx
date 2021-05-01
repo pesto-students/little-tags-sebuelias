@@ -65,7 +65,7 @@ const Address = (props) => {
         </div>
 
         <AiOutlineDelete
-          className="icon"
+          className="icon-delete"
           onClick={() => {
             props.hitAddressAddRemove({ actionType: 'remove', index });
             setcheckDelete(true);
@@ -100,7 +100,7 @@ const Address = (props) => {
           </button>) : null }
         </div>
       
-      {visualizeAddress}
+      <div className="flex-row address-wrap">{visualizeAddress}</div>
     </div>
   );
 };

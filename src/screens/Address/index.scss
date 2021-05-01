@@ -20,9 +20,10 @@
   }
 }
 
-.icon {
-  font-size: 2rem;
+.icon-delete {
   cursor: pointer;
+  width: 30px;
+  height: 16px;
 
   color: var(--black);
   &:hover {
@@ -35,8 +36,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  // flex-direction: column;
-  width: 100%;
+  width: 250px;
   margin: 30px 12% 20px 12%;
 }
 .name-address {
@@ -44,6 +44,8 @@
   justify-content: space-between;
   flex-direction: column;
   padding: 2rem;
+  width: 370px;
+  white-space: pre-wrap;
 }
 .cursor-pointer {
   height: 54px;
@@ -67,7 +69,6 @@
     }
   }
   button {
-    // color: white;
     font-size: 16px;
     width: 250px;
     font-weight: 600;
@@ -75,4 +76,8 @@
     color: var(--light);
     background: var(--red);
   }
+}
+
+.address-wrap{
+  flex-wrap: wrap;
 }
