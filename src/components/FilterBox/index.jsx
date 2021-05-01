@@ -12,35 +12,35 @@ function FilterBox(props) {
           <li
             onClick={() => props.filterBox('all-products')}
             aria-hidden="true"
-            className="Category"
+            className={`Category ${props.currCategory.toLowerCase() === 'all-products' ? "selected-category" : ""}`}
           >
             All Products
           </li>
           <li
             onClick={() => props.filterBox('men clothing')}
             aria-hidden="true"
-            className="Category"
+            className={`Category ${props.currCategory.toLowerCase() === 'men clothing' ? "selected-category" : ""}`}
           >
             Mens Clothing
           </li>
           <li
             onClick={() => props.filterBox('women clothing')}
             aria-hidden="true"
-            className="Category"
+            className={`Category ${props.currCategory.toLowerCase() === 'women clothing' ? "selected-category" : ""}`}
           >
             Women Clothing
           </li>
           <li
             onClick={() => props.filterBox('electronics')}
             aria-hidden="true"
-            className="Category"
+            className={`Category ${props.currCategory.toLowerCase() === 'electronics' ? "selected-category" : ""}`}
           >
             Electronics
           </li>
           <li
             onClick={() => props.filterBox('jewelery')}
             aria-hidden="true"
-            className="Category"
+            className={`Category ${props.currCategory.toLowerCase() === 'jewelery' ? "selected-category" : ""}`}
           >
             Jewlery
           </li>
@@ -57,6 +57,7 @@ function FilterBox(props) {
 FilterBox.propTypes = {
   filterBox: PropTypes.func.isRequired,
   handleDropDownValue: PropTypes.func.isRequired,
+  currCategory: PropTypes.string.isRequired,
 };
 
 export default FilterBox;
