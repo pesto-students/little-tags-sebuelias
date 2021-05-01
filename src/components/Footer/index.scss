@@ -3,7 +3,6 @@ $fontColor: var(--white);
 
 .contact-box {
   width: 250px;
-  // font-size: 1.2rem;
 }
 
 .footer {
@@ -41,12 +40,6 @@ $fontColor: var(--white);
     $backgroundColor,
     $backgroundColor
   );
-  // border-width: 3px;
-  // border-style: solid;
-  // border-image: linear-gradient(to bottom, red, rgba(0, 0, 0, 0)) 1 100%;
-  // border-top-style: groove
-  // border-color: darkgrey
-  // border-width: 0.5px
 }
 .fix-bottom {
   bottom: 0;

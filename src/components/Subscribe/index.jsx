@@ -2,7 +2,7 @@ import './index.sass';
 
 const Subscribe = () => (
   <div className="subscribe-parent">
-    <form>
+    <form className="align-subscribe">
       <input
         type="text"
         placeholder="Your Email ID"
