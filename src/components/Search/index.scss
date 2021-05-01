@@ -7,26 +7,39 @@ $color: var(--black);
   position: relative;
   min-width: 3rem;
   align-items: center;
-  color: var(--brown);
+  color: var(--black);
+  transition: all 250ms ease-in;
+
   &:hover {
-    color: var(--brown);
+    color: var(--red);
   }
 }
 .seach-text {
   font-family: 'Montserrat';
   font-size: 2rem;
   background-color: transparent;
-  width: 40rem;
+  width: 25rem;
   padding: 0.2rem 3rem 0.2rem 2rem;
   outline: 0;
-  border: none;
+  // border: none;
+
+  border: 3px solid var(--black);
+  border-top: none;
+  border-bottom: 3px solid transparent;
+  transition: all 250ms ease-in;
+
   border-radius: 40px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   outline: none;
-  border: 2px solid var(--brown);
-  height: 5rem;
+
+  &:focus,
+  &:hover {
+    border: 3px solid var(--red);
+    border-top: none;
+    // color: var(--brown);
+  }
 }
 .seach-button {
   position: absolute;

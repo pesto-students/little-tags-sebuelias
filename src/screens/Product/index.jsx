@@ -147,17 +147,20 @@ const Product = (props) => {
       <div style={{ height: '100px' }} />
       <div className="flex-row flex-one display-product">
         <div className="flex-row image-crousel-box">
-          <Carousel slides={[productDetail.image, productDetail.image]} />
+        <Carousel
+            timer={3000}
+            slides={[productDetail.image, productDetail.image]}
+          />
         </div>
         <div className="flex-column content-display-box">
           <div className="flex-column title-head">
             <h2>{productDetail.title}</h2>
             <h2>&#8377; {productDetail.price}</h2>
           </div>
-          <div className="flex-column description">
+          {/* <div className="flex-column description">
             <h2>DESCRIPTION</h2>
             <p>{productDetail.description}</p>
-          </div>
+          </div> */}
 
           {productDetail.category === 'women clothing' ||
           productDetail.category === 'men clothing' ? (
@@ -199,6 +202,10 @@ const Product = (props) => {
                 />
               </div>
             </div>
+          </div>
+          <div className="flex-column description">
+            <h2>DESCRIPTION</h2>
+            <p>{productDetail.description}</p>
           </div>
         </div>
       </div>

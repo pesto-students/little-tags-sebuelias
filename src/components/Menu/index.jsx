@@ -14,6 +14,14 @@ function Menu({ open, history, close, authDetails }) {
     <div className={`menu menu-${open ? 'open' : 'close'}`} open={open}>
       <div className="category-menu">
         <h3>Categories</h3>
+        <li onClick={() => {
+          close()
+          history.push({
+            pathname: '/categories',
+            state: { QueryCategory: 'all-products' },
+          });
+        }}
+        aria-hidden="true">All</li>
         <li  onClick={() => {
           close()
           history.push({

@@ -15,7 +15,7 @@ const Home = (props) => {
   return (
     <>
       <div className="home-container">
-        <Carousel slides={CarouselImages} {...props} />
+      <Carousel slides={CarouselImages} timer={3000} {...props} />
         <h2 className="category">Categories</h2>
         <Categories {...props} />
       </div>
