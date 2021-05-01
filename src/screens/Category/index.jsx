@@ -88,7 +88,7 @@ function Category(props) {
       <div style={{ height: '100px' }} />
 
       <div className="flex-row flex-one">
-        <FilterBox filterBox={(value) => filterBox(value)} handleDropDownValue={(event) => {handleDropDownValue(event)}} />
+        <FilterBox currCategory = {categoryRef.current} filterBox={(value) => filterBox(value)} handleDropDownValue={(event) => {handleDropDownValue(event)}} />
         <div className="flex-column flex-one">
           <div className="category-header">
           <h1 className="best-sellar-title">{currCategory === "SEARCH" ? `${currCategory} ${props.location.state.QueryValue}` :currCategory }</h1>
