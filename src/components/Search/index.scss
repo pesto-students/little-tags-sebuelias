@@ -15,10 +15,13 @@ $color: var(--black);
   }
 }
 .seach-text {
+  color: var(--black);
   font-family: 'Montserrat';
   font-size: 2rem;
-  background-color: transparent;
+  background-color: var(--light);
+  opacity: 0.6;
   width: 35rem;
+  height: 4rem;
   padding: 0.2rem 3rem 0.2rem 2rem;
   outline: 0;
   // border: none;
@@ -38,6 +41,7 @@ $color: var(--black);
   &:hover {
     border: 3px solid var(--red);
     border-top: none;
+    opacity: 1;
     // color: var(--brown);
   }
 }

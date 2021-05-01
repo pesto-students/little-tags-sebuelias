@@ -37,6 +37,18 @@
   }
 }
 
-.selected-category{
+.selected-category {
   color: var(--red);
+}
+
+h5 {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+h4 {
+  text-transform: uppercase;
+}
+
+ul {
+  margin-top: 0;
 }

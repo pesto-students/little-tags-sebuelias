@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { AiOutlineDelete } from 'react-icons/ai';
+import { RiDeleteBin2Line } from 'react-icons/ri';
 
 import AddRemoveWhislist from '../AddRemoveWhislist';
 import {
@@ -51,37 +51,39 @@ const CartSingle = (props) => {
   return (
     <>
       <div className="flex-row individual-cart-box">
-        <img
-          className="cart-product-image"
-          src={props.productDetail.image}
-          alt={props.productDetail.title}
-          aria-hidden="true"
-          onClick={() => {
-            props.history.push({
-              pathname: `/categories/${props.productDetail.id}`,
-              state: { product: props.productDetail },
-            });
-          }}
-        />
-        <div className="flex-column cart-title-whislist">
-          <h3 className="title-head">{props.productDetail.title}</h3>
-          <h3 className="size-info">
-            {props.productDetail.size
-              ? `SIZE: ${props.productDetail.size}`
-              : null}
-          </h3>
-          <div className="flex-row">
-            <AddRemoveWhislist
-              className="icons"
-              whislist={false}
-              handleAddWhislist={handleAddWhislist}
-              handleRemoveWhislist={() => {}}
-              productDetail={props.productDetail}
-            />
-            <AiOutlineDelete className="icons" onClick={handleRemoveCart} />
+        <div className="flex-row">
+          <img
+            className="cart-product-image"
+            src={props.productDetail.image}
+            alt={props.productDetail.title}
+            aria-hidden="true"
+            onClick={() => {
+              props.history.push({
+                pathname: `/categories/${props.productDetail.id}`,
+                state: { product: props.productDetail },
+              });
+            }}
+          />
+          <div className="flex-column cart-title-whislist">
+            <h3 className="title-head">{props.productDetail.title}</h3>
+            <h3 className="size-info">
+              {props.productDetail.size
+                ? `SIZE: ${props.productDetail.size}`
+                : null}
+            </h3>
+            <div className="flex-row">
+              <AddRemoveWhislist
+                className="icons"
+                whislist={false}
+                handleAddWhislist={handleAddWhislist}
+                handleRemoveWhislist={() => {}}
+                productDetail={props.productDetail}
+              />
+              <RiDeleteBin2Line className="icons" onClick={handleRemoveCart} />
+            </div>
           </div>
         </div>
-        <div className="flex-column">
+        <div className="flex-column quantity">
           <OrderQuantity
             setquantity={quantity}
             setorderQuantity={(quantityValue) => {
@@ -89,7 +91,7 @@ const CartSingle = (props) => {
             }}
           />
         </div>
-        <h2>&#8377; {(props.productDetail.price*quantity).toFixed(2)}</h2>
+        <h2>&#8377; {(props.productDetail.price * quantity).toFixed(2)}</h2>
       </div>
     </>
   );

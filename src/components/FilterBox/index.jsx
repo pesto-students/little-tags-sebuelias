@@ -12,43 +12,65 @@ function FilterBox(props) {
           <li
             onClick={() => props.filterBox('all-products')}
             aria-hidden="true"
-            className={`Category ${props.currCategory.toLowerCase() === 'all-products' ? "selected-category" : ""}`}
+            className={`Category ${
+              props.currCategory.toLowerCase() === 'all-products'
+                ? 'selected-category'
+                : ''
+            }`}
           >
-            All Products
+            All
           </li>
           <li
             onClick={() => props.filterBox('men clothing')}
             aria-hidden="true"
-            className={`Category ${props.currCategory.toLowerCase() === 'men clothing' ? "selected-category" : ""}`}
+            className={`Category ${
+              props.currCategory.toLowerCase() === 'men clothing'
+                ? 'selected-category'
+                : ''
+            }`}
           >
-            Mens Clothing
+            Mens
           </li>
           <li
             onClick={() => props.filterBox('women clothing')}
             aria-hidden="true"
-            className={`Category ${props.currCategory.toLowerCase() === 'women clothing' ? "selected-category" : ""}`}
+            className={`Category ${
+              props.currCategory.toLowerCase() === 'women clothing'
+                ? 'selected-category'
+                : ''
+            }`}
           >
-            Women Clothing
+            Women
           </li>
           <li
             onClick={() => props.filterBox('electronics')}
             aria-hidden="true"
-            className={`Category ${props.currCategory.toLowerCase() === 'electronics' ? "selected-category" : ""}`}
+            className={`Category ${
+              props.currCategory.toLowerCase() === 'electronics'
+                ? 'selected-category'
+                : ''
+            }`}
           >
             Electronics
           </li>
           <li
             onClick={() => props.filterBox('jewelery')}
             aria-hidden="true"
-            className={`Category ${props.currCategory.toLowerCase() === 'jewelery' ? "selected-category" : ""}`}
+            className={`Category ${
+              props.currCategory.toLowerCase() === 'jewelery'
+                ? 'selected-category'
+                : ''
+            }`}
           >
-            Jewlery
+            jewelery
           </li>
         </ul>
       </div>
       <div>
         <h5>SORT</h5>
-        <Sort handleDropDownValue={(event)=>props.handleDropDownValue(event)}/>
+        <Sort
+          handleDropDownValue={(event) => props.handleDropDownValue(event)}
+        />
       </div>
     </div>
   );

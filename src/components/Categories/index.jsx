@@ -61,7 +61,7 @@ function Categories(props) {
       </div>
 
       <div
-        className="item jewlery"
+        className="item jewelery"
         onClick={() => {
           props.history.push({
             pathname: '/categories',

@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {IoMdClose} from "react-icons/io"
+import { IoMdClose } from 'react-icons/io';
 import Modal from '../Modal';
 import { hitAddressAddRemove } from '../../store/modules/apparrelData/actions';
 import FirebaseContext from '../../services/Firebase/context';
@@ -52,44 +52,50 @@ const AddAddress = (props) => {
       <Modal width="400px">
         <div className="heading">
           <h2>Add address</h2>
-          <IoMdClose className="close" onClick={() => props.closeModal()}/>
+          <IoMdClose className="close" onClick={() => props.closeModal()} />
           <form onSubmit={handleSubmit}>
             <div className="flex-column">
-            <input
-              autoComplete="off"
-              onBlur={(event) =>
-                !event.target.value ? seterrorName('Required') : null
-              }
-              className="input-data"
-              type="text"
-              value={Name}
-              placeholder="Name *"
-              onCl
-              onChange={(event) => {
-                setName(event.target.value);
-                seterrorName('');
-              }}
-            />
-            {errorName ? <span className="error-text">{errorName}</span> : null}
+              <input
+                autoComplete="off"
+                onBlur={(event) =>
+                  !event.target.value ? seterrorName('Required') : null
+                }
+                className="input-data"
+                type="text"
+                value={Name}
+                placeholder="Name *"
+                onCl
+                onChange={(event) => {
+                  setName(event.target.value);
+                  seterrorName('');
+                }}
+              />
+              {errorName ? (
+                <span className="error-text">{errorName}</span>
+              ) : (
+                <br />
+              )}
             </div>
             <div className="flex-column">
-            <input
-              autoComplete="off"
-              className="input-data"
-              type="text"
-              onBlur={(event) =>
-                !event.target.value ? seterrorMobile('Required') : null
-              }
-              value={Mobile}
-              placeholder="Mobile *"
-              onChange={(event) => {
-                setMobile(event.target.value);
-                seterrorMobile('');
-              }}
-            />
-            {errorMobile ? (
-              <span className="error-text">{errorMobile}</span>
-            ) : null}
+              <input
+                autoComplete="off"
+                className="input-data"
+                type="text"
+                onBlur={(event) =>
+                  !event.target.value ? seterrorMobile('Required') : null
+                }
+                value={Mobile}
+                placeholder="Mobile *"
+                onChange={(event) => {
+                  setMobile(event.target.value);
+                  seterrorMobile('');
+                }}
+              />
+              {errorMobile ? (
+                <span className="error-text">{errorMobile}</span>
+              ) : (
+                <br />
+              )}
             </div>
             <div className="flex-row">
               <div className="flex-column">
@@ -110,7 +116,9 @@ const AddAddress = (props) => {
                 />
                 {errorPincode ? (
                   <span className="error-text">{errorPincode}</span>
-                ) : null}
+                ) : (
+                  <br />
+                )}
               </div>
               <div className="flex-column">
                 <input
@@ -130,7 +138,9 @@ const AddAddress = (props) => {
                 />
                 {errorCountry ? (
                   <span className="error-text">{errorCountry}</span>
-                ) : null}
+                ) : (
+                  <br />
+                )}
               </div>
             </div>
             <div className="flex-row">
@@ -152,7 +162,9 @@ const AddAddress = (props) => {
                 />
                 {errorState ? (
                   <span className="error-text">{errorState}</span>
-                ) : null}
+                ) : (
+                  <br />
+                )}
               </div>
               <div className="flex-column">
                 <input
@@ -172,28 +184,32 @@ const AddAddress = (props) => {
                 />
                 {errorCity ? (
                   <span className="error-text">{errorCity}</span>
-                ) : null}
+                ) : (
+                  <br />
+                )}
               </div>
             </div>
             <div className="flex-column">
-            <textarea
-              autoComplete="new-password"
-              id="address"
-              className="input-data"
-              type="textarea"
-              onBlur={(event) =>
-                !event.target.value ? seterroraddress('Required') : null
-              }
-              value={address}
-              placeholder="Address *"
-              onChange={(event) => {
-                setaddress(event.target.value);
-                seterroraddress('');
-              }}
-            />
-            {erroraddress ? (
-              <span className="error-text">{erroraddress}</span>
-            ) : null}
+              <textarea
+                autoComplete="new-password"
+                id="address"
+                className="input-data"
+                type="textarea"
+                onBlur={(event) =>
+                  !event.target.value ? seterroraddress('Required') : null
+                }
+                value={address}
+                placeholder="Address *"
+                onChange={(event) => {
+                  setaddress(event.target.value);
+                  seterroraddress('');
+                }}
+              />
+              {erroraddress ? (
+                <span className="error-text">{erroraddress}</span>
+              ) : (
+                <br />
+              )}
             </div>
             <input
               autoComplete="address"

@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { FcGoogle } from 'react-icons/fc';
+import { FaFacebookF } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
 import Modal from '../Modal';
-import GoogleIcon from '../../assets/image/btn_google_signin_light_normal_web.png';
-import FacebookIcon from '../../assets/image/17639236_1785253958471956_282550797298827264_n.png';
 import {} from './index.scss';
 import FirebaseContext from '../../services/Firebase/context';
 
@@ -56,21 +56,26 @@ function SignUp({ closeModal, history, checkAuth }) {
       )}
       <div className="sign-up">
         <h2>Log in / Register</h2>
-        <img
-          src={GoogleIcon}
-          alt="google button"
+        <button
+          className="btn google"
+          type="button"
           onClick={handleGoogleSignIn}
-          aria-hidden="true"
-          className="google"
-        />
-
-        <img
-          src={FacebookIcon}
-          alt="facebook button"
+        >
+          <i className="fa">
+            <FcGoogle />
+          </i>
+          Sign in using Google
+        </button>
+        <button
+          className="btn facebook"
+          type="button"
           onClick={handleFaceBookSignIn}
-          aria-hidden="true"
-          className="facebook"
-        />
+        >
+          <i className="fa">
+            <FaFacebookF />
+          </i>
+          Sign in using Facebook
+        </button>
         <p className="error-message">{errorMessage ? `${errorMessage}` : ''}</p>
       </div>
     </Modal>

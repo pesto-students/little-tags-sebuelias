@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BiPlus } from 'react-icons/bi';
 
-import { AiOutlineDelete } from 'react-icons/ai';
+import { ImCross } from 'react-icons/im';
 import AddAddress from '../../components/AddAddress';
 import {
   hitAddressAddRemove,
@@ -51,7 +51,7 @@ const Address = (props) => {
         <div>
           <input
             type="radio"
-            className="icon"
+            className="icon radio"
             value=""
             checked={selected === index.toString()}
             false
@@ -64,8 +64,8 @@ const Address = (props) => {
           <p>{value.address}</p>
         </div>
 
-        <AiOutlineDelete
-          className="icon-delete"
+        <ImCross
+          className="icon delete"
           onClick={() => {
             props.hitAddressAddRemove({ actionType: 'remove', index });
             setcheckDelete(true);
@@ -85,21 +85,23 @@ const Address = (props) => {
           }}
         />
       ) : null}
-      
-        <div className="proceed-to-payment">
-          <div
-            className="add-address"
-            onClick={() => setopenModal(true)}
-            aria-hidden="true"
-          >
-            <BiPlus className="icon" />
-            <h1>Add address</h1>
-          </div>
-          {proceedToPayment ? ( <button className="button" type="button" onClick={handlePayment}>
-            Proceed to payment
-          </button>) : null }
+
+      <div className="proceed-to-payment">
+        <div
+          className="add-address"
+          onClick={() => setopenModal(true)}
+          aria-hidden="true"
+        >
+          <BiPlus className="icon" />
+          <h1>Add address</h1>
         </div>
-      
+        {proceedToPayment ? (
+          <button className="button" type="button" onClick={handlePayment}>
+            Proceed to payment
+          </button>
+        ) : null}
+      </div>
+
       <div className="flex-row address-wrap">{visualizeAddress}</div>
     </div>
   );
