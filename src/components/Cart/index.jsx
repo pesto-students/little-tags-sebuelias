@@ -37,11 +37,23 @@ function Cart(props) {
       <div style={{ height: '100px' }} />
       <div className="flex-column cart-parent-box">
         {props.apparrelData.cart.length > 0 ? (
-          <div className="flex-row flex-space-arround cart-header">
+          <div className="flex-row cart-header">
             <h1 className="cart-title">
               Cart ({props.apparrelData.cart.length}{' '}
               {props.apparrelData.cart.length > 1 ? 'items' : 'item'})
             </h1>
+            {props.apparrelData.cart.length > 0 ? (
+              <div className="flex-row order">
+                <h1>Total Amount &#8377;{totalAmount.toFixed(2)}</h1>
+                <button
+                  className="place-order-button"
+                  type="button"
+                  onClick={handlePlaceOrder}
+                >
+                  Place Order
+                </button>
+              </div>
+            ) : null}
           </div>
         ) : (
           <div className="empty">
@@ -50,18 +62,6 @@ function Cart(props) {
         )}
         {visualizeCart}
       </div>
-      {props.apparrelData.cart.length > 0 ? (
-        <div className="flex-column order">
-          <h1>Total Amount &#8377;{totalAmount.toFixed(2)}</h1>
-          <button
-            className="place-order-button"
-            type="button"
-            onClick={handlePlaceOrder}
-          >
-            Place Order
-          </button>
-        </div>
-      ) : null}
     </div>
   );
 }
