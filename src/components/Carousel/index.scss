@@ -37,17 +37,17 @@ $color: var(--black);
 }
 
 .slide {
-  // opacity: 0;
-  transform: translateX(-100%);
+  opacity: 0;
+  // transform: translateX(-100%);
 
-  transition-duration: 1s ease;
+  transition: opacity 250ms linear;
 }
 
 .slide.active {
-  // opacity: 1;
-  transform: translateX(0%);
+  opacity: 1;
+  // transform: translateX(0%);
 
-  transition-duration: 1s;
+  // transition-duration: 250ms;
   // transform: scale(1.01);
 }
 

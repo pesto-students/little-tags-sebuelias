@@ -58,7 +58,7 @@ $textColor: var(--textColor);
     color: $textColor;
   }
 
-  .logout-button{
+  .logout-button {
     height: 20px;
     padding: 16px 0 0 0;
     cursor: pointer;
@@ -93,8 +93,7 @@ nav.header.scrolled {
   }
 }
 
-
-.onhover-user{
+.onhover-user {
   width: 200px;
   height: 100px;
   background: white;
@@ -104,40 +103,42 @@ nav.header.scrolled {
   margin: 35px 0px 0px -162px;
 }
 
-.arrow{
-  content: "";
-    position: absolute;
-    top: -21%;
-    left: 91%;
-    margin-left: -5px;
-    border-width: 10px;
-    border-style: solid;
-    border-color: transparent transparent brown transparent;
-    font-size: 3rem;
-    color: var(--black);
-    z-index: 3;
-    cursor: pointer;
-    user-select: none;
-    transition: all ease-in 0.2s;
+.arrow {
+  content: '';
+  position: absolute;
+  top: -21%;
+  left: 91%;
+  margin-left: -5px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent brown transparent;
+  font-size: 3rem;
+  color: var(--black);
+  z-index: 3;
+  cursor: pointer;
+  user-select: none;
+  transition: all ease-in 0.2s;
 }
 
-.dropdown-user-content{
+.dropdown-user-content {
   height: 122px;
   justify-content: flex-start;
   padding: 17px 0px 0px 0px;
 }
 
-.user-icon{
-  margin-bottom: 7px;
-}
-
-.auth-feature{
+.auth-feature {
   width: 100px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  li.user-icon {
+    margin-bottom: 7px;
+    &:hover {
+      color: var(--black);
+    }
+  }
 }
 
-.quantity-on-icon{
+.quantity-on-icon {
   background: var(--red);
   border-radius: 50%;
   width: 18px;

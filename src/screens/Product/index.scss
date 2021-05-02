@@ -3,9 +3,14 @@
   justify-content: center;
 }
 .prod-page-container {
-  // height: 100vh;
+  width: 100vw;
+  padding-top: 100px;
 }
-
+.prod-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 h2 {
   font-size: 2rem;
 }
@@ -24,9 +29,15 @@ h2 {
   align-items: center;
   box-shadow: 34px;
   height: 45rem;
+}
+
+.content-display-box {
+  width: 400px;
+  height: 600px;
+  justify-content: space-evenly;
   border-radius: 0 4rem;
-  margin-right: 5rem;
-  border-right: 0.5px solid;
+  padding-left: 5rem;
+  border-left: 0.5px solid;
   border-image-slice: 1;
   border-width: 0.5px;
   border-image-source: linear-gradient(
@@ -35,12 +46,7 @@ h2 {
     var(--black),
     var(--white)
   );
-}
-
-.content-display-box {
-  width: 400px;
-  height: 600px;
-  justify-content: space-evenly;
+  // box-shadow: 3px 3px 0 #222;
 }
 
 .add-to-whislist {
@@ -87,6 +93,7 @@ h2 {
 }
 
 .description {
+  margin-top: 2rem;
   h2 {
     font-size: 1.5rem;
     margin: 0;

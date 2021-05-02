@@ -83,7 +83,7 @@ const Card = (props) => {
         <h3 className="title-head">{props.value.title}</h3>
       </div>
       <div className="card-footer-div">
-      <h3 className="title-head">&#8377; {props.value.price}</h3>
+        <h3 className="title-head">&#8377; {props.value.price}</h3>
         <AddRemoveWhislist
           whislist={whislist}
           handleAddWhislist={handleAddWhislist}

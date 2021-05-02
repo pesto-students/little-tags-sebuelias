@@ -41,7 +41,7 @@ function SignUp({ closeModal, history, checkAuth }) {
   };
 
   return (
-    <Modal width="50%" height="50%">
+    <Modal width="" height="50%">
       {!checkAuth ? (
         <VscClose className="close" onClick={() => closeModal()} />
       ) : (
