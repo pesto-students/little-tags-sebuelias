@@ -157,10 +157,6 @@ const Product = (props) => {
             <h2>{productDetail.title}</h2>
             <h2>&#8377; {productDetail.price}</h2>
           </div>
-          {/* <div className="flex-column description">
-            <h2>DESCRIPTION</h2>
-            <p>{productDetail.description}</p>
-          </div> */}
 
           {productDetail.category === 'women clothing' ||
           productDetail.category === 'men clothing' ? (
