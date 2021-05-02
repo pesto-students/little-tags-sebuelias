@@ -62,6 +62,8 @@
   margin: 30px 12% 20px 12%;
   justify-content: space-between;
   cursor: pointer;
+  flex-wrap: wrap;
+  align-content: center;
 
   div {
     display: flex;
