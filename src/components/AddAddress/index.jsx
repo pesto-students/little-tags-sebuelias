@@ -49,7 +49,7 @@ const AddAddress = (props) => {
 
   return (
     <>
-      <Modal width="400px">
+      <Modal>
         <div className="heading">
           <h2>Add address</h2>
           <IoMdClose className="close" onClick={() => props.closeModal()}/>
