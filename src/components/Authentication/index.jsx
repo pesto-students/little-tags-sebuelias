@@ -41,7 +41,7 @@ function SignUp({ closeModal, history, checkAuth }) {
   };
 
   return (
-    <Modal width="50%" height="50%">
+    <Modal height="50%">
       {!checkAuth ? (
         <IoMdClose className="close" onClick={() => closeModal()} />
       ) : (

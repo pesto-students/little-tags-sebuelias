@@ -46,3 +46,9 @@
     color: var(--light);
   }
 }
+
+@media (min-width: 300px) and (max-width: 470px) {
+  .modal {
+    width: 98%;
+  }
+}
