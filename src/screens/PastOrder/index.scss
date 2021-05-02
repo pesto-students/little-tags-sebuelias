@@ -25,6 +25,9 @@
   justify-content: space-around;
   align-items: center;
   margin-bottom: 1rem;
+//   justify-content: space-between;
+//   font-weight: 500;
+  flex-wrap: wrap;
 }
 
 .cart-title-past-order {
@@ -40,6 +43,7 @@
   font-size: 1.5rem;
   justify-content: space-between;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .price {
@@ -59,3 +63,13 @@
     }
   }
 }
+
+@media (min-width: 300px) and (max-width: 470px) {
+    .quantity-price{
+        width:100px;
+        text-align: unset;
+    }
+    .order-id {
+        margin-bottom: 15px;
+    }
+  }
