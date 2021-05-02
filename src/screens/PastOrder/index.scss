@@ -16,6 +16,7 @@
 .cart-row{
     justify-content: space-between;
     font-weight: 500;
+    flex-wrap: wrap;
 }
 
 .cart-title-past-order{
@@ -26,6 +27,7 @@
     font-size: 15px;
     justify-content: space-between;
     font-weight: 500;
+    flex-wrap: wrap;
 }
 
 .quantity-price{
@@ -36,3 +38,13 @@
 .address-order{
     margin: 0;
 }
+
+@media (min-width: 300px) and (max-width: 470px) {
+    .quantity-price{
+        width:100px;
+        text-align: unset;
+    }
+    .order-id {
+        margin-bottom: 15px;
+    }
+  }

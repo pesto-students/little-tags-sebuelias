@@ -40,7 +40,6 @@
 }
 
 .order {
-  align-items: center;
   align-items: flex-end;
   margin: 5px 10% 5px 10%;
 }
@@ -89,4 +88,14 @@
 
 .cart-parent-box{
   overflow-x: hidden;
+}
+
+@media (min-width: 300px) and (max-width: 470px) {
+  .order{
+    align-items: center;
+    margin: 0;
+  }
+  .place-order-button{
+    margin: 0 0 2rem 0;
+  }
 }
