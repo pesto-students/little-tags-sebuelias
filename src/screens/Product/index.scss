@@ -71,6 +71,7 @@ h2 {
     border-radius: 0 4rem 4rem 0;
     font-size: 1.5rem;
     text-align: center;
+    width: 186px;
     letter-spacing: 1px;
     cursor: pointer;
     transition: all ease-in 0.3s;
@@ -112,4 +113,17 @@ h2 {
 .heading-similar-prod {
   font-family: 'Reenie Beanie', cursive;
   font-size: 4rem;
+}
+
+@media (min-width: 300px) and (max-width: 470px) {
+  .content-display-box {
+    margin: 0 15px 0 40px;
+  }
+  .image-crousel-box{
+    margin-right: 0rem;
+    border-right: 0px;
+  }
+  .add-button {
+    margin: 2rem 1rem 1rem 0;
+  }
 }
