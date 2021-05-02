@@ -43,7 +43,7 @@ const Whislist = (props) => {
     <div className="wishlist-container">
       <div style={{ height: '100px' }} />
       <h1 className="best-sellar-title">My Wishlist</h1>
-      <div className="complete-data-whislist">{visulizeWhislist}</div>
+      <div className="complete-data whislist">{visulizeWhislist}</div>
       {props.apparrelData.whisList &&
       props.apparrelData.whisList.length === 0 ? (
         <div className="noitem-container">

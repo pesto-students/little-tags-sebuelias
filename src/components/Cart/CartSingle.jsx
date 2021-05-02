@@ -91,7 +91,9 @@ const CartSingle = (props) => {
             }}
           />
         </div>
-        <h2>&#8377; {(props.productDetail.price * quantity).toFixed(2)}</h2>
+        <h2 className="price">
+          &#8377; {(props.productDetail.price * quantity).toFixed(2)}
+        </h2>
       </div>
     </>
   );

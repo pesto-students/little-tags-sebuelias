@@ -93,3 +93,51 @@ button {
 li {
   list-style: none;
 }
+
+// border-width: 3px 4px 3px 5px;
+// border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
+// transform: rotate(2deg);
+
+// border-width: 3px 3px 5px 5px;
+// border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
+// transform: rotate(-2deg);
+
+// border-width: 5px 3px 3px 5px;
+// border-radius: 95% 4% 97% 5%/4% 94% 3% 95%;
+// transform: rotate(2deg);
+
+// $width: 3px 4px 3px 5px, 3px 3px 5px 5px, 5px 3px 3px 5px;
+// $radius: 95% 4% 92% 5%/4% 95% 6% 95%, 4% 95% 6% 95%/95% 4% 92% 5%,
+//   95% 4% 97% 5%/4% 94% 3% 95%;
+// $rotateDeg: 2deg, -2deg, 2deg;
+
+.complete-data {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .card-container:nth-child(1n) {
+    border-width: 3px 4px 3px 5px;
+    border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
+    transform: rotate(2deg);
+    &:hover {
+      transform: rotate(0deg);
+    }
+  }
+  .card-container:nth-child(2n) {
+    border-width: 3px 3px 5px 5px;
+    border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
+    transform: rotate(-2deg);
+    &:hover {
+      transform: rotate(0deg);
+    }
+  }
+  .card-container:nth-child(3n) {
+    border-width: 5px 3px 3px 5px;
+    border-radius: 95% 4% 97% 5%/4% 94% 3% 95%;
+    transform: rotate(2deg);
+    &:hover {
+      transform: rotate(0deg);
+    }
+  }
+}

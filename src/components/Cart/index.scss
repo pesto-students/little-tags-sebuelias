@@ -1,6 +1,6 @@
 .cart-product-image {
-  width: 114px;
-  height: 115px;
+  width: 12rem;
+  height: 12rem;
   cursor: pointer;
   border-radius: 50px;
 }
@@ -76,8 +76,12 @@
   transition: ease-in 0.3s;
   margin-left: 1rem;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--red);
+  }
+  &:focus {
+    outline: none;
   }
 }
 
@@ -103,7 +107,7 @@
   justify-content: center;
 }
 
-h2 {
+.price {
   width: 9ch;
   display: flex;
   align-items: center;

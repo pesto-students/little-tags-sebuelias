@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebookF } from 'react-icons/fa';
-import { IoMdClose } from 'react-icons/io';
+import { VscClose } from 'react-icons/vsc';
 import Modal from '../Modal';
 import {} from './index.scss';
 import FirebaseContext from '../../services/Firebase/context';
@@ -43,10 +43,10 @@ function SignUp({ closeModal, history, checkAuth }) {
   return (
     <Modal width="50%" height="50%">
       {!checkAuth ? (
-        <IoMdClose className="close" onClick={() => closeModal()} />
+        <VscClose className="close" onClick={() => closeModal()} />
       ) : (
         <button
-          className="close button/"
+          className="close button"
           onClick={() => history.goBack()}
           aria-hidden="true"
           type="button"

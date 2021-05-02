@@ -25,6 +25,7 @@
   justify-content: flex-start;
   align-items: center;
   font-family: 'Montserrat';
+  transition: box-shadow 250ms ease-in;
 
   &:hover {
     cursor: pointer;
