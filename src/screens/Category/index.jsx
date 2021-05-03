@@ -116,7 +116,7 @@ function Category(props) {
           {visualizeBestSellerBox.length ? (
             <div className="complete-data">{visualizeBestSellerBox}</div>
           ) : (
-            <div>
+            <div className="empty">
               <h2>Oops! Your query does not match any item</h2>
             </div>
           )}
