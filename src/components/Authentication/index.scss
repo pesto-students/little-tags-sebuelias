@@ -5,61 +5,47 @@
   align-items: center;
   height: 90%;
   color: var(--black);
-  h2{
-    font-weight: 500;
+
+  h2 {
+    text-transform: uppercase;
   }
 }
 
 .btn {
-  height: 43px;
-  width: 200px;
+  height: 4rem;
+  width: 25rem;
   display: block;
   text-decoration: none;
-  margin: 20px 0;
-  padding: 15px 15px;
+  border: 1px solid var(--black);
   border-radius: 5px;
   position: relative;
-  padding-left: 64px;
+  padding-left: 2rem;
   z-index: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Montserrat';
+  transition: box-shadow 250ms ease-in;
 
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: all 0.2s ease-in-out;
-    box-shadow: inset 0 3px 0 hsla(0, 0, 0, 0), 0 3px 3px hsla(0, 0, 0, 0.2);
-    border-radius: 5px;
-  }
-
-  &:hover::after {
-    background: hsla(0, 0, 0, 0.1);
-    box-shadow: inset -9px -6px 0 hsla(0, 0, 0, 0.2);
-  }
-
-  .fa {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 50px;
-    height: 100%;
-    text-align: center;
-    background: hsla(0, 0, 0, 0.1);
-    line-height: 3.2;
-    border-radius: 5px 0 0 5px;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(2, 2, 2, 0.5), 0 6px 20px 0 rgba(2, 2, 2, 0.49);
   }
 }
+
+.fa {
+  margin-right: 1rem;
+  font-size: 2rem;
+}
+
 .google {
-  cursor: pointer;
+  background-color: var(--white);
+  align-items: center;
 }
 .facebook {
-  width: 187px;
-  height: 36px;
-  cursor: pointer;
+  background-color: hsl(221, 44%, 41%);
+  color: var(--white);
+  align-items: center;
 }
 
 .error-message {

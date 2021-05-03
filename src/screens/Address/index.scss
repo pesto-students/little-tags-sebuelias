@@ -20,12 +20,11 @@
   }
 }
 
-.icon-delete {
+.delete {
   cursor: pointer;
-  width: 35px;
-  height: 16px;
-
+  font-size: 3rem;
   color: var(--black);
+  transition: all ease-in 0.3s;
   &:hover {
     color: var(--red);
   }
@@ -36,14 +35,15 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 280px;
-  margin: 30px 10% 20px 10%;
+  width: 33rem;
+  margin: 0 5rem;
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   border-width: 2px;
   border-style: solid;
   border-color: brown;
   padding: 0 10px 0 10px;
 }
+
 .name-address {
   display: flex;
   justify-content: space-between;
@@ -83,6 +83,7 @@
   }
 }
 
-.address-wrap{
+.address-wrap {
   flex-wrap: wrap;
+  margin-left: 2rem;
 }

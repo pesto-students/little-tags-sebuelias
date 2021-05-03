@@ -5,29 +5,26 @@ import './App.scss';
 import ErrorPage from './screens/ErrorPage';
 import Home from './screens/Home';
 import Category from './screens/Category';
-import Product from './screens/Product'
+import Product from './screens/Product';
 import Address from './screens/Address';
 import OrderPlaced from './screens/OrderPlaced';
 import Wishlist from './screens/Wishlist';
 import Payment from './screens/Payment';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import ScrollToTop from "./utils/ScrollToTop"
+import ScrollToTop from './utils/ScrollToTop';
 import PastOrder from './screens/PastOrder';
 import Cart from './components/Cart';
 
-/* ! TODO: Use common Header / Footer  */
 function Routes() {
   return (
-    <>
-      {/* <Header /> */}
-      <BrowserRouter>
+    <BrowserRouter>
       <Header />
       <ScrollToTop>
         <Switch>
-          <Route exact path={ROUTES.HOME} component={Home}/>
-          <Route exact path={ROUTES.CATEGORIES} component={Category}/>
-          <Route exact path={ROUTES.PRODUCT} component={Product}/>
+          <Route exact path={ROUTES.HOME} component={Home} />
+          <Route exact path={ROUTES.CATEGORIES} component={Category} />
+          <Route exact path={ROUTES.PRODUCT} component={Product} />
           <Route exact path={ROUTES.ADDRESS} component={Address} />
           <Route exact path={ROUTES.ORDER_PLACED} component={OrderPlaced} />
           <Route exact path={ROUTES.SIGN_IN} component={Category} />
@@ -38,11 +35,9 @@ function Routes() {
           <Route path={ROUTES.ERROR} component={ErrorPage} />
           <Route component={ErrorPage} />
         </Switch>
-        </ScrollToTop>
-        <Footer />
-      </BrowserRouter>
-      {/* <Footer /> */}
-    </>
+      </ScrollToTop>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

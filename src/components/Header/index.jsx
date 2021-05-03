@@ -21,7 +21,7 @@ function Header(props) {
   const [openModal, setopenModal] = useState(false);
   const [openCartModal, setopenCartModal] = useState(false);
   const [headerScrolled, setHeaderScroll] = useState('');
-  const [onHoverUser, setonHoverUser] = useState(false)
+  const [onHoverUser, setonHoverUser] = useState(false);
 
   const menuRef = useRef();
   useOnClickOutside(menuRef, () => setMenuOpen(false));
@@ -56,7 +56,7 @@ function Header(props) {
       <nav className={`header ${headerScrolled}`}>
         <div className="hamburger-parent" ref={menuRef}>
           <Burger open={menuOpen} setOpen={setMenuOpen} />
-          <Menu open={menuOpen} close={()=>setMenuOpen(false)} {...props}/>
+          <Menu open={menuOpen} close={() => setMenuOpen(false)} {...props} />
         </div>
 
         <h1
@@ -69,18 +69,20 @@ function Header(props) {
           Little Tags
         </h1>
 
-        <div className="search-container">
-          <Search {...props} />
-        </div>
+        <Search {...props} />
 
         <div className="header-buttons">
           <ul>
             <li className="wishlist">
-            {props.apparrelData.whisList.length ? <div className="quantity-on-icon"><span className="item-count">
-                {props.apparrelData.whisList.length
-                  ? props.apparrelData.whisList.length
-                  : ' '}
-              </span> </div>: null}
+              {props.apparrelData.whisList.length ? (
+                <div className="quantity-on-icon">
+                  <span className="item-count">
+                    {props.apparrelData.whisList.length
+                      ? props.apparrelData.whisList.length
+                      : ' '}
+                  </span>{' '}
+                </div>
+              ) : null}
               <FaRegHeart
                 className="icons"
                 onClick={() => {
@@ -96,11 +98,15 @@ function Header(props) {
 
           <ul>
             <li className="cart">
-            {props.apparrelData.cart.length ? <div className="quantity-on-icon"><span className="item-count">
-                {props.apparrelData.cart.length
-                  ? props.apparrelData.cart.length
-                  : ' '}
-              </span> </div>: null}
+              {props.apparrelData.cart.length ? (
+                <div className="quantity-on-icon">
+                  <span className="item-count">
+                    {props.apparrelData.cart.length
+                      ? props.apparrelData.cart.length
+                      : ' '}
+                  </span>{' '}
+                </div>
+              ) : null}
               <FiShoppingBag
                 className="icons"
                 onClick={() => {
@@ -128,28 +134,44 @@ function Header(props) {
                 </a>
               </li>
             ) : (
-              <li aria-hidden="true" className="flex-column user-icon" onMouseLeave={(event) => {
-                event.preventDefault();
-                setonHoverUser(false);
-              }}>
-                <FaRegUser className="logout icons" onClick={()=>{}} onMouseOver={(event) => {
-          event.preventDefault();
-          setonHoverUser(true);
-        }}
-        onFocus={(event) => {
-          event.preventDefault();
-          setonHoverUser(false);
-        }}/>
-                
-                {onHoverUser ? <div className="onhover-user">
-                  <div className="arrow"/>
-                  <div className="flex-column dropdown-user-content">
-                   <span className="username icons-hover">
-                  Hi,{props.authUser.username.split(" ")[0]}
-                </span>
-                <span className="logout-button icons-hover" onClick={handleLogout} aria-hidden="true">Logout</span>
-                </div>
-                </div> : null}
+              <li
+                aria-hidden="true"
+                className="flex-column user-icon"
+                onMouseLeave={(event) => {
+                  event.preventDefault();
+                  setonHoverUser(false);
+                }}
+              >
+                <FaRegUser
+                  className="logout icons"
+                  onClick={() => {}}
+                  onMouseOver={(event) => {
+                    event.preventDefault();
+                    setonHoverUser(true);
+                  }}
+                  onFocus={(event) => {
+                    event.preventDefault();
+                    setonHoverUser(false);
+                  }}
+                />
+
+                {onHoverUser ? (
+                  <div className="onhover-user">
+                    <div className="arrow" />
+                    <div className="flex-column dropdown-user-content">
+                      <span className="username icons-hover">
+                        Hi, {props.authUser.username.split(' ')[0]}
+                      </span>
+                      <span
+                        className="logout-button icons-hover"
+                        onClick={handleLogout}
+                        aria-hidden="true"
+                      >
+                        Logout
+                      </span>
+                    </div>
+                  </div>
+                ) : null}
               </li>
             )}
           </ul>

@@ -19,37 +19,43 @@ const PastOrder = (props) => {
     (value, index) => (
       <div className="flex-column order-box" key={index.toString()}>
         <div className="flex-row order-id">
-          <div>order date: {convertDate(value.orderDate)}</div>
-          <div>payment id: {value.paymentId}</div>
+          <div>PLACED ON: {convertDate(value.orderDate)}</div>
+          <div>PAYMENT ID: {value.paymentId}</div>
         </div>
         <div>
           {value.cart.map((cartValue, cartIndex) => (
             <div className="flex-row cart-row" key={cartIndex.toString()}>
-              <img
-                className="image-box-order"
-                src={cartValue.image}
-                alt={cartValue.title}
-                aria-hidden="true"
-                onClick={() => {}}
-              />
-              <div className="flex-column cart-title-past-order">
-                <p className="title-head">{cartValue.title}</p>
-                <p className="size-info">
-                  {cartValue.size ? `SIZE: ${cartValue.size}` : null}
-                </p>
+              <div className="product">
+                <img
+                  className="image-box-order"
+                  src={cartValue.image}
+                  alt={cartValue.title}
+                  aria-hidden="true"
+                  onClick={() => {}}
+                />
+                <div className="flex-column cart-title-past-order">
+                  <h3 className="title-head">{cartValue.title}</h3>
+                  <h3 className="size-info">
+                    {cartValue.size ? `SIZE: ${cartValue.size}` : <br />}
+                  </h3>
+                </div>
               </div>
-              <div className="flex-column quantity-price">
-                <p>Quantity:{cartValue.quantity}</p>
+              <div className="flex-column heading-quantity">
+                <h3> x {cartValue.quantity}</h3>
               </div>
-              <p className="quantity-price">
+              <h2 className="price">
                 &#8377; {(cartValue.price * cartValue.quantity).toFixed(2)}
-              </p>
+              </h2>
             </div>
           ))}
         </div>
-        <div className="flex-column">
-          <h3 className="address-order">{value.address.name}</h3>
-          <p>{value.address.address}</p>
+        <div className="flex-row foot">
+          <div className="address">
+            <h3 className="address-order">
+              DELIVERED TO: {value.address.name}
+            </h3>
+            <p>{value.address.address}</p>
+          </div>
         </div>
       </div>
     )

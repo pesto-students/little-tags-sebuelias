@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
-export default function Carousel({ slides, timer }) {
+export default function Carousel({ slides, timer, imageIndicator }) {
   const [currentSlideNumber, setCurrentSlideNumber] = useState(0);
   // eslint-disable-next-line prefer-destructuring
   const length = slides.length;
@@ -54,13 +54,20 @@ export default function Carousel({ slides, timer }) {
             <img src={slide} alt="test" className="image" key={index} />
           )}
         </div>
-        
       ))}
-      <div className="flex-row cousel-indicator">
-      {slides.map((slide, index) => (
-        <li className={index === currentSlideNumber ? "selected-cousel-indicator" : ""} key={index.toString()}/>
-      ))}
-      </div>
+
+      {imageIndicator ? (
+        <div className="flex-row cousel-indicator">
+          {slides.map((slide, index) => (
+            <li
+              className={
+                index === currentSlideNumber ? 'selected-cousel-indicator' : ''
+              }
+              key={index.toString()}
+            />
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -70,8 +77,10 @@ Carousel.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   slides: PropTypes.array.isRequired,
   timer: PropTypes.number,
+  imageIndicator: PropTypes.bool,
 };
 
 Carousel.defaultProps = {
   timer: 0,
+  imageIndicator: false,
 };

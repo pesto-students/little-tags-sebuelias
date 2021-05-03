@@ -33,25 +33,15 @@ function Cart(props) {
   ));
 
   return (
-    <div>
-    <div style={{ height: '100px' }} />
-      <div className="flex-column cart-parent-box">
-        {props.apparrelData.cart.length > 0 ? (
-          <div className="flex-row flex-space-arround cart-header">
-            <h1 className="cart-title">
-              Cart ({props.apparrelData.cart.length}{' '}
-              {props.apparrelData.cart.length > 1 ? 'items' : 'item'})
-            </h1>
-          </div>
-        ) : (
-          <div className="empty">
-            <h1>Oops! You do not have anything in cart</h1>
-          </div>
-        )}
-        {visualizeCart}
-      </div>
-      {props.apparrelData.cart.length > 0 ?
-      <div className="flex-column order">
+    <div className="flex-column cart-parent-box">
+      {props.apparrelData.cart.length > 0 ? (
+        <div className="flex-row cart-header">
+          <h1 className="cart-title">
+            Cart ({props.apparrelData.cart.length}{' '}
+            {props.apparrelData.cart.length > 1 ? 'items' : 'item'})
+          </h1>
+          {props.apparrelData.cart.length > 0 ? (
+            <div className="flex-row order">
               <h1>Total Amount &#8377;{totalAmount.toFixed(2)}</h1>
               <button
                 className="place-order-button"
@@ -60,8 +50,17 @@ function Cart(props) {
               >
                 Place Order
               </button>
-            </div> : null }
-      </div>
+            </div>
+          ) : null}
+        </div>
+      ) : (
+        <div className="empty">
+          <h1 className="cart-title">Cart</h1>
+          <h2>Oops! Your cart is empty!</h2>
+        </div>
+      )}
+      {visualizeCart}
+    </div>
   );
 }
 

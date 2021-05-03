@@ -10,7 +10,7 @@ import {
 import AddRemoveWhislist from '../../components/AddRemoveWhislist';
 import OrderQuantity from '../../components/OrderQuantity';
 import OrderSize from '../../components/OrderSize';
-import Card from "../../components/Card"
+import Card from '../../components/Card';
 
 import './index.scss';
 import FirebaseContext from '../../services/Firebase/context';
@@ -26,7 +26,7 @@ const Product = (props) => {
   const [error, seterror] = useState('');
   const [addBagString, setaddBagString] = useState(false);
   const [whislist, setwhislist] = useState(false);
-  const [similarProduct, setsimilarProduct] = useState([])
+  const [similarProduct, setsimilarProduct] = useState([]);
 
   useEffect(() => {
     if (props.authDetails) {
@@ -38,7 +38,7 @@ const Product = (props) => {
         );
       }
     }
-    setTimeout(() => setaddBagString(false), 3000) ;
+    setTimeout(() => setaddBagString(false), 3000);
   }, [addBagString]);
 
   useEffect(() => {
@@ -47,9 +47,10 @@ const Product = (props) => {
         ({ id }) => id === productDetail.id
       );
       const checkSimilarProd = (props.apparrelData.apparrelData || []).filter(
-        ({ category, id }) =>  id !== productDetail.id && category === productDetail.category
+        ({ category, id }) =>
+          id !== productDetail.id && category === productDetail.category
       );
-      setsimilarProduct(checkSimilarProd)
+      setsimilarProduct(checkSimilarProd);
       if (checkWhislist.length) {
         setwhislist(true);
       }
@@ -119,13 +120,17 @@ const Product = (props) => {
         seterror('Please select the apparrel size');
         return;
       }
-      const getSize = productDetail.category === 'women clothing' || productDetail.category === 'men clothing' ? size : ""
+      const getSize =
+        productDetail.category === 'women clothing' ||
+        productDetail.category === 'men clothing'
+          ? size
+          : '';
       props.hitCartAddRemove({
         actionType: 'add',
-        productDetail: { ...productDetail, quantity, size : getSize },
+        productDetail: { ...productDetail, quantity, size: getSize },
       });
       setaddBagString(true);
-      setsize("M");
+      setsize('M');
       setquantity(1);
     } else {
       props.changeSignUpBool({ signUpModal: true });
@@ -134,49 +139,43 @@ const Product = (props) => {
 
   const visualizeSimilarProduct = similarProduct.map((value, index) => (
     <Card
-    index={index}
-    value={value}
-    key={index.toString()}
-    {...props}
-    openSignUpModal={()=>props.changeSignUpBool({signUpModal:true})}
-  />
-  ))
+      index={index}
+      value={value}
+      key={index.toString()}
+      {...props}
+      openSignUpModal={() => props.changeSignUpBool({ signUpModal: true })}
+    />
+  ));
 
   return (
     <div className="prod-page-container">
-      <div style={{ height: '100px' }} />
-      <div className="flex-row flex-one display-product">
-        <div className="flex-row image-crousel-box">
-        <Carousel
-            timer={3000}
-            slides={[productDetail.image, productDetail.image]}
-          />
-        </div>
-        <div className="flex-column content-display-box">
-          <div className="flex-column title-head">
-            <h2>{productDetail.title}</h2>
-            <h2>&#8377; {productDetail.price}</h2>
+      <div className="prod-container">
+        <div className="flex-row flex-one display-product">
+          <div className="flex-row image-crousel-box">
+            <Carousel
+              timer={3000}
+              slides={[productDetail.image, productDetail.image]}
+              imageIndicator
+            />
           </div>
-          {/* <div className="flex-column description">
-            <h2>DESCRIPTION</h2>
-            <p>{productDetail.description}</p>
-          </div> */}
-
-          {productDetail.category === 'women clothing' ||
-          productDetail.category === 'men clothing' ? (
-            <div className="flex-column">
-              <OrderSize
-                Size={size}
-                setSize={(value) => {
-                  setsize(value);
-                  seterror('');
-                }}
-              />
-              {error ? <span className="error">{error}</span> : <br />}
+          <div className="flex-column content-display-box">
+            <div className="flex-column title-head">
+              <h2>{productDetail.title}</h2>
+              <h2>&#8377; {productDetail.price}</h2>
             </div>
-          ) : null}
-
-          <div className="flex-column button-group">
+            {productDetail.category === 'women clothing' ||
+            productDetail.category === 'men clothing' ? (
+              <div className="flex-column">
+                <OrderSize
+                  Size={size}
+                  setSize={(value) => {
+                    setsize(value);
+                    seterror('');
+                  }}
+                />
+                {error ? <span className="error">{error}</span> : <br />}
+              </div>
+            ) : null}
             <div className="flex-column">
               <OrderQuantity
                 setquantity={quantity}
@@ -186,29 +185,35 @@ const Product = (props) => {
                 }}
               />
             </div>
-
-            <div className="flex-row add-button">
-              <div className="add-to-bag">
-                <button type="button" className="button" onClick={handleAddBag}>
-                  {addBagString ? "ADDED TO BAG" : "ADD TO BAG"}
-                </button>
-              </div>
-              <div className="add-to-whislist">
-                <AddRemoveWhislist
-                  whislist={whislist}
-                  handleAddWhislist={handleAddWhislist}
-                  handleRemoveWhislist={handleRemoveWhislist}
-                  productDetail={productDetail}
-                />
+            <div className="flex-column button-group">
+              <div className="flex-row add-button">
+                <div className="add-to-bag">
+                  <button
+                    type="button"
+                    className="button"
+                    onClick={handleAddBag}
+                  >
+                    {addBagString ? 'ADDED TO BAG' : 'ADD TO BAG'}
+                  </button>
+                </div>
+                <div className="add-to-whislist">
+                  <AddRemoveWhislist
+                    whislist={whislist}
+                    handleAddWhislist={handleAddWhislist}
+                    handleRemoveWhislist={handleRemoveWhislist}
+                    productDetail={productDetail}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="flex-column description">
-            <h2>DESCRIPTION</h2>
-            <p>{productDetail.description}</p>
+            <div className="flex-column description">
+              <h2>DESCRIPTION</h2>
+              <p>{productDetail.description}</p>
+            </div>
           </div>
         </div>
       </div>
+
       <div className="flex-column similar-products">
         <h2 className="heading-similar-prod">SIMILAR PRODUCTS</h2>
         <div className="complete-data">{visualizeSimilarProduct}</div>

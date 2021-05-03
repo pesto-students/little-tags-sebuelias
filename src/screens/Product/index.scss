@@ -3,9 +3,14 @@
   justify-content: center;
 }
 .prod-page-container {
-  // height: 100vh;
+  width: 100vw;
+  padding-top: 100px;
 }
-
+.prod-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 h2 {
   font-size: 2rem;
 }
@@ -24,9 +29,15 @@ h2 {
   align-items: center;
   box-shadow: 34px;
   height: 45rem;
+}
+
+.content-display-box {
+  width: 400px;
+  height: 600px;
+  justify-content: space-evenly;
   border-radius: 0 4rem;
-  margin-right: 5rem;
-  border-right: 0.5px solid;
+  padding-left: 5rem;
+  border-left: 0.5px solid;
   border-image-slice: 1;
   border-width: 0.5px;
   border-image-source: linear-gradient(
@@ -35,12 +46,7 @@ h2 {
     var(--black),
     var(--white)
   );
-}
-
-.content-display-box {
-  width: 400px;
-  height: 600px;
-  justify-content: space-evenly;
+  // box-shadow: 3px 3px 0 #222;
 }
 
 .add-to-whislist {
@@ -51,6 +57,7 @@ h2 {
   h2 {
     font-size: 2.5rem;
     font-weight: 500;
+    margin-bottom: 0;
   }
 }
 .button-group {
@@ -62,17 +69,18 @@ h2 {
     background: transparent;
     border: none;
     border-radius: 0 4rem 4rem 0;
-    font-size: 14px;
+    font-size: 1.5rem;
     text-align: center;
-    width: 185px;
     letter-spacing: 1px;
     cursor: pointer;
-    transition: all ease-in 0.2s;
+    transition: all ease-in 0.3s;
     height: 4rem;
     background: var(--red);
     color: var(--light);
-    &:hover{
-      box-shadow:0 1px 2px 0 rgba(2, 2, 2, 0.5), 0 2px 7px 0 rgba(2, 2, 2, 0.49);
+    &:hover {
+      box-shadow: 0 1px 2px 0 rgba(2, 2, 2, 0.5),
+        0 2px 7px 0 rgba(2, 2, 2, 0.49);
+      color: var(--black);
     }
   }
 }
@@ -85,21 +93,23 @@ h2 {
 }
 
 .description {
+  margin-top: 2rem;
   h2 {
+    font-size: 1.5rem;
     margin: 0;
-    font-weight: 500;
+    font-weight: bold;
   }
-  p{
-    font-size: 12px;
-    font-weight: 400;
+  p {
+    font-size: 1.2rem;
   }
 }
 
-.similar-products{
+.similar-products {
   align-items: center;
+  margin-top: 2rem;
 }
 
-.heading-similar-prod{
+.heading-similar-prod {
   font-family: 'Reenie Beanie', cursive;
   font-size: 4rem;
 }
