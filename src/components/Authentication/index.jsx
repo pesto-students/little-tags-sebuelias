@@ -1,7 +1,9 @@
 import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { FaFacebookF, FaGoogle } from 'react-icons/fa';
+import { IoMdClose } from 'react-icons/io';
 import Modal from '../Modal';
+import GoogleIcon from '../../assets/image/btn_google_signin_light_normal_web.png';
+import FacebookIcon from '../../assets/image/17639236_1785253958471956_282550797298827264_n.png';
 import {} from './index.scss';
 import FirebaseContext from '../../services/Firebase/context';
 
@@ -12,10 +14,12 @@ function SignUp({ closeModal, history, checkAuth }) {
     firebase
       .doGoogleSignIn()
       .then((authUser) => {
-        firebase.user(authUser.user.uid).set({
-          email: authUser.user.email,
-          username: authUser.user.displayName,
-        });
+        if (authUser.additionalUserInfo.isNewUser) {
+          firebase.user(authUser.user.uid).set({
+            email: authUser.user.email,
+            username: authUser.user.displayName,
+          });
+        }
         closeModal();
       })
       .catch((error) => setErrorMessage(error.message));
@@ -25,59 +29,48 @@ function SignUp({ closeModal, history, checkAuth }) {
     firebase
       .doFacebookSignIn()
       .then((authUser) => {
-        firebase.user(authUser.user.uid).set({
-          email: authUser.user.email,
-          username: authUser.user.displayName,
-        });
+        if (authUser.additionalUserInfo.isNewUser) {
+          firebase.user(authUser.user.uid).set({
+            email: authUser.user.email,
+            username: authUser.user.displayName,
+          });
+        }
         closeModal();
       })
       .catch((error) => setErrorMessage(error.message));
   };
 
   return (
-    <Modal width="50%" height="50%">
-      {!!errorMessage && <p className="error-message">{errorMessage}</p>}
-      {!checkAuth ? 
-      <button
-          className="close button"
-          onClick={() => closeModal()}
+    <Modal height="50%">
+      {!checkAuth ? (
+        <IoMdClose className="close" onClick={() => closeModal()} />
+      ) : (
+        <button
+          className="close button/"
+          onClick={() => history.goBack()}
           aria-hidden="true"
           type="button"
         >
-          close
+          go back
         </button>
-         :
-        <button
-        className="close button"
-        onClick={() => history.goBack()}
-        aria-hidden="true"
-        type="button"
-      >
-        go back
-      </button>
-       }
+      )}
       <div className="sign-up">
         <h2>Log in / Register</h2>
-        <button
-          className="btn google"
-          type="button"
+        <img
+          src={GoogleIcon}
+          alt="google button"
           onClick={handleGoogleSignIn}
-        >
-          <i className="fa">
-            <FaGoogle />
-          </i>
-          Using Google
-        </button>
-        <button
-          className="btn facebook"
-          type="button"
+          aria-hidden="true"
+          className="google"
+        />
+
+        <img
+          src={FacebookIcon}
+          alt="facebook button"
           onClick={handleFaceBookSignIn}
-        >
-          <i className="fa">
-            <FaFacebookF />
-          </i>
-          Using Facebook
-        </button>
+          aria-hidden="true"
+          className="facebook"
+        />
         <p className="error-message">{errorMessage ? `${errorMessage}` : ''}</p>
       </div>
     </Modal>

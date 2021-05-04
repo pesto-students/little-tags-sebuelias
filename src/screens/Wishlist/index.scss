@@ -1,12 +1,32 @@
-.best-sellar-title{
-    font-weight: bold;
-    font-size: 43px;
-    display: flex;
-    justify-content: center;
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 5rem 0rem;
 }
 
-.complete-data{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.wishlist-container {
+}
+
+.noitem-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.best-sellar-title {
+  font-weight: bold;
+  font-size: 4rem;
+  font-family: 'Reenie Beanie';
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  flex:1;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.complete-data-whislist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&family=Reenie+Beanie&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .title {
   font-family: 'Reenie Beanie', cursive;
 }
 .content {
-  font-family: 'Mulish', sans-serif;
+  font-family: 'Montserrat', 'Mulish', sans-serif;
   /* font-family: 'Reenie Beanie', cursive; */
 }
 
 #root {
+  font-family: 'Montserrat', 'Mulish', sans-serif;
+
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -32,12 +36,15 @@
   --dark: #343a40;
   // --black: #222222;
   --coolGrey: #97a5a7;
-  font-family: 'Mulish', sans-serif;
+  // font-family: 'Mulish', sans-serif;
 
   --light: #f7f1f0;
-  --black: #262220;
+  --black: #222;
   --brown: #a15c38;
   --lightBrown: #c3a6a0;
+
+  --bgColor: var(--white);
+  --textColor: var(--black);
   color: var(--black);
 }
 

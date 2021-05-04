@@ -1,46 +1,59 @@
-$backgroundColor: var(--light);
+$backgroundColor: var(--bgColor);
 $textColor: var(--black);
-$textHoverColor: var(--purples);
+$textHoverColor: var(--red);
 
 div.menu {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   background: $backgroundColor;
   height: 100vh;
-  width: auto;
   text-align: left;
   padding: 2rem;
   position: absolute;
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;
+  padding-left: 5rem;
+  width: 23rem;
 
   &-close {
     transform: translateX(-100%);
   }
   &-open {
+    border-right: 0.5px solid;
+    border-image-slice: 1;
+    border-width: 0.5px;
+    border-image-source: linear-gradient(
+      to bottom,
+      $backgroundColor,
+      $textColor,
+      $backgroundColor
+    );
+    box-shadow: 0 2px 16px 4px rgba(40, 44, 63, 0.7);
     transform: translateX(0);
   }
 
-  // @media (max-width: ${({ theme }) => theme.mobile}) {
-  //   width: 100%;
-  // }
-
-  a {
+  .category-menu {
+  }
+  .user {
+  }
+  .user-buttons {
+    display: flex;
+    padding-top: 0.75rem;
+    li {
+      font-size: 2rem;
+    }
+  }
+  li {
     font-size: 1.5rem;
     text-transform: uppercase;
-    padding: 0.75rem 0;
+    padding: 0.75rem 0rem 0 1rem;
     font-weight: bold;
-    letter-spacing: 0.5rem;
+    cursor: pointer;
     color: $textColor;
     text-decoration: none;
     transition: color 0.3s linear;
-
-    // @media (max-width: ${({ theme }) => theme.mobile}) {
-    //   font-size: 1.5rem;
-    //   text-align: center;
-    // }
 
     &:hover {
       color: $textHoverColor;

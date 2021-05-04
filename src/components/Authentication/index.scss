@@ -5,6 +5,9 @@
   align-items: center;
   height: 90%;
   color: var(--black);
+  h2{
+    font-weight: 500;
+  }
 }
 
 .btn {
@@ -51,10 +54,12 @@
   }
 }
 .google {
-  background-color: hsl(7, 71%, 55%);
+  cursor: pointer;
 }
 .facebook {
-  background-color: hsl(221, 44%, 41%);
+  width: 187px;
+  height: 36px;
+  cursor: pointer;
 }
 
 .error-message {

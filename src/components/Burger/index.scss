@@ -24,13 +24,18 @@
   div {
     width: 4rem;
     height: 0.25rem;
-    background: var(--black);
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
     z-index: 10;
     margin: 0;
+    background: var(--black);
+    transition: ease-in 0.3s;
+
+    &:hover {
+      background: var(--red);
+    }
   }
   /* Animation to change Burger to Close */
   :first-child.open {

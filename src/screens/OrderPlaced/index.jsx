@@ -29,6 +29,7 @@ const OrderPlaced = (props) => {
         <p>Thank you for choosing us.</p>
         <button
           type="button"
+          className="button"
           onClick={() => {
             props.history.push({ pathname: '/categories' });
           }}

@@ -22,7 +22,7 @@ function Payment(props) {
             address: props.apparrelData.address || [],
             order,
           });
-        props.history.push({pathname: "/order-placed", state: {previousLocation : "order-placed"}})
+        props.history.push({pathname: "/order-placed", state: {previousLocation : "payment"}})
     },
     prefill: {
       name: "Gaurav",
