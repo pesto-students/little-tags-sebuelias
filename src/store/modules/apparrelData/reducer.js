@@ -32,6 +32,9 @@ export default function auth(state = INITIAL_STATE, action) {
     case RECEIVE_API_DATA:
       return { ...state, apparrelData: action.payload.apparrelData };
     case ADD_WHISLIST:
+      if (state.whisList.filter(({ id }) => id === action.payload.id).length) {
+        return { ...state, whisList: state.whisList };
+      }
       return { ...state, whisList: [...state.whisList, action.payload] };
     case REMOVE_WHISLIST:
       state.whisList = state.whisList.filter(
