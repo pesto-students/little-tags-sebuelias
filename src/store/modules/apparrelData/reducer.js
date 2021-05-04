@@ -11,6 +11,7 @@ import {
   REMOVE_ADDRESS,
   ADD_ORDER,
   CHANGE_SIGN_UP_MODAL,
+  CHANGE_LOADER_BOOL,
 } from '../types';
 
 const INITIAL_STATE = {
@@ -20,6 +21,7 @@ const INITIAL_STATE = {
   order: [],
   address: [],
   openSignUpModal: false,
+  loader: true,
 };
 
 let checkDuplicate;
@@ -75,6 +77,8 @@ export default function auth(state = INITIAL_STATE, action) {
       return { ...state, cart: state.cart };
     case CHANGE_SIGN_UP_MODAL:
       return { ...state, openSignUpModal: action.payload.signUpModal };
+    case CHANGE_LOADER_BOOL:
+      return { ...state, loader: action.payload }
     default:
       return state;
   }

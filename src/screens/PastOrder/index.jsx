@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import withAuthorization from "../../services/Session/withAuthorization"
+import Loader from "../../components/Loader"
 import './index.scss';
 
 const PastOrder = (props) => {
@@ -65,8 +66,11 @@ const PastOrder = (props) => {
   return (
     <>
       <div style={{ height: '100px' }} />
+      {!props.apparrelData || props.apparrelData.loader ? <div className="loader-align"><Loader/></div> :
+      <div>
       <h1 className="past-order-title">Orders</h1>
       <div>{visualizeOrder}</div>
+      </div>}
     </>
   );
 };

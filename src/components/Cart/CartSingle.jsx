@@ -28,6 +28,11 @@ const CartSingle = (props) => {
   const handleRemoveCart = (event) => {
     event.preventDefault();
     props.hitCartAddRemove({ actionType: 'remove', index: props.index });
+    firebase.saveDataToDatabase(
+      props.authDetails.uid,
+      'cart',
+      props.apparrelData.cart
+    );
   };
 
   useEffect(() => {
