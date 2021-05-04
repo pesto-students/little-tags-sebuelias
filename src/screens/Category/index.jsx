@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { requestData, changeSignUpBool } from '../../store/modules/apparrelData/actions';
 import Card from "../../components/Card"
+import Sort from "../../components/Sort"
 import FilterBox from "../../components/FilterBox"
-import "./index.scss"
+import "./index.sass"
 
 function Category(props) {
   
@@ -32,7 +33,6 @@ function Category(props) {
         ({ category }) => category === props.location.state.QueryCategory
       );
       setProducts(filteredCategory);
-      setcurrCategory(props.location.state.QueryCategory.toUpperCase())
     }
   }, [props]);
 
@@ -63,9 +63,9 @@ function Category(props) {
   }, [])
 
   const handleDropDownValue = (event) => {
-    if (event.target.value === 'HIGH TO LOW') {
+    if (event.target.value === 'SORT BY: HIGH TO LOW') {
       Products.sort((firstVal, secondVal) => secondVal.price - firstVal.price);
-    } else if (event.target.value === 'LOW TO HIGH') {
+    } else if (event.target.value === 'SORT BY: LOW TO HIGH') {
       Products.sort((firstVal, secondVal) => firstVal.price - secondVal.price);
     } else {
       Products.sort(() => 0.5 - Math.random());
@@ -88,10 +88,15 @@ function Category(props) {
       <div style={{ height: '100px' }} />
 
       <div className="flex-row flex-one">
-        <FilterBox currCategory = {categoryRef.current} filterBox={(value) => filterBox(value)} handleDropDownValue={(event) => {handleDropDownValue(event)}} />
+        <FilterBox filterBox={(value) => filterBox(value)} />
         <div className="flex-column flex-one">
           <div className="category-header">
           <h1 className="best-sellar-title">{currCategory === "SEARCH" ? `${currCategory} ${props.location.state.QueryValue}` :currCategory }</h1>
+            <Sort
+              handleDropDownValue={(event) => {
+                handleDropDownValue(event);
+              }}
+            />
           </div>
           {visualizeBestSellerBox.length ? <div className="complete-data">
           {visualizeBestSellerBox}

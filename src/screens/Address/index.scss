@@ -1,90 +1,53 @@
-.container {
-  min-height: 100vh;
-}
-
-.add-address-box {
-  border-width: thin;
-  flex: 1;
-  border-style: dashed;
-  display: flex;
-  height: 200px;
-  margin: 30px 12% 20px 12%;
-  justify-content: center;
-  cursor: pointer;
-  div {
+.add-address-box{
+    border-width: thin;
+    flex: 1;
+    border-style: dashed;
     display: flex;
-    flex-direction: column;
+    height: 200px;
+    margin: 30px 12% 20px 12%;
     justify-content: center;
-    align-items: center;
-    font-size: 15px;
-  }
-}
-
-.icon-delete {
-  cursor: pointer;
-  width: 35px;
-  height: 16px;
-
-  color: var(--black);
-  &:hover {
-    color: var(--red);
-  }
-}
-
-.add-address-content {
-  font-size: 1.5rem;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 280px;
-  margin: 30px 10% 20px 10%;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: brown;
-  padding: 0 10px 0 10px;
-}
-.name-address {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  padding: 2rem;
-  width: 370px;
-  white-space: pre-wrap;
-}
-.cursor-pointer {
-  height: 54px;
-}
-
-.proceed-to-payment {
-  display: flex;
-  height: 43px;
-  margin: 30px 12% 20px 12%;
-  justify-content: space-between;
-  cursor: pointer;
-  flex-wrap: wrap;
-  align-content: center;
-
-  div {
-    display: flex;
-    align-items: center;
-    &:hover {
-      color: var(--red);
-    }
-    h1 {
-      padding-left: 1rem;
-    }
-  }
-  button {
-    font-size: 16px;
-    width: 250px;
-    font-weight: 600;
     cursor: pointer;
-    color: var(--light);
-    background: var(--red);
-  }
+    div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+    }
 }
 
-.address-wrap{
-  flex-wrap: wrap;
+.icon-font-size{
+    font-size: 50px;
+}
+
+.add-address-content{
+    border: 1px solid;
+    flex: 1 1;
+    display: flex;
+    height: 200px;
+    margin: 30px 12% 20px 12%;
+    white-space: pre-wrap;
+    font-weight: 300;
+    font-size: 18px;
+    justify-content: space-around;
+    align-items: center;
+    p{
+        width: 300px;
+    }
+}
+
+.cursor-pointer{
+    cursor: pointer;
+    height: 54px;
+}
+
+.proceed-to-payment{
+    display: flex;
+    height: 43px;
+    margin: 30px 12% 20px 12%;
+    justify-content: flex-end;
+    button{
+        cursor: pointer;
+        width: 200px;
+    }
 }

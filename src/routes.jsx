@@ -12,9 +12,6 @@ import Wishlist from './screens/Wishlist';
 import Payment from './screens/Payment';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import ScrollToTop from "./utils/ScrollToTop"
-import PastOrder from './screens/PastOrder';
-import Cart from './components/Cart';
 
 /* ! TODO: Use common Header / Footer  */
 function Routes() {
@@ -23,7 +20,6 @@ function Routes() {
       {/* <Header /> */}
       <BrowserRouter>
       <Header />
-      <ScrollToTop>
         <Switch>
           <Route exact path={ROUTES.HOME} component={Home}/>
           <Route exact path={ROUTES.CATEGORIES} component={Category}/>
@@ -33,12 +29,9 @@ function Routes() {
           <Route exact path={ROUTES.SIGN_IN} component={Category} />
           <Route exact path={ROUTES.WISHLIST} component={Wishlist} />
           <Route exact path={ROUTES.PAYMENT} component={Payment} />
-          <Route exact path={ROUTES.ORDERS} component={PastOrder} />
-          <Route exact path={ROUTES.CART} component={Cart} />
           <Route path={ROUTES.ERROR} component={ErrorPage} />
           <Route component={ErrorPage} />
         </Switch>
-        </ScrollToTop>
         <Footer />
       </BrowserRouter>
       {/* <Footer /> */}

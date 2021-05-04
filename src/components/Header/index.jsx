@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useContext } from 'react';
-import { FaRegHeart, FaRegUser } from 'react-icons/fa';
-import { FiShoppingBag } from 'react-icons/fi';
+import { FaRegHeart } from 'react-icons/fa';
+import { FiShoppingBag, FiLogOut } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -19,9 +19,8 @@ function Header(props) {
   const firebase = useContext(FirebaseContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openModal, setopenModal] = useState(false);
-  const [openCartModal, setopenCartModal] = useState(false);
+  const [openCartModal, setopenCartModal] = useState(false)
   const [headerScrolled, setHeaderScroll] = useState('');
-  const [onHoverUser, setonHoverUser] = useState(false)
 
   const menuRef = useRef();
   useOnClickOutside(menuRef, () => setMenuOpen(false));
@@ -56,14 +55,12 @@ function Header(props) {
       <nav className={`header ${headerScrolled}`}>
         <div className="hamburger-parent" ref={menuRef}>
           <Burger open={menuOpen} setOpen={setMenuOpen} />
-          <Menu open={menuOpen} close={()=>setMenuOpen(false)} {...props}/>
+          <Menu open={menuOpen} />
         </div>
 
         <h1
-          className="title icons"
-          onClick={() => {
-            props.history.push({ pathname: '/' });
-          }}
+          className="title"
+          onClick={()=>{props.history.push({pathname:"/"})}}
           aria-hidden="true"
         >
           Little Tags
@@ -74,50 +71,25 @@ function Header(props) {
         </div>
 
         <div className="header-buttons">
-          <ul>
+          {/* <ul>
             <li className="wishlist">
-            {props.apparrelData.whisList.length ? <div className="quantity-on-icon"><span className="item-count">
-                {props.apparrelData.whisList.length
-                  ? props.apparrelData.whisList.length
-                  : ' '}
-              </span> </div>: null}
-              <FaRegHeart
-                className="icons"
-                onClick={() => {
-                  if (props.authUser) {
-                    props.history.push({ pathname: '/whislist' });
-                  } else {
-                    setopenModal(true);
-                  }
-                }}
-              />
+              <span className="item-count">{ props.apparrelData.whisList ? props.apparrelData.whisList.length : 0 }</span>
+              <FaRegHeart />
             </li>
           </ul>
 
           <ul>
             <li className="cart">
-            {props.apparrelData.cart.length ? <div className="quantity-on-icon"><span className="item-count">
-                {props.apparrelData.cart.length
-                  ? props.apparrelData.cart.length
-                  : ' '}
-              </span> </div>: null}
-              <FiShoppingBag
-                className="icons"
-                onClick={() => {
-                  if (props.authUser) {
-                    props.history.push({ pathname: '/cart' });
-                  } else {
-                    setopenModal(true);
-                  }
-                }}
-              />
+              <span className="item-count">{ props.apparrelData.cart ? props.apparrelData.cart.length : 0 }</span>
+              <FiShoppingBag />
             </li>
-          </ul>
-          <ul className="auth-feature">
+          </ul> */}
+
+          <ul>
             {!props.authUser ? (
               <li onClick={handleLoginModal} aria-hidden="true">
                 <a
-                  className="login icons"
+                  className="login"
                   href="login.html"
                   data-toggle="tooltip"
                   data-selector="true"
@@ -128,30 +100,30 @@ function Header(props) {
                 </a>
               </li>
             ) : (
-              <li aria-hidden="true" className="flex-column user-icon" onMouseLeave={(event) => {
-                event.preventDefault();
-                setonHoverUser(false);
-              }}>
-                <FaRegUser className="logout icons" onClick={()=>{}} onMouseOver={(event) => {
-          event.preventDefault();
-          setonHoverUser(true);
-        }}
-        onFocus={(event) => {
-          event.preventDefault();
-          setonHoverUser(false);
-        }}/>
-                
-                {onHoverUser ? <div className="onhover-user">
-                  <div className="arrow"/>
-                  <div className="flex-column dropdown-user-content">
-                   <span className="username icons-hover">
-                  Hi,{props.authUser.username.split(" ")[0]}
-                </span>
-                <span className="logout-button icons-hover" onClick={handleLogout} aria-hidden="true">Logout</span>
-                </div>
-                </div> : null}
+              <li aria-hidden="true">
+                <span className="username">Hi,{props.authUser.username}</span>
               </li>
             )}
+          </ul>
+
+          <ul>
+            <li className="wishlist">
+            <span className="item-count">{ props.apparrelData.whisList ? props.apparrelData.whisList.length : 0 }</span>
+              <FaRegHeart onClick={()=>{if (props.authUser) {props.history.push({pathname:"/whislist"})} else {setopenModal(true)} }}/>
+            </li>
+          </ul>
+
+          <ul>
+            <li className="cart">
+            <span className="item-count">{ props.apparrelData.cart ? props.apparrelData.cart.length : 0 }</span>
+              <FiShoppingBag  onClick={()=>{if (props.authUser) {setopenCartModal(true)} else {setopenModal(true)} }}/>
+            </li>
+          </ul>
+
+          <ul>
+            <li className="cart">
+            {props.authUser ? <FiLogOut className="logout" onClick={handleLogout} /> : null}
+            </li>
           </ul>
         </div>
       </nav>
@@ -159,7 +131,7 @@ function Header(props) {
         <Signup
           closeModal={() => {
             setopenModal(false);
-            props.changeSignUpBool({ signUpModal: false });
+            props.changeSignUpBool({signUpModal:false})
             enableScroll();
           }}
         />
@@ -186,7 +158,7 @@ Header.propTypes = {
   history: PropTypes.objectOf(PropTypes.string).isRequired,
   apparrelData: PropTypes.objectOf(PropTypes.string).isRequired,
   changeSignUpBool: PropTypes.func.isRequired,
-  closeSignUpModal: PropTypes.func.isRequired,
+  closeSignUpModal: PropTypes.func.isRequired
 };
 
 Header.defaultProps = {
@@ -198,6 +170,4 @@ const mapStateToProps = (state) => ({
   apparrelData: state.apparrelData,
 });
 
-export default withRouter(
-  connect(mapStateToProps, { changeSignUpBool })(Header)
-);
+export default withRouter(connect(mapStateToProps, {changeSignUpBool})(Header));

@@ -1,14 +1,15 @@
 /* eslint-disable react/no-array-index-key */
 import './index.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
+// import CarouselImages from './CarouselImages';
 
-export default function Carousel({ slides, timer }) {
+export default function Carousel({ slides }) {
   const [currentSlideNumber, setCurrentSlideNumber] = useState(0);
   // eslint-disable-next-line prefer-destructuring
+  // eslint-disable-next-line prefer-destructuring
   const length = slides.length;
-  let autoSlideTimer = null;
 
   const nextSlide = () => {
     setCurrentSlideNumber(
@@ -22,28 +23,15 @@ export default function Carousel({ slides, timer }) {
     );
   };
 
-  useEffect(() => {
-    if (timer !== 0) {
-      autoSlideTimer = setInterval(() => {
-        nextSlide();
-      }, timer);
-    }
-    return () => {
-      if (autoSlideTimer) {
-        clearInterval(autoSlideTimer);
-      }
-    };
-  });
-
   if (!Array.isArray(slides) || length === 0) {
     return null;
   }
 
   return (
-    <section className="carousel flex-column">
-      <IoIosArrowBack className="left arrow-crousel" onClick={nextSlide} />
+    <section className="carousel">
+      <FaArrowAltCircleLeft className="left arrow" onClick={nextSlide} />
 
-      <IoIosArrowForward className="right arrow-crousel" onClick={prevSlide} />
+      <FaArrowAltCircleRight className="right arrow" onClick={prevSlide} />
 
       {slides.map((slide, index) => (
         <div
@@ -54,13 +42,19 @@ export default function Carousel({ slides, timer }) {
             <img src={slide} alt="test" className="image" key={index} />
           )}
         </div>
-        
       ))}
-      <div className="flex-row cousel-indicator">
-      {slides.map((slide, index) => (
-        <li className={index === currentSlideNumber ? "selected-cousel-indicator" : ""} key={index.toString()}/>
-      ))}
-      </div>
+      {/*
+      <div className="row">
+        <div className="column">
+          <img
+            className="demo cursor"
+            src="img_woods.jpg"
+            style="width:100%"
+            onclick="currentSlide(1)"
+            alt="The Woods"
+          />
+        </div>
+      </div> */}
     </section>
   );
 }
@@ -69,9 +63,4 @@ Carousel.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   // eslint-disable-next-line react/forbid-prop-types
   slides: PropTypes.array.isRequired,
-  timer: PropTypes.number,
-};
-
-Carousel.defaultProps = {
-  timer: 0,
 };
