@@ -30,3 +30,9 @@
         background: var(--red);
     }
 }
+
+@media (min-width: 300px) and (max-width: 470px) {
+    .order-placed{
+        text-align: center;
+    }
+  }

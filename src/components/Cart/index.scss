@@ -41,7 +41,6 @@
 .order {
   align-items: center;
   justify-content: center;
-  // margin: 5px 10% 5px 10%;
 
   h1 {
     max-width: 24ch;
@@ -93,8 +92,6 @@
 
 .cart-title-whislist {
   width: 30rem;
-
-  margin-left: 4rem;
 }
 
 .cart-parent-box {
@@ -113,4 +110,14 @@
   width: 9ch;
   display: flex;
   align-items: center;
+}
+
+@media (min-width: 300px) and (max-width: 470px) {
+  .order{
+    align-items: center;
+    margin: 0;
+  }
+  .place-order-button{
+    margin: 0 0 2rem 0;
+  }
 }

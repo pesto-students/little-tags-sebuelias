@@ -51,7 +51,6 @@ const CartSingle = (props) => {
   return (
     <>
       <div className="flex-row individual-cart-box">
-        <div className="flex-row">
           <img
             className="cart-product-image"
             src={props.productDetail.image}
@@ -82,7 +81,6 @@ const CartSingle = (props) => {
               <RiDeleteBin2Line className="icons" onClick={handleRemoveCart} />
             </div>
           </div>
-        </div>
         <div className="flex-column quantity">
           <OrderQuantity
             setquantity={quantity}

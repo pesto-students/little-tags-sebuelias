@@ -7,7 +7,7 @@ import {
 } from '../../store/modules/apparrelData/actions';
 import Card from '../../components/Card';
 import FilterBox from '../../components/FilterBox';
-import './index.sass';
+import './index.scss';
 
 function Category(props) {
   const [Products, setProducts] = useState([]);
