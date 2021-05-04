@@ -6,6 +6,7 @@ import {
   hitWhislist,
   changeSignUpBool,
 } from '../../store/modules/apparrelData/actions';
+import withAuthorization from "../../services/Session/withAuthorization"
 import FirebaseContext from '../../services/Firebase/context';
 import Card from '../../components/Card';
 import './index.scss';
@@ -68,4 +69,4 @@ const mapStateToProps = (state) => ({
   authDetails: state.authDetails.auth,
 });
 
-export default connect(mapStateToProps, dispatchToProps)(Whislist);
+export default withAuthorization(connect(mapStateToProps, dispatchToProps)(Whislist));

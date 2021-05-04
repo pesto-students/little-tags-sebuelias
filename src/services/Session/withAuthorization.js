@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import FirebaseContext from '../Firebase/context';
-import SignUp from "../../components/Authentication"
+import NotPermittedScreen from '../../components/Authentication/NotPermittedScreen';
 
 const withAuthorization = (Component) => {
 
@@ -20,11 +20,7 @@ const withAuthorization = (Component) => {
     return props.authUser ? (
       <Component {...props} />
     ) : (
-        <>
-        <div style={{height:"100px"}}/>
-      <h1>You need to sign in to access this page </h1>
-      <SignUp checkAuth history={props.history} closeModal={() => {props.history.push({pathname:"/categories"})}}/>
-      </>
+      <NotPermittedScreen {...props}/>
     );
   };
 

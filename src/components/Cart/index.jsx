@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hitCartAddRemove } from '../../store/modules/apparrelData/actions';
+import withAuthorization from "../../services/Session/withAuthorization"
 import {} from './index.scss';
 import CartSingle from './CartSingle';
 
@@ -75,4 +76,4 @@ const mapStateToProps = (state) => ({
   apparrelData: state.apparrelData,
 });
 
-export default connect(mapStateToProps, dispatchToProps)(Cart);
+export default withAuthorization(connect(mapStateToProps, dispatchToProps)(Cart));

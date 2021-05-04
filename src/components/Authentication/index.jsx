@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebookF } from 'react-icons/fa';
+import { IoReturnUpBackOutline } from 'react-icons/io5';
 import { VscClose } from 'react-icons/vsc';
 import Modal from '../Modal';
 import {} from './index.scss';
@@ -44,16 +45,9 @@ function SignUp({ closeModal, history, checkAuth }) {
     <Modal height="50%">
       {!checkAuth ? (
         <VscClose className="close" onClick={() => closeModal()} />
-      ) : (
-        <button
-          className="close button"
-          onClick={() => history.goBack()}
-          aria-hidden="true"
-          type="button"
-        >
-          go back
-        </button>
-      )}
+      ) : 
+        <IoReturnUpBackOutline className="close align-back-arrow"  onClick={() => history.goBack()} />
+      }
       <div className="sign-up">
         <h2>Log in / Register</h2>
         <button

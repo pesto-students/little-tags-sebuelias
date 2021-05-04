@@ -74,7 +74,7 @@ function Header(props) {
         <div className="header-buttons">
           <ul>
             <li className="wishlist">
-              {props.apparrelData.whisList.length ? (
+              {props.authUser && props.apparrelData.whisList.length ? (
                 <div className="quantity-on-icon">
                   <span className="item-count">
                     {props.apparrelData.whisList.length
@@ -98,7 +98,7 @@ function Header(props) {
 
           <ul>
             <li className="cart">
-              {props.apparrelData.cart.length ? (
+              {props.authUser && props.apparrelData.cart.length ? (
                 <div className="quantity-on-icon">
                   <span className="item-count">
                     {props.apparrelData.cart.length

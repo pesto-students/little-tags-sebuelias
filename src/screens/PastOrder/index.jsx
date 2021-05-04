@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import withAuthorization from "../../services/Session/withAuthorization"
 import './index.scss';
 
 const PastOrder = (props) => {
@@ -79,4 +80,4 @@ const mapStateToProps = (state) => ({
   authDetails: state.authDetails.auth,
 });
 
-export default connect(mapStateToProps)(PastOrder);
+export default withAuthorization(connect(mapStateToProps)(PastOrder));
