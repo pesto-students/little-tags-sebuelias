@@ -48,6 +48,15 @@ const Whislist = (props) => {
       props.apparrelData.whisList.length === 0 ? (
         <div className="noitem-container">
           <h2>Wow!! An empty wishlist!</h2>
+          <button
+          type="button"
+          className="button"
+          onClick={() => {
+            props.history.push({ pathname: '/categories' });
+          }}
+        >
+          Continue Shopping
+        </button>
         </div>
       ) : null}
     </div>
@@ -58,6 +67,7 @@ Whislist.propTypes = {
   hitWhislist: PropTypes.func.isRequired,
   hitCartAddRemove: PropTypes.func.isRequired,
   changeSignUpBool: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.object).isRequired,
   authDetails: PropTypes.objectOf(PropTypes.object).isRequired,
   apparrelData: PropTypes.objectOf(PropTypes.object).isRequired,
 };
