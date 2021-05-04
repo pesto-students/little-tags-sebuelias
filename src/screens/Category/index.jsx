@@ -24,7 +24,8 @@ function Category(props) {
     if (
       !props.location.state ||
       !props.location.state.QueryCategory ||
-      props.location.state.QueryCategory === 'all-products'
+      props.location.state.QueryCategory === 'all-products' ||
+      props.location.state.QueryCategory === 'all products'
     ) {
       setProducts(props.apparrelData);
     } else if (props.location.state.QueryCategory === 'search') {

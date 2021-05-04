@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './index.scss';
 import {
   FaFacebookSquare,
@@ -14,7 +15,7 @@ import Subscribe from '../Subscribe';
 import AppStoreIcon from '../../assets/image/app_store_icon.png';
 import PlayStoreIcon from '../../assets/image/play_store_icon.png';
 
-const Footer = () => (
+const Footer = (props) => (
   <footer className="flex-column footer border-line fix-bottom">
     <Subscribe />
     <div className="flex-row flex-wrap-with-justify footer-flex-margin border-line">
@@ -30,11 +31,42 @@ const Footer = () => (
       </div>
       <div>
         <h3>Categories</h3>
-        <ul>
-          <li>Accessories (45)</li>
-          <li>Jeans (278)</li>
-          <li>Tops (64)</li>
-          <li>Jackets (3)</li>
+        <ul className="footer-category">
+          <li onClick={() => {
+          props.history.push({
+            pathname: '/categories',
+            state: { QueryCategory: 'all-products' },
+          });
+        }}
+        aria-hidden="true">All</li>
+          <li onClick={() => {
+          props.history.push({
+            pathname: '/categories',
+            state: { QueryCategory: 'men clothing' },
+          });
+        }}
+        aria-hidden="true">Mens</li>
+          <li onClick={() => {
+          props.history.push({
+            pathname: '/categories',
+            state: { QueryCategory: 'women clothing' },
+          });
+        }}
+        aria-hidden="true">Womens</li>
+          <li onClick={() => {
+          props.history.push({
+            pathname: '/categories',
+            state: { QueryCategory: 'electronics' },
+          });
+        }}
+        aria-hidden="true">Electronics</li>
+          <li onClick={() => {
+          props.history.push({
+            pathname: '/categories',
+            state: { QueryCategory: 'jewelery' },
+          });
+        }}
+        aria-hidden="true">Jewelery</li>
         </ul>
       </div>
       <div className="flex-column">
@@ -93,5 +125,9 @@ const Footer = () => (
     </div>
   </footer>
 );
+
+Footer.propTypes = {
+  history: PropTypes.objectOf(PropTypes.object).isRequired,
+};
 
 export default withRouter(Footer);

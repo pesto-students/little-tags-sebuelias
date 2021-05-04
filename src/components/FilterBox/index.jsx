@@ -13,7 +13,7 @@ function FilterBox(props) {
             onClick={() => props.filterBox('all-products')}
             aria-hidden="true"
             className={`Category ${
-              props.currCategory.toLowerCase() === 'all-products'
+              props.currCategory.toLowerCase() === 'all products'
                 ? 'selected-category'
                 : ''
             }`}
