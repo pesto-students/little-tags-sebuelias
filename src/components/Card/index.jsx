@@ -19,7 +19,7 @@ const Card = (props) => {
     } else {
       props.openSignUpModal();
     }
-  };
+}
 
   const handleRemoveWhislist = () => {
     if (props.authDetails) {
@@ -36,11 +36,7 @@ const Card = (props) => {
       const checkWhislist = props.apparrelData.whisList.filter(
         ({ id }) => id === props.value.id
       );
-      if (checkWhislist.length) {
-        setwhislist(true);
-      } else {
-        setwhislist(false);
-      }
+      if (checkWhislist.length) {setwhislist(true)} else {setwhislist(false)}
     }
   }, [props]);
 
@@ -68,22 +64,14 @@ const Card = (props) => {
           });
         }}
       />
-      <div
-        className="card-title"
-        role="button"
-        tabIndex={0}
-        onKeyPress={() => {}}
-        onClick={() => {
-          props.history.push({
-            pathname: `/categories/${props.value.id}`,
-            state: { product: props.value },
-          });
-        }}
-      >
+      <div className="card-title">
         <h3 className="title-head">{props.value.title}</h3>
+        <h3 className="title-price">&#8377; {props.value.price}</h3>
       </div>
       <div className="card-footer-div">
-      <h3 className="title-head">&#8377; {props.value.price}</h3>
+        <button className="button" type="button">
+          Add to Cart
+        </button>
         <AddRemoveWhislist
           whislist={whislist}
           handleAddWhislist={handleAddWhislist}

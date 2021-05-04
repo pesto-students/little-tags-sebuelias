@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import Sort from '../Sort';
 import './index.scss';
 
 function FilterBox(props) {
@@ -12,43 +11,42 @@ function FilterBox(props) {
           <li
             onClick={() => props.filterBox('all-products')}
             aria-hidden="true"
-            className={`Category ${props.currCategory.toLowerCase() === 'all-products' ? "selected-category" : ""}`}
+            className="Category"
           >
             All Products
           </li>
           <li
             onClick={() => props.filterBox('men clothing')}
             aria-hidden="true"
-            className={`Category ${props.currCategory.toLowerCase() === 'men clothing' ? "selected-category" : ""}`}
+            className="Category"
           >
             Mens Clothing
           </li>
           <li
             onClick={() => props.filterBox('women clothing')}
             aria-hidden="true"
-            className={`Category ${props.currCategory.toLowerCase() === 'women clothing' ? "selected-category" : ""}`}
+            className="Category"
           >
             Women Clothing
           </li>
           <li
             onClick={() => props.filterBox('electronics')}
             aria-hidden="true"
-            className={`Category ${props.currCategory.toLowerCase() === 'electronics' ? "selected-category" : ""}`}
+            className="Category"
           >
             Electronics
           </li>
           <li
             onClick={() => props.filterBox('jewelery')}
             aria-hidden="true"
-            className={`Category ${props.currCategory.toLowerCase() === 'jewelery' ? "selected-category" : ""}`}
+            className="Category"
           >
-            Jewlery
+            Jwellary
           </li>
         </ul>
       </div>
       <div>
-        <h5>SORT</h5>
-        <Sort handleDropDownValue={(event)=>props.handleDropDownValue(event)}/>
+        <h5>PRICE</h5>
       </div>
     </div>
   );
@@ -56,8 +54,6 @@ function FilterBox(props) {
 
 FilterBox.propTypes = {
   filterBox: PropTypes.func.isRequired,
-  handleDropDownValue: PropTypes.func.isRequired,
-  currCategory: PropTypes.string.isRequired,
 };
 
 export default FilterBox;

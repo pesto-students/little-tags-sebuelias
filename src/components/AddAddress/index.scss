@@ -1,73 +1,38 @@
-.input-data {
-  margin: 10px;
-  outline: none;
-  border-width: 2px;
-  border-radius: 5px;
-  height: 40px;
-  width: 330px;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  border-color: brown;
+.input-data{
+    margin: 10px;
+    outline: none;
+    border-style: hidden;
+    border-radius: 5px;
+    height: 40px;
+    width: 330px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#pincode{
+    margin: 10px 5px 10px 10px;
+    width: 160px;
+}
+#country{
+    margin: 10px 10px 10px 5px;
+    width: 160px;
+}
+#state{
+    margin: 10px 5px 10px 10px;
+    width: 160px;
+}
+#city{
+    margin: 10px 10px 10px 5px;
+    width: 160px;
 }
 
-.heading {
-  display: flex;
-  flex-direction: column;
-  h2 {
-    margin-left: 5rem;
-    font-size: 2rem;
-  }
+#address{
+    height: 100px;
 }
 
-#pincode {
-  margin: 10px 5px 10px 10px;
-  width: 160px;
-}
-#country {
-  margin: 10px 10px 10px 5px;
-  width: 160px;
-}
-#state {
-  margin: 10px 5px 10px 10px;
-  width: 160px;
-}
-#city {
-  margin: 10px 10px 10px 5px;
-  width: 160px;
+#submit-address{
+    cursor: pointer;
 }
 
-#address {
-  height: 100px;
-}
-
-#submit-address {
-  cursor: pointer;
-}
-
-.error-text {
-  color: red;
-  margin-left: 10px;
-}
-
-.button {
-  background: transparent;
-  padding: 1rem 3rem;
-  border-radius: 4rem;
-  font-family: 'Montserrat';
-  border: none;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all ease-in 0.4s;
-  background: var(--red);
-  color: var(--light);
-  font-weight: 500;
-  font-size: large;
-  &:hover {
-    box-shadow: 0 4px 8px 0 rgba(2, 2, 2, 0.5), 0 6px 20px 0 rgba(2, 2, 2, 0.49);
-  }
+.error-text{
+    color: red;
+    margin-left: 10px;
 }

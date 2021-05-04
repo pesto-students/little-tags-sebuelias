@@ -10,11 +10,10 @@ import {
 import AddRemoveWhislist from '../../components/AddRemoveWhislist';
 import OrderQuantity from '../../components/OrderQuantity';
 import OrderSize from '../../components/OrderSize';
-import Card from "../../components/Card"
+import Cart from '../../components/Cart';
 
 import './index.scss';
 import FirebaseContext from '../../services/Firebase/context';
-import Carousel from '../../components/Carousel';
 
 const Product = (props) => {
   const firebase = useContext(FirebaseContext);
@@ -22,23 +21,22 @@ const Product = (props) => {
     props.location.state ? props.location.state.product : {}
   );
   const [quantity, setquantity] = useState(1);
-  const [size, setsize] = useState('M');
+  const [size, setsize] = useState('');
   const [error, seterror] = useState('');
+  const [openModal, setopenModal] = useState(false);
   const [addBagString, setaddBagString] = useState(false);
   const [whislist, setwhislist] = useState(false);
-  const [similarProduct, setsimilarProduct] = useState([])
 
   useEffect(() => {
     if (props.authDetails) {
-      if (addBagString) {
-        firebase.saveDataToDatabase(
-          props.authDetails.uid,
-          'cart',
-          props.apparrelData.cart
-        );
-      }
-    }
-    setTimeout(() => setaddBagString(false), 3000) ;
+        if (addBagString) {
+      firebase.saveDataToDatabase(
+        props.authDetails.uid,
+        'cart',
+        props.apparrelData.cart
+      );
+    }}
+    setaddBagString(false)
   }, [addBagString]);
 
   useEffect(() => {
@@ -46,10 +44,6 @@ const Product = (props) => {
       const checkWhislist = props.apparrelData.whisList.filter(
         ({ id }) => id === productDetail.id
       );
-      const checkSimilarProd = (props.apparrelData.apparrelData || []).filter(
-        ({ category, id }) =>  id !== productDetail.id && category === productDetail.category
-      );
-      setsimilarProduct(checkSimilarProd)
       if (checkWhislist.length) {
         setwhislist(true);
       }
@@ -71,7 +65,7 @@ const Product = (props) => {
       setwhislist(true);
       props.hitWhislist({ actionType: 'add', productDetail });
     } else {
-      props.changeSignUpBool({ signUpModal: true });
+      props.changeSignUpBool({signUpModal:true})
     }
   };
 
@@ -80,7 +74,7 @@ const Product = (props) => {
       setwhislist(false);
       props.hitWhislist({ actionType: 'remove', productDetail });
     } else {
-      props.changeSignUpBool({ signUpModal: true });
+      props.changeSignUpBool({signUpModal:true})
     }
   };
 
@@ -119,37 +113,40 @@ const Product = (props) => {
         seterror('Please select the apparrel size');
         return;
       }
-      const getSize = productDetail.category === 'women clothing' || productDetail.category === 'men clothing' ? size : ""
       props.hitCartAddRemove({
         actionType: 'add',
-        productDetail: { ...productDetail, quantity, size : getSize },
+        productDetail: { ...productDetail, quantity, size },
       });
       setaddBagString(true);
-      setsize("M");
-      setquantity(1);
+      setsize("")
+      setquantity(1)
     } else {
-      props.changeSignUpBool({ signUpModal: true });
+      props.changeSignUpBool({signUpModal:true})
     }
   };
 
-  const visualizeSimilarProduct = similarProduct.map((value, index) => (
-    <Card
-    index={index}
-    value={value}
-    key={index.toString()}
-    {...props}
-    openSignUpModal={()=>props.changeSignUpBool({signUpModal:true})}
-  />
-  ))
-
   return (
-    <div className="prod-page-container">
+    <>
       <div style={{ height: '100px' }} />
+      {openModal ? (
+        <Cart
+          {...props}
+          productDetail={productDetail}
+          closeModal={() => {
+            setopenModal(false);
+            setaddBagString(false);
+            setquantity(1);
+          }}
+        />
+      ) : null}
       <div className="flex-row flex-one display-product">
         <div className="flex-row image-crousel-box">
-        <Carousel
-            timer={3000}
-            slides={[productDetail.image, productDetail.image]}
+          <img
+            className="image-box"
+            src={productDetail.image}
+            alt={productDetail.title}
+            aria-hidden="true"
+            onClick={() => {}}
           />
         </div>
         <div className="flex-column content-display-box">
@@ -162,33 +159,32 @@ const Product = (props) => {
           productDetail.category === 'men clothing' ? (
             <div className="flex-column">
               <OrderSize
-                Size={size}
+              Size={size}
                 setSize={(value) => {
                   setsize(value);
                   seterror('');
                 }}
               />
-              {error ? <span className="error">{error}</span> : <br />}
             </div>
           ) : null}
 
           <div className="flex-column button-group">
             <div className="flex-column">
-              <OrderQuantity
-                setquantity={quantity}
-                setorderQuantity={(value) => {
-                  setquantity(value);
-                  seterror('');
-                }}
-              />
+                <OrderQuantity
+                  setquantity={quantity}
+                  setorderQuantity={(value) => {
+                    setquantity(value);
+                    seterror('');
+                  }}
+                />
             </div>
 
             <div className="flex-row add-button">
-              <div className="add-to-bag">
+            <div className="add-to-bag">
                 <button type="button" className="button" onClick={handleAddBag}>
-                  {addBagString ? "ADDED TO BAG" : "ADD TO BAG"}
+                  ADD TO BAG
                 </button>
-              </div>
+            </div>
               <div className="add-to-whislist">
                 <AddRemoveWhislist
                   whislist={whislist}
@@ -198,18 +194,16 @@ const Product = (props) => {
                 />
               </div>
             </div>
+            {error ? <span style={{ color: 'red' }}>{error}</span> : null}
           </div>
+
           <div className="flex-column description">
             <h2>DESCRIPTION</h2>
             <p>{productDetail.description}</p>
           </div>
         </div>
       </div>
-      <div className="flex-column similar-products">
-        <h2 className="heading-similar-prod">SIMILAR PRODUCTS</h2>
-        <div className="complete-data">{visualizeSimilarProduct}</div>
-      </div>
-    </div>
+    </>
   );
 };
 
@@ -225,12 +219,7 @@ Product.propTypes = {
   authDetails: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
-const dispatchToProps = {
-  hitCartAddRemove,
-  requestData,
-  hitWhislist,
-  changeSignUpBool,
-};
+const dispatchToProps = { hitCartAddRemove, requestData, hitWhislist, changeSignUpBool };
 
 const mapStateToProps = (state) => ({
   apparrelData: state.apparrelData,

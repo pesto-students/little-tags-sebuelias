@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {IoMdClose} from "react-icons/io"
 import Modal from '../Modal';
 import { hitAddressAddRemove } from '../../store/modules/apparrelData/actions';
 import FirebaseContext from '../../services/Firebase/context';
@@ -31,7 +30,7 @@ const AddAddress = (props) => {
     const addressString = `${address}\n${City} - ${Pincode}\n${State}, ${Country}\nMobile: ${Mobile}`;
     props.hitAddressAddRemove({
       actionType: 'add',
-      address: { address: addressString, name: Name },
+      address: {address : addressString, name: Name},
     });
     setfirstTime(true);
   };
@@ -49,12 +48,17 @@ const AddAddress = (props) => {
 
   return (
     <>
-      <Modal>
-        <div className="heading">
-          <h2>Add address</h2>
-          <IoMdClose className="close" onClick={() => props.closeModal()}/>
+      <Modal width="350px" height="70%">
+        <div className="flex-column">
+          <button
+            className="close button"
+            onClick={() => props.closeModal()}
+            aria-hidden="true"
+            type="button"
+          >
+            close
+          </button>
           <form onSubmit={handleSubmit}>
-            <div className="flex-column">
             <input
               autoComplete="off"
               onBlur={(event) =>
@@ -71,8 +75,6 @@ const AddAddress = (props) => {
               }}
             />
             {errorName ? <span className="error-text">{errorName}</span> : null}
-            </div>
-            <div className="flex-column">
             <input
               autoComplete="off"
               className="input-data"
@@ -90,7 +92,6 @@ const AddAddress = (props) => {
             {errorMobile ? (
               <span className="error-text">{errorMobile}</span>
             ) : null}
-            </div>
             <div className="flex-row">
               <div className="flex-column">
                 <input
@@ -175,7 +176,6 @@ const AddAddress = (props) => {
                 ) : null}
               </div>
             </div>
-            <div className="flex-column">
             <textarea
               autoComplete="new-password"
               id="address"
@@ -194,10 +194,9 @@ const AddAddress = (props) => {
             {erroraddress ? (
               <span className="error-text">{erroraddress}</span>
             ) : null}
-            </div>
             <input
-              autoComplete="address"
-              className="input-data button"
+              autoComplete="new-password"
+              className="input-data"
               type="submit"
               value="ADD ADDRESS"
               id="submit-address"

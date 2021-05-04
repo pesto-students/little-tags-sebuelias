@@ -4,12 +4,11 @@ export function disableScroll() {
   const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
   // if any scroll is attempted,
   // set this to the previous value
-
-  window.onscroll = () => {
+  window.onscroll = function () {
     window.scrollTo(scrollLeft, scrollTop);
   };
 }
 
 export function enableScroll() {
-  window.onscroll = () => {};
+  window.onscroll = function () {};
 }
