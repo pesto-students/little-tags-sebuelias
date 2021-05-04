@@ -9,6 +9,7 @@ import Card from '../../components/Card';
 import FilterBox from '../../components/FilterBox';
 import './index.scss';
 import Loader from '../../components/Loader';
+import FilterBoxMobile from '../../components/FilterBox/FilterMobile';
 
 function Category(props) {
   const [Products, setProducts] = useState([]);
@@ -95,37 +96,58 @@ function Category(props) {
     />
   ));
 
-  const renderEmpty = setTimeout(() =>  (
-    <div>
-      <h2>Oops! Your query does not match any item</h2>
-    </div>
-  ), 2000);
+  const renderEmpty = setTimeout(
+    () => (
+      <div>
+        <h2>Oops! Your query does not match any item</h2>
+      </div>
+    ),
+    2000
+  );
 
   return (
     <>
       <div style={{ height: '100px' }} />
-      {!props.apparrelData || props.apparrelData.loader ? <div className="loader-align"><Loader /></div> :
-      <div className="flex-row flex-one">
-        <FilterBox
-          currCategory={categoryRef.current}
-          filterBox={(value) => filterBox(value)}
-          handleDropDownValue={(event) => {
-            handleDropDownValue(event);
-          }}
-        />
-        <div className="flex-column flex-one">
-          <div className="category-header">
-            <h1 className="best-seller-title">
-              {currCategory === 'SEARCH'
-                ? `${props.location.state.QueryValue}`
-                : currCategory}
-            </h1>
-          </div>
-          {visualizeBestSellerBox.length ? (
-            <div className="complete-data">{visualizeBestSellerBox}</div>
-          ) : renderEmpty}
+      {!props.apparrelData || props.apparrelData.loader ? (
+        <div className="loader-align">
+          <Loader />
         </div>
-      </div>}
+      ) : (
+        <div className="flex-row flex-one">
+          {window.innerWidth > 470 ? (
+            <FilterBox
+              currCategory={categoryRef.current}
+              filterBox={(value) => filterBox(value)}
+              handleDropDownValue={(event) => {
+                handleDropDownValue(event);
+              }}
+            />
+          ) : null}
+          <div className="flex-column flex-one">
+            <div className="category-header">
+              <h1 className="best-seller-title">
+                {currCategory === 'SEARCH'
+                  ? `${props.location.state.QueryValue}`
+                  : currCategory}
+              </h1>
+            </div>
+            {visualizeBestSellerBox.length ? (
+              <div className="complete-data">{visualizeBestSellerBox}</div>
+            ) : (
+              renderEmpty
+            )}
+          </div>
+          {window.innerWidth <= 470 ? (
+            <FilterBoxMobile
+              currCategory={categoryRef.current}
+              filterBox={(value) => filterBox(value)}
+              handleDropDownValue={(event) => {
+                handleDropDownValue(event);
+              }}
+            />
+          ) : null}
+        </div>
+      )}
     </>
   );
 }

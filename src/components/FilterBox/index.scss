@@ -57,3 +57,70 @@ h4 {
 ul {
   margin-top: 0;
 }
+
+.filter-button-container {
+  height: 10%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: var(--white);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 -10px 4px -7px rgba(115, 115, 115, 50%);
+  transition: color 250ms ease-in;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--red);
+  }
+}
+
+.box-div-filter-mobile {
+  margin: 2rem;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h4 {
+    text-align: center;
+  }
+
+  .filter-apply {
+    height: 5rem;
+    width: 15rem;
+    font-size: 1rem;
+  }
+
+  .filter-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    .Category {
+      text-indent: 0;
+    }
+
+    .category-filter {
+      flex-grow: 1;
+      border-right: 0.5px solid;
+      border-image-slice: 1;
+      border-width: 0.5px;
+      border-image-source: linear-gradient(
+        to bottom,
+        var(--light),
+        var(--black),
+        var(--light)
+      );
+
+      padding: 0 4rem 2rem 4rem;
+    }
+
+    .sort-container {
+      padding: 0 4rem 2rem 4rem;
+      flex-grow: 1;
+      margin-left: 1rem;
+    }
+  }
+}
