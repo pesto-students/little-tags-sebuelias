@@ -5,6 +5,7 @@ import { BiPlus } from 'react-icons/bi';
 
 import { IoClose } from 'react-icons/io5';
 import AddAddress from '../../components/AddAddress';
+import Loader from "../../components/Loader"
 import {
   hitAddressAddRemove,
   hitOrderAdd,
@@ -76,6 +77,8 @@ const Address = (props) => {
   );
 
   return (
+    <>
+    {!props.apparrelData || props.apparrelData.loader ? <div className="loader-align"><Loader/></div> :
     <div className="container">
       <div style={{ height: '100px' }} />
       {openModal ? (
@@ -103,7 +106,8 @@ const Address = (props) => {
       </div>
 
       <div className="flex-row address-wrap">{visualizeAddress}</div>
-    </div>
+    </div>}
+    </>
   );
 };
 

@@ -26,6 +26,11 @@ const Card = (props) => {
       setwhislist(false);
       setfirstTime(true);
       props.hitWhislist({ actionType: 'remove', productDetail: props.value });
+      firebase.saveDataToDatabase(
+        props.authDetails.uid,
+        'whisList',
+        props.apparrelData.whisList
+      );
     } else {
       props.openSignUpModal();
     }

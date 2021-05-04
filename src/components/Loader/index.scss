@@ -3,8 +3,7 @@ $mainColor: var(--black);
 
 html,
 body {
-  background-color: red;
-  // background-color: $background;
+  background-color: $background;
 }
 
 #loader {

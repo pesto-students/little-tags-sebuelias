@@ -10,6 +10,7 @@ import withAuthorization from '../../services/Session/withAuthorization';
 import FirebaseContext from '../../services/Firebase/context';
 import Card from '../../components/Card';
 import './index.scss';
+import Loader from '../../components/Loader';
 
 const Whislist = (props) => {
   const firebase = useContext(FirebaseContext);
@@ -41,6 +42,8 @@ const Whislist = (props) => {
   ));
 
   return (
+    <>
+        {!props.apparrelData || props.apparrelData.loader ? <div className="loader-align"><Loader /></div> :
     <div className="wishlist-container">
       <h1 className="best-seller-title">My Wishlist</h1>
       <div className="complete-data whislist">{visulizeWhislist}</div>
@@ -59,7 +62,8 @@ const Whislist = (props) => {
           </button>
         </div>
       ) : null}
-    </div>
+    </div>}
+    </>
   );
 };
 

@@ -8,6 +8,7 @@ import {
 import Card from '../../components/Card';
 import FilterBox from '../../components/FilterBox';
 import './index.scss';
+import Loader from '../../components/Loader';
 
 function Category(props) {
   const [Products, setProducts] = useState([]);
@@ -94,10 +95,16 @@ function Category(props) {
     />
   ));
 
+  const renderEmpty = setTimeout(() =>  (
+    <div>
+      <h2>Oops! Your query does not match any item</h2>
+    </div>
+  ), 2000);
+
   return (
     <>
       <div style={{ height: '100px' }} />
-
+      {!props.apparrelData || props.apparrelData.loader ? <div className="loader-align"><Loader /></div> :
       <div className="flex-row flex-one">
         <FilterBox
           currCategory={categoryRef.current}
@@ -116,13 +123,9 @@ function Category(props) {
           </div>
           {visualizeBestSellerBox.length ? (
             <div className="complete-data">{visualizeBestSellerBox}</div>
-          ) : (
-            <div>
-              <h2>Oops! Your query does not match any item</h2>
-            </div>
-          )}
+          ) : renderEmpty}
         </div>
-      </div>
+      </div>}
     </>
   );
 }

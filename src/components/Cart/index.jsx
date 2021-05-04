@@ -5,6 +5,7 @@ import { hitCartAddRemove } from '../../store/modules/apparrelData/actions';
 import withAuthorization from '../../services/Session/withAuthorization';
 import {} from './index.scss';
 import CartSingle from './CartSingle';
+import Loader from "../Loader"
 
 function Cart(props) {
   const [totalAmount, settotalAmount] = useState(0);
@@ -34,6 +35,8 @@ function Cart(props) {
   ));
 
   return (
+    <>
+        {!props.apparrelData || props.apparrelData.loader ? <div className="loader-align"><Loader /></div> :
     <div className="flex-column cart-parent-box">
       {props.apparrelData.cart.length > 0 ? (
         <div className="flex-row cart-header">
@@ -73,7 +76,8 @@ function Cart(props) {
           </div>
         ) : null}
       </div>
-    </div>
+    </div>}
+    </>
   );
 }
 

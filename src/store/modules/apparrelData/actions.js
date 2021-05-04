@@ -20,6 +20,8 @@ import {
   ADD_ORDER,
   OPEN_SIGN_UP_MODAL,
   CHANGE_SIGN_UP_MODAL,
+  HIT_LOADER,
+  CHANGE_LOADER_BOOL,
 } from '../types';
 
 export const storeData = (data) => ({
@@ -125,3 +127,13 @@ export const changeSignUpBool = (data) => ({
   type: CHANGE_SIGN_UP_MODAL,
   payload: data,
 });
+
+export const hitLoader = (data) => ({
+  type: HIT_LOADER,
+  payload: data
+})
+
+export const changeLoader = (data) => ({
+  type: CHANGE_LOADER_BOOL,
+  payload: data,
+})

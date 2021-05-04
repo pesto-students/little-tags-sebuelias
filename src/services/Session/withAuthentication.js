@@ -2,7 +2,7 @@ import { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hitLogin } from '../../store/modules/auth/actions';
-import { hitFirebaseApparel, requestData, changeSignUpBool } from '../../store/modules/apparrelData/actions';
+import { hitFirebaseApparel, requestData, changeSignUpBool, hitLoader } from '../../store/modules/apparrelData/actions';
 import FirebaseContext from '../Firebase/context';
 
 const withAuthentication = (Component) => {
@@ -25,8 +25,10 @@ const withAuthentication = (Component) => {
         address: authUser.address || [],
         order: authUser.order || [],
       });
+      props.hitLoader({loader : false})
     };
     const fallback = () => {
+      props.hitLoader({loader : false})
       localStorage.removeItem('authUser');
       props.hitLogin(null);
     };
@@ -34,6 +36,7 @@ const withAuthentication = (Component) => {
       props.requestData()
       const user = JSON.parse(localStorage.getItem('authUser'));
       const firstTimeUser = JSON.parse(localStorage.getItem('firstTimeUser'));
+      props.hitLoader({loader : true})
       if (user) {
         props.hitLogin({
           email: user.email,
@@ -62,9 +65,10 @@ const withAuthentication = (Component) => {
     hitFirebaseApparel: PropTypes.func.isRequired,
     requestData: PropTypes.func.isRequired,
     changeSignUpBool: PropTypes.func.isRequired,
+    hitLoader: PropTypes.func.isRequired,
   };
 
-  return connect(null, { hitLogin, hitFirebaseApparel, requestData, changeSignUpBool })(NewComponent);
+  return connect(null, { hitLogin, hitFirebaseApparel, requestData, changeSignUpBool, hitLoader })(NewComponent);
 };
 
 export default withAuthentication;
