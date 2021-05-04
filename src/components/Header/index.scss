@@ -41,6 +41,11 @@ $textColor: var(--textColor);
     cursor: pointer;
   }
 
+  .mobile-title{
+    margin: 10px 0px 0px 10px;
+    font-size: 3rem;
+  }
+
   ul {
     list-style-type: none;
     padding: 1rem;
@@ -49,14 +54,20 @@ $textColor: var(--textColor);
   .wishlist {
     cursor: pointer;
   }
+
   .cart {
     cursor: pointer;
   }
+
   .login,
   .logout {
     cursor: pointer;
     text-decoration: none;
     color: $textColor;
+  }
+
+  .login-mobile{
+    font-size: 2rem;
   }
 
   .logout-button {
@@ -71,6 +82,11 @@ $textColor: var(--textColor);
     padding-right: 1rem;
   }
 }
+
+.header-height-mobile{
+height: 12rem;
+}
+
 nav.header.scrolled {
   transition: ease 1s;
   background: $backgroundColor;
@@ -139,6 +155,10 @@ nav.header.scrolled {
   }
 }
 
+.auth-feature-mobile{
+width: 56px;
+}
+
 .quantity-on-icon {
   background: var(--red);
   border-radius: 50%;
@@ -150,4 +170,18 @@ nav.header.scrolled {
   position: fixed;
   margin: -7px 0px 0px 26px;
   padding: 0px 0px 0px 2px;
+}
+
+.title-icons-mobile-layout{
+  display: flex;
+  justify-content: space-between;
+}
+
+.mobile-parent-layout{
+  width: 100vh;
+}
+
+.search-hamburger-mobile{
+  display: flex;
+  justify-content: space-between;
 }

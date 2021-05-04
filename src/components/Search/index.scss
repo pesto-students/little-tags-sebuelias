@@ -1,5 +1,4 @@
 $color: var(--black);
-// $color: #f8f9fa;
 
 .search-container {
   border-radius: 40px;
@@ -24,7 +23,6 @@ $color: var(--black);
   height: 4rem;
   padding: 0.2rem 3rem 0.2rem 2rem;
   outline: 0;
-  // border: none;
 
   border: 3px solid var(--black);
   border-top: none;
@@ -42,7 +40,6 @@ $color: var(--black);
     border: 3px solid var(--red);
     border-top: none;
     opacity: 1;
-    // color: var(--brown);
   }
 }
 .seach-button {
@@ -62,4 +59,10 @@ $color: var(--black);
 }
 ::-moz-selection {
   background: rgba(#222, 0.2);
+}
+
+@media (min-width: 300px) and (max-width: 470px) {
+  .seach-text {
+    width: 26rem;
+  }
 }

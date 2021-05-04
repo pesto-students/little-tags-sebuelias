@@ -15,11 +15,12 @@ import Footer from './components/Footer';
 import ScrollToTop from './utils/ScrollToTop';
 import PastOrder from './screens/PastOrder';
 import Cart from './components/Cart';
+import HeaderMobile from './components/Header/HeaderMobile';
 
 function Routes() {
   return (
     <BrowserRouter>
-      <Header />
+      {window.innerWidth <= 470 ? <HeaderMobile/> : <Header/> }
       <ScrollToTop>
         <Switch>
           <Route exact path={ROUTES.HOME} component={Home} />

@@ -63,6 +63,11 @@
   }
 }
 
+.past-order-title{
+    display: flex;
+    justify-content: center;
+}
+
 @media (min-width: 300px) and (max-width: 470px) {
     .quantity-price{
         width:100px;
@@ -70,5 +75,11 @@
     }
     .order-id {
         margin-bottom: 15px;
+    }
+    .foot{
+        white-space: pre;
+    }
+    .past-order-title{
+        padding-top: 10px;
     }
   }

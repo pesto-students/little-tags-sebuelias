@@ -65,7 +65,7 @@ const PastOrder = (props) => {
   return (
     <>
       <div style={{ height: '100px' }} />
-      <h1 className="best-sellar-title">Orders</h1>
+      <h1 className="past-order-title">Orders</h1>
       <div>{visualizeOrder}</div>
     </>
   );
