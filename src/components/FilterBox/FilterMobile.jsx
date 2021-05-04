@@ -6,97 +6,132 @@ import Sort from '../Sort';
 import './index.scss';
 
 function FilterBoxMobile(props) {
-  const [openModal, setopenModal] = useState(false);
-  return !openModal ? (
-    <div
-      className="filter-button-container"
-      onClick={() => setopenModal(true)}
-      aria-hidden="true"
-    >
-      <h1> Sort and Filter </h1>
-    </div>
-  ) : (
-    <Modal>
-      <div className="box-div-filter-mobile">
-        <IoMdClose className="close" onClick={() => {}} />
-        <h4>Sort and Filter</h4>
-        <div className="filter-wrapper">
-          <div className="category-filter">
-            <h5>Category</h5>
-            <ul>
-              <li
-                onClick={() => props.filterBox('all-products')}
-                aria-hidden="true"
-                className={`Category ${
-                  props.currCategory.toLowerCase() === 'all products'
-                    ? 'selected-category'
-                    : ''
-                }`}
-              >
-                All
-              </li>
-              <li
-                onClick={() => props.filterBox('men clothing')}
-                aria-hidden="true"
-                className={`Category ${
-                  props.currCategory.toLowerCase() === 'men clothing'
-                    ? 'selected-category'
-                    : ''
-                }`}
-              >
-                Mens
-              </li>
-              <li
-                onClick={() => props.filterBox('women clothing')}
-                aria-hidden="true"
-                className={`Category ${
-                  props.currCategory.toLowerCase() === 'women clothing'
-                    ? 'selected-category'
-                    : ''
-                }`}
-              >
-                Women
-              </li>
-              <li
-                onClick={() => props.filterBox('electronics')}
-                aria-hidden="true"
-                className={`Category ${
-                  props.currCategory.toLowerCase() === 'electronics'
-                    ? 'selected-category'
-                    : ''
-                }`}
-              >
-                Electronics
-              </li>
-              <li
-                onClick={() => props.filterBox('jewelery')}
-                aria-hidden="true"
-                className={`Category ${
-                  props.currCategory.toLowerCase() === 'jewelery'
-                    ? 'selected-category'
-                    : ''
-                }`}
-              >
-                jewelery
-              </li>
-            </ul>
-          </div>
-          <div className="sort-container">
-            <h5>SORT</h5>
-            <Sort
-              handleDropDownValue={(event) => props.handleDropDownValue(event)}
-            />
-          </div>
-        </div>
-        <div
-          className="filter-apply button"
-          onClick={() => setopenModal(true)}
-          aria-hidden="true"
-        >
-          <h1> Apply </h1>
-        </div>
+  const [openFilterModal, setOpenFilterModal] = useState(false);
+  const [openSortModal, setOpenSortModal] = useState(false);
+
+  const filterContent = (filter) => {
+    props.filterBox(filter);
+    setOpenFilterModal(false);
+  };
+  return (
+    <>
+      <div className="filter-button-container">
+        <h1 onClick={() => setOpenSortModal(true)} aria-hidden="true">
+          Sort
+        </h1>
+        <h1 onClick={() => setOpenFilterModal(true)} aria-hidden="true">
+          Filter
+        </h1>
       </div>
-    </Modal>
+      {openSortModal ? (
+        <Modal>
+          <div className="box-div-filter-mobile">
+            <IoMdClose
+              className="close"
+              onClick={() => {
+                setOpenSortModal(false);
+              }}
+            />
+            <div className="sort-container">
+              <h4>SORT</h4>
+              <Sort
+                handleDropDownValue={(event) => {
+                  props.handleDropDownValue(event);
+                  setOpenSortModal(false);
+                }}
+              />
+            </div>
+          </div>
+        </Modal>
+      ) : null}
+      {openFilterModal ? (
+        <Modal>
+          <div className="box-div-filter-mobile">
+            <IoMdClose
+              className="close"
+              onClick={() => {
+                setOpenFilterModal(false);
+              }}
+            />
+            <h4>Filter</h4>
+            <div className="category-filter">
+              <h5>Category</h5>
+              <ul>
+                <li
+                  onClick={() => {
+                    filterContent('all-products');
+                  }}
+                  aria-hidden="true"
+                  className={`Category ${
+                    props.currCategory.toLowerCase() === 'all products'
+                      ? 'selected-category'
+                      : ''
+                  }`}
+                >
+                  All
+                </li>
+
+                <li
+                  onClick={() => {
+                    filterContent('men clothing');
+                  }}
+                  aria-hidden="true"
+                  className={`Category ${
+                    props.currCategory.toLowerCase() === 'men clothing'
+                      ? 'selected-category'
+                      : ''
+                  }`}
+                >
+                  Mens
+                </li>
+
+                <li
+                  onClick={() => {
+                    filterContent('women clothing');
+                  }}
+                  aria-hidden="true"
+                  className={`Category ${
+                    props.currCategory.toLowerCase() === 'women clothing'
+                      ? 'selected-category'
+                      : ''
+                  }`}
+                >
+                  Women
+                </li>
+
+                <li
+                  onClick={() => {
+                    filterContent('electronics');
+                  }}
+                  aria-hidden="true"
+                  className={`Category ${
+                    props.currCategory.toLowerCase() === 'electronics'
+                      ? 'selected-category'
+                      : ''
+                  }`}
+                >
+                  Electronics
+                </li>
+                <li
+                  onClick={() => {
+                    filterContent('jewelery');
+                  }}
+                  aria-hidden="true"
+                  className={`Category ${
+                    props.currCategory.toLowerCase() === 'jewelery'
+                      ? 'selected-category'
+                      : ''
+                  }`}
+                >
+                  jewelery
+                </li>
+              </ul>
+            </div>
+          </div>
+        </Modal>
+      ) : null}
+      ;
+    </>
   );
 }
 

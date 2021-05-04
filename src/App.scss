@@ -55,8 +55,8 @@
   --light: #fbfbfb;
   --black: #222;
   --brown: #a15c38;
-  --lightBrown: #ffc2c7;
-  --red: #f41f4e;
+  // --lightBrown: #ffc2c7;
+  --red: var(--brown);
 
   --bgColor: var(--white);
   --textColor: var(--black);
@@ -105,7 +105,7 @@ button {
   }
 }
 
-.loader-align{
+.loader-align {
   height: 100vh;
 }
 

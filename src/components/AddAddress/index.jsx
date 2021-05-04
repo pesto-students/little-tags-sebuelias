@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { IoMdClose } from 'react-icons/io';
@@ -23,6 +23,14 @@ const AddAddress = (props) => {
   const [errorState, seterrorState] = useState('');
   const [errorCity, seterrorCity] = useState('');
   const [erroraddress, seterroraddress] = useState('');
+
+  const nameRef = React.createRef();
+
+  useEffect(() => {
+    if (nameRef.current) {
+      nameRef.current.focus();
+    }
+  }, []);
 
   const firebase = useContext(FirebaseContext);
 
@@ -63,7 +71,7 @@ const AddAddress = (props) => {
               type="text"
               value={Name}
               placeholder="Name *"
-              onCl
+              ref={nameRef}
               onChange={(event) => {
                 setName(event.target.value);
                 seterrorName('');
