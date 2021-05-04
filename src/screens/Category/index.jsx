@@ -108,7 +108,7 @@ function Category(props) {
         />
         <div className="flex-column flex-one">
           <div className="category-header">
-            <h1 className="best-sellar-title">
+            <h1 className="best-seller-title">
               {currCategory === 'SEARCH'
                 ? `${props.location.state.QueryValue}`
                 : currCategory}

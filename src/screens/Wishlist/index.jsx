@@ -6,7 +6,7 @@ import {
   hitWhislist,
   changeSignUpBool,
 } from '../../store/modules/apparrelData/actions';
-import withAuthorization from "../../services/Session/withAuthorization"
+import withAuthorization from '../../services/Session/withAuthorization';
 import FirebaseContext from '../../services/Firebase/context';
 import Card from '../../components/Card';
 import './index.scss';
@@ -42,21 +42,21 @@ const Whislist = (props) => {
 
   return (
     <div className="wishlist-container">
-      <h1 className="best-sellar-title">My Wishlist</h1>
+      <h1 className="best-seller-title">My Wishlist</h1>
       <div className="complete-data whislist">{visulizeWhislist}</div>
       {props.apparrelData.whisList &&
       props.apparrelData.whisList.length === 0 ? (
         <div className="noitem-container">
           <h2>Wow!! An empty wishlist!</h2>
           <button
-          type="button"
-          className="button"
-          onClick={() => {
-            props.history.push({ pathname: '/categories' });
-          }}
-        >
-          Continue Shopping
-        </button>
+            type="button"
+            className="button"
+            onClick={() => {
+              props.history.push({ pathname: '/categories' });
+            }}
+          >
+            Let us change that..
+          </button>
         </div>
       ) : null}
     </div>
@@ -79,4 +79,6 @@ const mapStateToProps = (state) => ({
   authDetails: state.authDetails.auth,
 });
 
-export default withAuthorization(connect(mapStateToProps, dispatchToProps)(Whislist));
+export default withAuthorization(
+  connect(mapStateToProps, dispatchToProps)(Whislist)
+);

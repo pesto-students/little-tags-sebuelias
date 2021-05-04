@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BiPlus } from 'react-icons/bi';
 
-import { ImCross } from 'react-icons/im';
+import { IoClose } from 'react-icons/io5';
 import AddAddress from '../../components/AddAddress';
 import {
   hitAddressAddRemove,
@@ -64,7 +64,7 @@ const Address = (props) => {
           <p>{value.address}</p>
         </div>
 
-        <ImCross
+        <IoClose
           className="icon delete"
           onClick={() => {
             props.hitAddressAddRemove({ actionType: 'remove', index });

@@ -1,17 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&family=Reenie+Beanie&display=swap');
 
+@font-face {
+  font-family: 'ChocolateCrispy';
+  src: url('./assets/font/ChocolateCrispy.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;500;600;700;800;900&display=swap');
+
 .title {
-  font-family: 'Reenie Beanie', cursive;
+  font-family: 'ChocolateCrispy', 'Reenie Beanie', cursive;
+  letter-spacing: 8px;
 }
-.content {
-  font-family: 'Montserrat', 'Mulish', sans-serif;
-  /* font-family: 'Reenie Beanie', cursive; */
-}
+// .content {
+//   font-family: 'Barlow', 'Montserrat', 'Mulish', sans-serif;
+// }
 
 #root {
-  font-family: 'Montserrat', 'Mulish', sans-serif;
+  font-family: 'Barlow', 'Montserrat', 'Mulish', sans-serif;
 
   --blue: #007bff;
   --indigo: #6610f2;
@@ -42,6 +51,12 @@
   --black: #222;
   --brown: #a15c38;
   --lightBrown: #c3a6a0;
+
+  --light: #fbfbfb;
+  --black: #222;
+  --brown: #a15c38;
+  --lightBrown: #ffc2c7;
+  --red: #f41f4e;
 
   --bgColor: var(--white);
   --textColor: var(--black);
@@ -93,23 +108,6 @@ button {
 li {
   list-style: none;
 }
-
-// border-width: 3px 4px 3px 5px;
-// border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
-// transform: rotate(2deg);
-
-// border-width: 3px 3px 5px 5px;
-// border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
-// transform: rotate(-2deg);
-
-// border-width: 5px 3px 3px 5px;
-// border-radius: 95% 4% 97% 5%/4% 94% 3% 95%;
-// transform: rotate(2deg);
-
-// $width: 3px 4px 3px 5px, 3px 3px 5px 5px, 5px 3px 3px 5px;
-// $radius: 95% 4% 92% 5%/4% 95% 6% 95%, 4% 95% 6% 95%/95% 4% 92% 5%,
-//   95% 4% 97% 5%/4% 94% 3% 95%;
-// $rotateDeg: 2deg, -2deg, 2deg;
 
 .complete-data {
   display: flex;

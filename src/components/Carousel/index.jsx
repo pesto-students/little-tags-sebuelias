@@ -51,7 +51,7 @@ export default function Carousel({ slides, timer, imageIndicator }) {
           key={index}
         >
           {index === currentSlideNumber && (
-            <img src={slide} alt="test" className="image" key={index} />
+            <img src={slide} alt="carousel" className="image" key={index} />
           )}
         </div>
       ))}

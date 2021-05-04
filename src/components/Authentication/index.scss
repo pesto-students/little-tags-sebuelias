@@ -24,7 +24,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-family: 'Montserrat';
+  font-family: 'Barlow', 'Montserrat';
   transition: box-shadow 250ms ease-in;
 
   &:hover {
@@ -56,22 +56,22 @@
   height: 2.5rem;
 }
 
-.not-permitted-sign-parent{
+.not-permitted-sign-parent {
   height: 100vh;
 }
 
-.not-permitted-sign-modal{
+.not-permitted-sign-modal {
   margin: 200px 0 0px 0px;
   flex-direction: column;
   justify-content: center;
   display: flex;
 }
 
-.heading-not-authorisation{
+.heading-not-authorisation {
   display: flex;
   justify-content: center;
 }
 
-.align-back-arrow{
+.align-back-arrow {
   left: 0;
 }

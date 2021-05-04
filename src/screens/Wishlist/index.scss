@@ -6,21 +6,23 @@
 
 .wishlist-container {
   padding-top: 100px;
+  min-height: 100vh;
 }
 
 .noitem-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  min-height: 50vh;
+  // justify-content: center;
   flex-direction: column;
   margin-bottom: 20px;
   height: 200px;
 }
 
-.best-sellar-title {
+.best-seller-title {
   font-weight: bold;
   font-size: 4rem;
-  font-family: 'Reenie Beanie';
+  font-family: 'ChocolateCrispy', 'Reenie Beanie';
   display: flex;
   justify-content: center;
   margin: 0;

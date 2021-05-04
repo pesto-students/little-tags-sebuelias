@@ -9,6 +9,10 @@ $fontColor: var(--white);
   background-color: $backgroundColor;
   color: $fontColor;
   font-size: 1.2rem;
+  h3 {
+    font-size: 1.7rem;
+    font-weight: bold;
+  }
 }
 
 .store-icon {
@@ -46,6 +50,26 @@ $fontColor: var(--white);
   width: 100%;
 }
 
-.footer-category{
-  cursor: pointer;
+.footer-category {
+  font-size: 1.5rem;
+
+  li {
+    cursor: pointer;
+    transition: color 250ms ease-in;
+    &:hover {
+      color: var(--red);
+    }
+  }
+}
+
+.cards {
+  li,
+  img {
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: color 250ms ease-in;
+    &:hover {
+      color: var(--red);
+    }
+  }
 }
