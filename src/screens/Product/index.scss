@@ -3,7 +3,6 @@
   justify-content: center;
 }
 .prod-page-container {
-  width: 100vw;
   padding-top: 100px;
 }
 .prod-container {
@@ -46,7 +45,6 @@ h2 {
     var(--black),
     var(--white)
   );
-  // box-shadow: 3px 3px 0 #222;
 }
 
 .add-to-whislist {
@@ -117,7 +115,8 @@ h2 {
 
 @media (min-width: 300px) and (max-width: 470px) {
   .content-display-box {
-    margin: 0 15px 0 40px;
+    margin: 0 20px 0 0px;
+    border-left: 0px;
   }
   .image-crousel-box{
     margin-right: 0rem;

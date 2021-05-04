@@ -149,7 +149,6 @@ const Product = (props) => {
 
   return (
     <div className="prod-page-container">
-      <div className="prod-container">
         <div className="flex-row flex-one display-product">
           <div className="flex-row image-crousel-box">
             <Carousel
@@ -212,7 +211,6 @@ const Product = (props) => {
             </div>
           </div>
         </div>
-      </div>
 
       <div className="flex-column similar-products">
         <h2 className="heading-similar-prod">SIMILAR PRODUCTS</h2>
