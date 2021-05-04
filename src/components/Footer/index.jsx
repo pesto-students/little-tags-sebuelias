@@ -32,44 +32,64 @@ const Footer = (props) => (
       <div>
         <h3>Categories</h3>
         <ul className="footer-category">
-          <li onClick={() => {
-          props.history.push({
-            pathname: '/categories',
-            state: { QueryCategory: 'all-products' },
-          });
-        }}
-        aria-hidden="true">All</li>
-          <li onClick={() => {
-          props.history.push({
-            pathname: '/categories',
-            state: { QueryCategory: 'men clothing' },
-          });
-        }}
-        aria-hidden="true">Mens</li>
-          <li onClick={() => {
-          props.history.push({
-            pathname: '/categories',
-            state: { QueryCategory: 'women clothing' },
-          });
-        }}
-        aria-hidden="true">Womens</li>
-          <li onClick={() => {
-          props.history.push({
-            pathname: '/categories',
-            state: { QueryCategory: 'electronics' },
-          });
-        }}
-        aria-hidden="true">Electronics</li>
-          <li onClick={() => {
-          props.history.push({
-            pathname: '/categories',
-            state: { QueryCategory: 'jewelery' },
-          });
-        }}
-        aria-hidden="true">Jewelery</li>
+          <li
+            onClick={() => {
+              props.history.push({
+                pathname: '/categories',
+                state: { QueryCategory: 'all-products' },
+              });
+            }}
+            aria-hidden="true"
+          >
+            All
+          </li>
+          <li
+            onClick={() => {
+              props.history.push({
+                pathname: '/categories',
+                state: { QueryCategory: 'men clothing' },
+              });
+            }}
+            aria-hidden="true"
+          >
+            Mens
+          </li>
+          <li
+            onClick={() => {
+              props.history.push({
+                pathname: '/categories',
+                state: { QueryCategory: 'women clothing' },
+              });
+            }}
+            aria-hidden="true"
+          >
+            Womens
+          </li>
+          <li
+            onClick={() => {
+              props.history.push({
+                pathname: '/categories',
+                state: { QueryCategory: 'electronics' },
+              });
+            }}
+            aria-hidden="true"
+          >
+            Electronics
+          </li>
+          <li
+            onClick={() => {
+              props.history.push({
+                pathname: '/categories',
+                state: { QueryCategory: 'jewelery' },
+              });
+            }}
+            aria-hidden="true"
+          >
+            Jewelery
+          </li>
         </ul>
       </div>
-      <div className="flex-column">
+      <div className="flex-column cards">
         <div className="flex-column">
           <h3>Connect</h3>
           <ul className="flex-row flex-wrap-with-justify">
@@ -105,7 +125,7 @@ const Footer = (props) => (
           </ul>
         </div>
       </div>
-      <div className="flex-column">
+      <div className="flex-column cards">
         <h5>Download App</h5>
         <div>
           <img src={AppStoreIcon} className="store-icon" alt="googlePlay" />

@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { RiDeleteBin2Line } from 'react-icons/ri';
-import Tooltip from "../Tooltip"
+import { IoClose } from 'react-icons/io5';
+import Tooltip from '../Tooltip';
 import AddRemoveWhislist from '../AddRemoveWhislist';
 import {
   hitWhislist,
@@ -51,37 +51,38 @@ const CartSingle = (props) => {
   return (
     <>
       <div className="flex-row individual-cart-box">
-          <img
-            className="cart-product-image"
-            src={props.productDetail.image}
-            alt={props.productDetail.title}
-            aria-hidden="true"
-            onClick={() => {
-              props.history.push({
-                pathname: `/categories/${props.productDetail.id}`,
-                state: { product: props.productDetail },
-              });
-            }}
-          />
-          <div className="flex-column cart-title-whislist">
-            <h3 className="title-head">{props.productDetail.title}</h3>
-            <h3 className="size-info">
-              {props.productDetail.size
-                ? `SIZE: ${props.productDetail.size}`
-                : null}
-            </h3>
-            <div className="flex-row">
-              <Tooltip add="Move to whislist">
+        <img
+          className="cart-product-image"
+          src={props.productDetail.image}
+          alt={props.productDetail.title}
+          aria-hidden="true"
+          onClick={() => {
+            props.history.push({
+              pathname: `/categories/${props.productDetail.id}`,
+              state: { product: props.productDetail },
+            });
+          }}
+        />
+        <div className="flex-column cart-title-whislist">
+          <h3 className="title-head">{props.productDetail.title}</h3>
+          <h3 className="size-info">
+            {props.productDetail.size
+              ? `SIZE: ${props.productDetail.size}`
+              : null}
+          </h3>
+          <div className="flex-row">
+            <Tooltip add="Move to whislist">
               <AddRemoveWhislist
                 className="icons"
                 whislist={false}
                 handleAddWhislist={handleAddWhislist}
                 handleRemoveWhislist={() => {}}
                 productDetail={props.productDetail}
-              /></Tooltip>
-              <RiDeleteBin2Line className="icons" onClick={handleRemoveCart} />
-            </div>
+              />
+            </Tooltip>
+            <IoClose className="icons" onClick={handleRemoveCart} />
           </div>
+        </div>
         <div className="flex-column quantity">
           <OrderQuantity
             setquantity={quantity}

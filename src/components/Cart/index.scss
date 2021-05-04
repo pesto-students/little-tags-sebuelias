@@ -12,7 +12,7 @@
 }
 
 .cart-title {
-  font-family: 'Reenie Beanie', cursive;
+  font-family: 'ChocolateCrispy', 'Reenie Beanie', cursive;
   font-size: 4rem;
   font-weight: 600;
 }
@@ -48,11 +48,11 @@
   h1 {
     width: 250px;
     margin-right: 1rem;
+    margin: 0;
   }
 }
 
 .place-order-button {
-
   width: 250px;
   height: 45px;
   display: flex;
@@ -67,7 +67,7 @@
   background: transparent;
   padding: 1rem 3rem;
   border-radius: 1rem;
-  font-family: 'Montserrat';
+  font-family: 'Barlow', 'Montserrat';
   border: none;
   letter-spacing: 1px;
   cursor: pointer;
@@ -128,23 +128,23 @@
   align-items: center;
 }
 
-.adjust-cart{
+.adjust-cart {
   flex: 1;
   padding: 0 50px 0 50px;
 }
 
-.align-cart-box{
+.align-cart-box {
   width: 100%;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 @media (min-width: 300px) and (max-width: 470px) {
-  .order{
+  .order {
     align-items: center;
     margin: 0 0 20px 0;
   }
-  .place-order-button{
+  .place-order-button {
     margin: 0 0 2rem 0;
   }
 }
