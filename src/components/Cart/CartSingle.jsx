@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { RiDeleteBin2Line } from 'react-icons/ri';
-
+import Tooltip from "../Tooltip"
 import AddRemoveWhislist from '../AddRemoveWhislist';
 import {
   hitWhislist,
@@ -71,13 +71,14 @@ const CartSingle = (props) => {
                 : null}
             </h3>
             <div className="flex-row">
+              <Tooltip add="Move to whislist">
               <AddRemoveWhislist
                 className="icons"
                 whislist={false}
                 handleAddWhislist={handleAddWhislist}
                 handleRemoveWhislist={() => {}}
                 productDetail={props.productDetail}
-              />
+              /></Tooltip>
               <RiDeleteBin2Line className="icons" onClick={handleRemoveCart} />
             </div>
           </div>

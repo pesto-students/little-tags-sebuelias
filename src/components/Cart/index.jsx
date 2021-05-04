@@ -41,9 +41,29 @@ function Cart(props) {
             Cart ({props.apparrelData.cart.length}{' '}
             {props.apparrelData.cart.length > 1 ? 'items' : 'item'})
           </h1>
-          {props.apparrelData.cart.length > 0 ? (
+        </div>
+      ) : (
+        <div className="empty">
+          <h1 className="cart-title">Cart</h1>
+          <h2>Oops! Your cart is empty!</h2>
+          <button
+          type="button"
+          className="button"
+          onClick={() => {
+            props.history.push({ pathname: '/categories' });
+          }}
+        >
+          Continue Shopping
+        </button>
+        </div>
+      )}
+      <div className="flex-row align-cart-box">
+        <div className="adjust-cart">
+        {visualizeCart}
+        </div>
+        {props.apparrelData.cart.length > 0 ? (
             <div className="flex-row order">
-              <h1>Total Amount &#8377;{totalAmount.toFixed(2)}</h1>
+              <h1>Total Amount &nbsp; &#8377;{totalAmount.toFixed(2)}</h1>
               <button
                 className="place-order-button"
                 type="button"
@@ -53,14 +73,7 @@ function Cart(props) {
               </button>
             </div>
           ) : null}
-        </div>
-      ) : (
-        <div className="empty">
-          <h1 className="cart-title">Cart</h1>
-          <h2>Oops! Your cart is empty!</h2>
-        </div>
-      )}
-      {visualizeCart}
+      </div>
     </div>
   );
 }
