@@ -41,7 +41,7 @@ $textColor: var(--textColor);
     cursor: pointer;
   }
 
-  .mobile-title{
+  .mobile-title {
     margin: 10px 0px 0px 10px;
     font-size: 3rem;
   }
@@ -66,7 +66,7 @@ $textColor: var(--textColor);
     color: $textColor;
   }
 
-  .login-mobile{
+  .login-mobile {
     font-size: 2rem;
   }
 
@@ -83,8 +83,8 @@ $textColor: var(--textColor);
   }
 }
 
-.header-height-mobile{
-height: 12rem;
+.header-height-mobile {
+  height: 12rem;
 }
 
 nav.header.scrolled {
@@ -113,9 +113,9 @@ nav.header.scrolled {
 .onhover-user {
   width: 200px;
   height: 100px;
-  background: white;
+  background: var(--white);
   border-radius: 7px;
-  border: 1px solid brown;
+  border: 1px solid var(--brown);
   position: fixed;
   margin: 35px 0px 0px -162px;
 }
@@ -128,7 +128,7 @@ nav.header.scrolled {
   margin-left: -5px;
   border-width: 10px;
   border-style: solid;
-  border-color: transparent transparent brown transparent;
+  border-color: transparent transparent var(--brown) transparent;
   font-size: 3rem;
   color: var(--black);
   z-index: 3;
@@ -155,8 +155,8 @@ nav.header.scrolled {
   }
 }
 
-.auth-feature-mobile{
-width: 56px;
+.auth-feature-mobile {
+  width: 56px;
 }
 
 .quantity-on-icon {
@@ -172,16 +172,16 @@ width: 56px;
   padding: 0px 0px 0px 2px;
 }
 
-.title-icons-mobile-layout{
+.title-icons-mobile-layout {
   display: flex;
   justify-content: space-between;
 }
 
-.mobile-parent-layout{
+.mobile-parent-layout {
   width: 100vh;
 }
 
-.search-hamburger-mobile{
+.search-hamburger-mobile {
   display: flex;
   justify-content: space-between;
 }
