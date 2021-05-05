@@ -8,6 +8,7 @@ import './index.scss';
 function FilterBoxMobile(props) {
   const [openFilterModal, setOpenFilterModal] = useState(false);
   const [openSortModal, setOpenSortModal] = useState(false);
+  const [sortValue, setsortValue] = useState('')
 
   const filterContent = (filter) => {
     props.filterBox(filter);
@@ -35,8 +36,10 @@ function FilterBoxMobile(props) {
             <div className="sort-container">
               <h4>SORT</h4>
               <Sort
+                sortValue={sortValue}
                 handleDropDownValue={(event) => {
                   props.handleDropDownValue(event);
+                  setsortValue(event.target.value)
                   setOpenSortModal(false);
                 }}
               />
