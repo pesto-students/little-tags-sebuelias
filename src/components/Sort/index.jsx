@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './index.sass';
 
 function Sort(props) {
-  const [selected, setselected] = useState('');
+  const [selected, setselected] = useState(props.sortValue || '');
 
   const handleDropDownValue = (event) => {
     setselected(event.target.value);
@@ -45,6 +45,7 @@ function Sort(props) {
 
 Sort.propTypes = {
   handleDropDownValue: PropTypes.func.isRequired,
+  sortValue: PropTypes.string.isRequired,
 };
 
 export default Sort;

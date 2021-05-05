@@ -2,14 +2,17 @@ import PropTypes from 'prop-types';
 import { useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import FirebaseContext from '../../services/Firebase/context';
-import withAuthorization from "../../services/Session/withAuthorization"
+import withAuthorization from '../../services/Session/withAuthorization';
 import './index.scss';
 
 const OrderPlaced = (props) => {
   const firebase = useContext(FirebaseContext);
 
   useEffect(() => {
-    if (props.location.state && props.location.state.previousLocation === 'payment') {
+    if (
+      props.location.state &&
+      props.location.state.previousLocation === 'payment'
+    ) {
       firebase.saveDataToDatabase(
         props.authDetails.uid,
         'order',
@@ -25,7 +28,7 @@ const OrderPlaced = (props) => {
     <>
       <div style={{ height: '100px' }} />
       <div className="order-placed">
-        <h1>Order placed!!!</h1>
+        <h1 className="title">ORDER PLACED!!!</h1>
         <p>Thank you for choosing us.</p>
         <button
           type="button"
