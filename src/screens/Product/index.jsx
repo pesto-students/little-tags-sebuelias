@@ -149,68 +149,64 @@ const Product = (props) => {
 
   return (
     <div className="prod-page-container">
-        <div className="flex-row flex-one display-product">
-          <div className="flex-row image-crousel-box">
-            <Carousel
-              timer={3000}
-              slides={[productDetail.image, productDetail.image]}
-              imageIndicator
-            />
+      <div className="flex-row flex-one display-product">
+        <div className="flex-row image-crousel-box">
+          <Carousel
+            timer={3000}
+            slides={[productDetail.image, productDetail.image]}
+            imageIndicator
+          />
+        </div>
+        <div className="flex-column content-display-box">
+          <div className="flex-column title-head">
+            <h2>{productDetail.title}</h2>
+            <h2>&#8377; {productDetail.price}</h2>
           </div>
-          <div className="flex-column content-display-box">
-            <div className="flex-column title-head">
-              <h2>{productDetail.title}</h2>
-              <h2>&#8377; {productDetail.price}</h2>
-            </div>
-            {productDetail.category === 'women clothing' ||
-            productDetail.category === 'men clothing' ? (
-              <div className="flex-column">
-                <OrderSize
-                  Size={size}
-                  setSize={(value) => {
-                    setsize(value);
-                    seterror('');
-                  }}
-                />
-                {error ? <span className="error">{error}</span> : <br />}
-              </div>
-            ) : null}
+          {productDetail.category === 'women clothing' ||
+          productDetail.category === 'men clothing' ? (
             <div className="flex-column">
-              <OrderQuantity
-                setquantity={quantity}
-                setorderQuantity={(value) => {
-                  setquantity(value);
+              <OrderSize
+                Size={size}
+                setSize={(value) => {
+                  setsize(value);
                   seterror('');
                 }}
               />
+              {error ? <span className="error">{error}</span> : <br />}
             </div>
-            <div className="flex-column button-group">
-              <div className="flex-row add-button">
-                <div className="add-to-bag">
-                  <button
-                    type="button"
-                    className="button"
-                    onClick={handleAddBag}
-                  >
-                    {addBagString ? 'ADDED TO BAG' : 'ADD TO BAG'}
-                  </button>
-                </div>
-                <div className="add-to-whislist">
-                  <AddRemoveWhislist
-                    whislist={whislist}
-                    handleAddWhislist={handleAddWhislist}
-                    handleRemoveWhislist={handleRemoveWhislist}
-                    productDetail={productDetail}
-                  />
-                </div>
+          ) : null}
+          <div className="flex-column">
+            <OrderQuantity
+              setquantity={quantity}
+              setorderQuantity={(value) => {
+                setquantity(value);
+                seterror('');
+              }}
+            />
+          </div>
+          <div className="flex-column button-group">
+            <div className="flex-row add-button">
+              <div className="add-to-bag">
+                <button type="button" className="button" onClick={handleAddBag}>
+                  {addBagString ? 'ADDED TO BAG' : 'ADD TO BAG'}
+                </button>
+              </div>
+              <div className="add-to-whislist">
+                <AddRemoveWhislist
+                  whislist={whislist}
+                  handleAddWhislist={handleAddWhislist}
+                  handleRemoveWhislist={handleRemoveWhislist}
+                  productDetail={productDetail}
+                />
               </div>
             </div>
-            <div className="flex-column description">
-              <h2>DESCRIPTION</h2>
-              <p>{productDetail.description}</p>
-            </div>
+          </div>
+          <div className="flex-column description">
+            <h2>DESCRIPTION</h2>
+            <p>{productDetail.description}</p>
           </div>
         </div>
+      </div>
 
       <div className="flex-column similar-products">
         <h2 className="heading-similar-prod">SIMILAR PRODUCTS</h2>

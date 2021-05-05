@@ -27,13 +27,6 @@
         font-size: 16px;
         font-weight: 600;
         color: var(--light);
-        background: radial-gradient(var(--red), transparent);
-        &:hover {
-            box-shadow: 0 1px 2px 0 rgba(2, 2, 2, 0.5),
-              0 2px 7px 0 rgba(2, 2, 2, 0.49);
-            color: var(--black);
-          }
-        
     }
 }
 

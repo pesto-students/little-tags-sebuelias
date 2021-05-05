@@ -60,7 +60,7 @@
         bottom: -0.75rem;
         left: -0.75rem;
         right: -0.75rem;
-        background: var(--light);
+        background: var(--lightBrown);
         z-index: -1;
         transform: scaleY(0);
         transition: transform 250ms ease-in;
@@ -107,7 +107,7 @@
 }
 
 @media (min-width: 300px) and (max-width: 470px) {
-  .categories-container{
+  .categories-container {
     display: flex;
     flex-wrap: wrap;
     .item {

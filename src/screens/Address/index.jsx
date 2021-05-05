@@ -5,7 +5,7 @@ import { BiPlus } from 'react-icons/bi';
 
 import { IoClose } from 'react-icons/io5';
 import AddAddress from '../../components/AddAddress';
-import Loader from "../../components/Loader"
+import Loader from '../../components/Loader';
 import {
   hitAddressAddRemove,
   hitOrderAdd,
@@ -78,35 +78,40 @@ const Address = (props) => {
 
   return (
     <>
-    {!props.apparrelData || props.apparrelData.loader ? <div className="loader-align"><Loader/></div> :
-    <div className="container">
-      <div style={{ height: '100px' }} />
-      {openModal ? (
-        <AddAddress
-          closeModal={() => {
-            setopenModal(false);
-          }}
-        />
-      ) : null}
-
-      <div className="proceed-to-payment">
-        <div
-          className="add-address"
-          onClick={() => setopenModal(true)}
-          aria-hidden="true"
-        >
-          <BiPlus className="icon" />
-          <h1>Add address</h1>
+      {!props.apparrelData || props.apparrelData.loader ? (
+        <div className="loader-align">
+          <Loader />
         </div>
-        {proceedToPayment ? (
-          <button className="button" type="button" onClick={handlePayment}>
-            Proceed to payment
-          </button>
-        ) : null}
-      </div>
+      ) : (
+        <div className="container">
+          <div style={{ height: '100px' }} />
+          {openModal ? (
+            <AddAddress
+              closeModal={() => {
+                setopenModal(false);
+              }}
+            />
+          ) : null}
 
-      <div className="flex-row address-wrap">{visualizeAddress}</div>
-    </div>}
+          <div className="proceed-to-payment">
+            <div
+              className="add-address"
+              onClick={() => setopenModal(true)}
+              aria-hidden="true"
+            >
+              <BiPlus className="icon" />
+              <h1>Add address</h1>
+            </div>
+            {proceedToPayment ? (
+              <button className="button" type="button" onClick={handlePayment}>
+                Proceed to payment
+              </button>
+            ) : null}
+          </div>
+
+          <div className="flex-row address-wrap">{visualizeAddress}</div>
+        </div>
+      )}
     </>
   );
 };
