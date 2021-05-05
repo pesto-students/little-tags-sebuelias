@@ -46,15 +46,15 @@ const Product = (props) => {
       const checkWhislist = props.apparrelData.whisList.filter(
         ({ id }) => id === productDetail.id
       );
-      const checkSimilarProd = (props.apparrelData.apparrelData || []).filter(
-        ({ category, id }) =>
-          id !== productDetail.id && category === productDetail.category
-      );
-      setsimilarProduct(checkSimilarProd);
       if (checkWhislist.length) {
         setwhislist(true);
       }
     }
+    const checkSimilarProd = (props.apparrelData.apparrelData || []).filter(
+      ({ category, id }) =>
+        id !== productDetail.id && category === productDetail.category
+    );
+    setsimilarProduct(checkSimilarProd);
   }, [props]);
 
   useEffect(() => {
