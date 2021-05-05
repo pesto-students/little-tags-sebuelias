@@ -31,7 +31,7 @@ const Address = (props) => {
   const handlePayment = () => {
     props.history.push({
       pathname: '/payment',
-      state: { AddIndex: Number(selected), previousLocation: 'address' },
+      state: { AddIndex: Number(selected), previousLocation: 'address', totalAmount : props.location.state.totalAmount },
     });
   };
 

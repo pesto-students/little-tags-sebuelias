@@ -11,7 +11,7 @@ import './index.scss';
 function Payment(props) {
   const options = {
     key: 'rzp_test_i51KPDC4npsKdK',
-    amount: '100', //  = INR 1
+    amount: (props.location.state.totalAmount * 100).toFixed(), //  = INR 1
     name: 'Acme shop',
     description: 'some description',
     image: 'https://cdn.razorpay.com/logos/7K3b6d18wHwKzL_medium.png',

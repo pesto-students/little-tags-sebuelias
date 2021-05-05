@@ -21,7 +21,7 @@ function Cart(props) {
   const handlePlaceOrder = () => {
     props.history.push({
       pathname: '/address',
-      state: { proceedToPayment: true },
+      state: { proceedToPayment: true, totalAmount },
     });
   };
 
