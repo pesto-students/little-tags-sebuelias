@@ -34,7 +34,7 @@ function Routes() {
           <Route exact path={ROUTES.ORDERS} component={PastOrder} />
           <Route exact path={ROUTES.CART} component={Cart} />
           <Route path={ROUTES.ERROR} component={ErrorPage} />
-          <Route component={ErrorPage} />
+          <Route component={Home} />
         </Switch>
       </ScrollToTop>
       <Footer />
