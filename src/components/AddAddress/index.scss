@@ -19,9 +19,11 @@ form {
   display: flex;
   flex-direction: column;
   h2 {
-    margin-left: 5rem;
+    // margin-left: 5rem;
     font-size: 2rem;
     width: fit-content;
+    display: flex;
+    align-self: center;
   }
 }
 
