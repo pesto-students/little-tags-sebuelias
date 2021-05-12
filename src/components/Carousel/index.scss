@@ -1,0 +1,68 @@
+$color: var(--black);
+.home-container {
+  .carousel {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+.arrow-crousel {
+  position: absolute;
+  top: 50%;
+  font-size: 3rem;
+  color: $color;
+  z-index: 3;
+  cursor: pointer;
+  user-select: none;
+  transition: all linear 250ms;
+  -ms-overflow-style: none; /* hide scrollbar in IE and Edge */
+  scrollbar-width: none;
+
+  &:hover {
+    color: var(--red);
+  }
+}
+.right {
+  right: 32px;
+}
+.left {
+  left: 32px;
+}
+
+.slide {
+  // opacity: 0;
+  transform: translateX(-100%);
+
+  transition: all 250ms ease-in;
+}
+
+.slide.active {
+  // opacity: 1;
+  transform: translateX(0%);
+
+  // transition-duration: 250ms;
+  // transform: scale(1.01);
+}
+
+.cousel-indicator {
+  justify-content: center;
+  li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 2px solid;
+    border-color: var(--black);
+    margin: 2px;
+  }
+}
+
+.selected-cousel-indicator {
+  background: var(--black);
+}

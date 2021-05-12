@@ -1,0 +1,58 @@
+.input-data {
+  margin: 10px;
+  outline: none;
+  border-width: 2px;
+  border-radius: 5px;
+  height: 40px;
+  width: 330px;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border-color: var(--brown);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  h2 {
+    // margin-left: 5rem;
+    font-size: 2rem;
+    width: fit-content;
+    display: flex;
+    align-self: center;
+  }
+}
+
+#pincode {
+  margin: 10px 5px 10px 10px;
+  width: 160px;
+}
+#country {
+  margin: 10px 10px 10px 5px;
+  width: 160px;
+}
+#state {
+  margin: 10px 5px 10px 10px;
+  width: 160px;
+}
+#city {
+  margin: 10px 10px 10px 5px;
+  width: 160px;
+}
+
+#address {
+  height: 100px;
+}
+
+#submit-address {
+  cursor: pointer;
+}
+
+.error-text {
+  color: var(--red);
+  margin-left: 10px;
+}

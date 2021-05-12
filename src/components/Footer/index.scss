@@ -1,0 +1,75 @@
+$backgroundColor: var(--black);
+$fontColor: var(--white);
+
+.contact-box {
+  width: 250px;
+}
+
+.footer {
+  background-color: $backgroundColor;
+  color: $fontColor;
+  font-size: 1.2rem;
+  h3 {
+    font-size: 1.7rem;
+    font-weight: bold;
+  }
+}
+
+.store-icon {
+  width: 125px;
+  margin: 5px 0px 5px 0px;
+}
+
+.store-icon-google {
+  border-color: darkgrey;
+  border-width: 0.1px;
+  border-style: solid;
+  height: 39px;
+  border-radius: 5px;
+}
+
+.footer-flex-margin {
+  margin: 0 30px 0 30px;
+}
+
+.border-line {
+  border-top: 0.5px solid;
+  border-image-slice: 1;
+  border-width: 0.5px;
+  border-image-source: linear-gradient(
+    to left,
+    $backgroundColor,
+    $backgroundColor,
+    $fontColor,
+    $backgroundColor,
+    $backgroundColor
+  );
+}
+.fix-bottom {
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-category {
+  font-size: 1.5rem;
+
+  li {
+    cursor: pointer;
+    transition: color 250ms ease-in;
+    &:hover {
+      color: var(--red);
+    }
+  }
+}
+
+.cards {
+  li,
+  img {
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: color 250ms ease-in;
+    &:hover {
+      color: var(--red);
+    }
+  }
+}

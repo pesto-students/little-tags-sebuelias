@@ -1,0 +1,132 @@
+.box-div-filter {
+  height: 100vh;
+  position: sticky;
+  top: 10rem;
+
+  border-right: 0.5px solid;
+  border-image-slice: 1;
+  border-width: 0.5px;
+  border-image-source: linear-gradient(
+    to bottom,
+    var(--light),
+    var(--black),
+    var(--light)
+  );
+
+  margin: 4rem;
+  padding-right: 2rem;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.Category {
+  cursor: pointer;
+  text-indent: 1rem;
+
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: 0.75rem 0rem 0 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--black);
+  text-decoration: none;
+  transition: color 0.3s linear;
+
+  &:hover {
+    color: var(--red);
+  }
+}
+
+.selected-category {
+  color: var(--red);
+}
+
+h5 {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+h4 {
+  text-transform: uppercase;
+  font-family: 'ChocolateCrispy', 'Reenie Beanie';
+  font-size: 2.7rem;
+  font-weight: bold;
+  margin: 0;
+  letter-spacing: 4px;
+}
+
+ul {
+  margin-top: 0;
+}
+
+.filter-button-container {
+  height: 10%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: var(--white);
+  z-index: 10;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 -10px 4px -7px rgba(115, 115, 115, 50%);
+  transition: color 250ms ease-in;
+
+  h1 {
+    border-right: 0.5px solid;
+    border-image-slice: 1;
+    border-width: 0.5px;
+    border-image-source: linear-gradient(
+      to bottom,
+      var(--light),
+      var(--black),
+      var(--light)
+    );
+    flex: 1;
+    text-align: center;
+    &:hover {
+      cursor: pointer;
+      color: var(--red);
+    }
+  }
+}
+
+.box-div-filter-mobile {
+  margin: 2rem;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h4 {
+    text-align: center;
+  }
+
+  .filter-apply {
+    height: 5rem;
+    width: 15rem;
+    font-size: 1rem;
+
+    h1 {
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  .Category {
+    text-indent: 0;
+  }
+
+  .sort-parent {
+    margin: 1rem;
+  }
+
+  .sort-container {
+    padding: 0 4rem 2rem 4rem;
+    flex-grow: 1;
+    margin-left: 1rem;
+
+    h4 {
+      margin-bottom: 1rem;
+    }
+  }
+}
