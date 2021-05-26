@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import './index.scss';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
@@ -48,10 +47,10 @@ export default function Carousel({ slides, timer, imageIndicator }) {
       {slides.map((slide, index) => (
         <div
           className={index === currentSlideNumber ? 'slide active' : 'slide'}
-          key={index}
+          key={index.toString()}
         >
           {index === currentSlideNumber && (
-            <img src={slide} alt="carousel" className="image" key={index} />
+            <img src={slide} alt="carousel" className="image" key={index.toString()} />
           )}
         </div>
       ))}
@@ -73,9 +72,7 @@ export default function Carousel({ slides, timer, imageIndicator }) {
 }
 
 Carousel.propTypes = {
-  // eslint-disable-next-line react/no-unused-prop-types
-  // eslint-disable-next-line react/forbid-prop-types
-  slides: PropTypes.array.isRequired,
+  slides: PropTypes.arrayOf(PropTypes.string).isRequired,
   timer: PropTypes.number,
   imageIndicator: PropTypes.bool,
 };
