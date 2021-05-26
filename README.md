@@ -61,19 +61,3 @@ You are allowed to use static data or any other third party api for fetching dat
 - React Router
 
 **NOTE: React Component libraries like Material UI, Antd, Chakra UI are not allowed**
-
-
-## Implementation from Previous Pesto batches (For Inspiration and reference purpose only)
-
-
-- https://stoic-bhaskara-ffe50d.netlify.app/
-- https://trendz.fashion/
-- https://little-tags-fe-nishantbisen09.vercel.app/
-- https://little-tags-pesto.netlify.app/
-- https://affectionate-jackson-ba5d1a.netlify.app/
-- https://ecommerce-deep-dive.netlify.app/
-- https://cocky-pare-43b620.netlify.app/#/
-- https://little-tags-nikhil-gobinda.netlify.app/
-
-
-Note: Your design for project should not be replica of ☝️ demos. these links are provided for inspiration purpose only.

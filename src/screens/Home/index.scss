@@ -1,0 +1,15 @@
+$backgroundColor: var(--bgColor);
+.home-container {
+  background-color: $backgroundColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.category {
+  font-size: 5rem;
+  letter-spacing: 6px;
+
+  font-family: 'ChocolateCrispy', 'Reenie Beanie';
+}

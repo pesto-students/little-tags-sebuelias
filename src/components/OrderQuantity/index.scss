@@ -1,0 +1,29 @@
+.add-substract-quantity {
+  font-weight: 600;
+  align-items: center;
+  svg {
+    cursor: pointer;
+  }
+  p {
+    margin: 0 1rem;
+    font-size: 2rem;
+    width: 2ch;
+    text-align: center;
+  }
+}
+
+.counter {
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--black);
+  transition: ease-in 0.3s;
+
+  &:hover {
+    color: var(--red);
+  }
+}
+
+.heading-quantity {
+  font-weight: bold;
+  font-size: 1.2rem;
+}

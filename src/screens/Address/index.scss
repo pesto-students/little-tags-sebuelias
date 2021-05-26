@@ -1,0 +1,89 @@
+.container {
+  min-height: 100vh;
+}
+
+.add-address-box {
+  border-width: thin;
+  flex: 1;
+  border-style: dashed;
+  display: flex;
+  height: 200px;
+  margin: 30px 3% 20px 3%;
+  justify-content: center;
+  cursor: pointer;
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+  }
+}
+
+.delete {
+  cursor: pointer;
+  font-size: 3rem;
+  color: var(--black);
+  transition: all ease-in 0.3s;
+  &:hover {
+    color: var(--red);
+  }
+}
+
+.add-address-content {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 33rem;
+  margin: 30px 3% 20px 3%;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--brown);
+  padding: 0 10px 0 10px;
+}
+
+.name-address {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 2rem;
+  width: 370px;
+  white-space: pre-wrap;
+}
+
+.cursor-pointer {
+  height: 54px;
+}
+
+.proceed-to-payment {
+  display: flex;
+  height: 43px;
+  margin: 30px 3% 20px 3%;
+  justify-content: space-between;
+  cursor: pointer;
+  flex-wrap: wrap;
+  align-content: center;
+
+  div {
+    display: flex;
+    align-items: center;
+    &:hover {
+      color: var(--red);
+    }
+    h1 {
+      padding-left: 1rem;
+    }
+  }
+}
+
+.address-wrap {
+  flex-wrap: wrap;
+}
+
+@media (min-width: 300px) and (max-width: 470px) {
+  .proceed-to-payment {
+    margin: 50px 3% 20px 3%;
+  }
+}

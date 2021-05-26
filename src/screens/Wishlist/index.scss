@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 5rem 0rem;
+}
+
+.wishlist-container {
+  padding-top: 100px;
+  min-height: 100vh;
+}
+
+.noitem-container {
+  display: flex;
+  align-items: center;
+  min-height: 50vh;
+  // justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  height: 200px;
+}
+
+.best-seller-title {
+  font-weight: bold;
+  font-size: 4rem;
+  font-family: 'ChocolateCrispy', 'Reenie Beanie';
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  flex: 1;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.whislist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
