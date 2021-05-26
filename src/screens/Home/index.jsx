@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Carousel from '../../components/Carousel';
 import CarouselImages from '../../assets/sliderImage/CarouselImages';
+import Crousel from "../../components/Carousel/Crousel"
 import Categories from '../../components/Categories';
 import { requestData } from '../../store/modules/apparrelData/actions';
 import './index.scss';
@@ -15,7 +15,7 @@ const Home = (props) => {
   return (
     <>
       <div className="home-container">
-      <Carousel slides={CarouselImages} timer={3000} {...props} />
+        <Crousel slides={CarouselImages} {...props} />
         <h2 className="category">Categories</h2>
         <Categories {...props} />
       </div>
